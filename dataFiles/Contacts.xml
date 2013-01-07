@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Contacts>
+    <entries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="person">
+        <addresses xsi:type="eMailAddress">
+            <email>tbernhard87@gmail.com</email>
+        </addresses>
+        <addresses xsi:type="mailAddress">
+            <city>Lachen</city>
+            <plz>8853</plz>
+            <street>Feldstrasse 2</street>
+        </addresses>
+        <name>Thomas Bernhard</name>
+        <salutation>Herr</salutation>
+    </entries>
+    <entries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="person">
+        <addresses xsi:type="eMailAddress">
+            <email>nhe@cnd-ag.ch</email>
+        </addresses>
+        <addresses xsi:type="mailAddress">
+            <city>Zürich</city>
+            <plz>8000</plz>
+            <street>Bahnhofstrasse 2</street>
+        </addresses>
+        <addresses xsi:type="telephoneNumber">
+            <fax>0812554544</fax>
+            <mobile>0793990100</mobile>
+            <phone>0812554545</phone>
+        </addresses>
+        <name>Niko Herrmann</name>
+        <salutation>Herr</salutation>
+    </entries>
+    <entries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="component">
+        <addresses xsi:type="netAddress">
+            <ip>127.0.0.1</ip>
+            <location>Hauptsitz Zürich</location>
+        </addresses>
+        <name>Drucker</name>
+    </entries>
+</Contacts>
