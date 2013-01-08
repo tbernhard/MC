@@ -3,8 +3,10 @@ package ch.tom.mc;
 import java.util.LinkedList;
 
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlSeeAlso;
 
 @XmlRootElement(name="Contacts")
+@XmlSeeAlso({Entry.class, Person.class, Component.class})
 public class Contacts {
 	private LinkedList<Entry> entries = new LinkedList<Entry>();
 

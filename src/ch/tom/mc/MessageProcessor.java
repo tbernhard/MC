@@ -6,7 +6,7 @@ import javax.xml.bind.JAXBException;
 
 public class MessageProcessor {
 
-	public void send(Messages message) {
+	public void send(Message message) {
 		message.print();
 	}
 
@@ -31,7 +31,7 @@ public class MessageProcessor {
 //	MMS erstellen		
 		MMS mms = new MMS();
 
-//		Attachment erstellen		
+//		Attachment erstellen	-- möglich so files zu übermitteln?	
 		String newFile = "D:/hwz/java/hwz_workspace/MC/dataFiles/HalloMMS.txt";
 		File attachment[] = {new File(newFile)};
 		

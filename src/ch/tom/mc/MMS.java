@@ -3,7 +3,7 @@ package ch.tom.mc;
 
 import java.io.File;
 
-public class MMS extends Messages implements Message {
+public class MMS extends Message {
 	private String subject;
 	private File[] attachment;
 

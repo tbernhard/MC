@@ -17,13 +17,13 @@ public class SaveToXMLandCprintTest {
 
 		c.add(e);
 
-		EMailAddress a = new EMailAddress();
-		a.setEmail("tbernhard87@gmail.com");
+		Address a = new Address();
+		a.setType(AddressType.EMAIL); 
+		a.setAddressText("tbernhard87@gmail.com");
 
-		MailAddress m = new MailAddress();
-		m.setCity("Lachen");
-		m.setPlz(8853);
-		m.setStreet("Feldstrasse 2");
+		Address m = new Address();
+		m.setType(AddressType.MOBILE); 
+		m.setAddressText("0796564664");
 
 		e.add(a);
 		e.add(m);
@@ -32,11 +32,11 @@ public class SaveToXMLandCprintTest {
 		Component e1 = new Component();
 		e1.setName("Drucker");
 
-		NetAddress n = new NetAddress();
+		Address n = new Address();
 		c.add(e1);
 		e1.add(n);
-		n.setIp("127.0.0.1");
-		n.setLocation("Hauptsitz Zürich");
+		n.setAddressText("127.0.0.1");
+		n.setType(AddressType.NETWORK);
 		
 		System.out.println("c Print:");
 		c.print();

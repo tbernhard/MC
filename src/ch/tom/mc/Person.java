@@ -1,5 +1,8 @@
 package ch.tom.mc;
 
+import javax.xml.bind.annotation.XmlType;
+
+@XmlType
 public class Person extends Entry {
 	private String salutation;
 	private String name;

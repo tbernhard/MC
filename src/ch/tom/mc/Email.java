@@ -3,7 +3,7 @@ package ch.tom.mc;
 
 import java.io.File;
 
-public class Email extends Messages implements Message {
+public class Email extends Message {
 	private String subject;
 	private File[] attachment;
 
@@ -14,6 +14,12 @@ public class Email extends Messages implements Message {
 	}
 
 	public void archive() {
+	}
+
+	@Override
+	public void print() {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

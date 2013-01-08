@@ -92,13 +92,13 @@ public class FileHandler {
 
 		c.add(e);
 
-		EMailAddress a = new EMailAddress();
-		a.setEmail("tbernhard87@gmail.com");
+		Address a = new Address();
+		a.setType(AddressType.EMAIL); 
+		a.setAddressText("tbernhard87@gmail.com");
 
-		MailAddress m = new MailAddress();
-		m.setCity("Lachen");
-		m.setPlz(8853);
-		m.setStreet("Feldstrasse 2");
+		Address m = new Address();
+		m.setType(AddressType.MOBILE); 
+		m.setAddressText("012312312"); 
 
 		e.add(a);
 		e.add(m);
@@ -110,32 +110,38 @@ public class FileHandler {
 
 		c.add(e2);
 
-		EMailAddress a2 = new EMailAddress();
-		a2.setEmail("nhe@cnd-ag.ch");
+		Address a2 = new Address();
+		a2.setType(AddressType.EMAIL); 
+		a2.setAddressText("nhe@cnd-ag.ch");
 
-		MailAddress m2 = new MailAddress();
-		m2.setCity("Zürich");
-		m2.setPlz(8000);
-		m2.setStreet("Bahnhofstrasse 2");
+		Address m2 = new Address();
+		m2.setType(AddressType.MOBILE);
+		m2.setAddressText("0792231212");
 
-		TelephoneNumber t = new TelephoneNumber();
-		t.setMobile("0793990100");
-		t.setFax("0812554544");
-		t.setPhone("0812554545");
+		Address t1 = new Address();
+		t1.setType(AddressType.MOBILE); 
+		t1.setAddressText("0663453636"); 
+		Address t2 = new Address();
+		t2.setType(AddressType.FAX); 
+		t2.setAddressText("0663444636"); 
+		Address t3 = new Address();
+		t3.setType(AddressType.FESTNETZ); 
+		t3.setAddressText("0623453636"); 
+
 
 		e2.add(a2);
 		e2.add(m2);
-		e2.add(t);
+		e2.add(t1);
+		e2.add(t2);
+		e2.add(t3);
 
 		// Component hinzufügen
 		Component e1 = new Component();
 		e1.setName("Drucker");
 
-		NetAddress n = new NetAddress();
-		c.add(e1);
-		e1.add(n);
-		n.setIp("127.0.0.1");
-		n.setLocation("Hauptsitz Zürich");
+		Address n = new Address();
+		n.setAddressText("127.0.0.1");
+		n.setType(AddressType.NETWORK);
 
 		/* Serialzing Object to XML */
 		serializer.writeContacts(c, contactsFile);

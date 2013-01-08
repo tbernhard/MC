@@ -1,8 +1,8 @@
 <class-diagram version="1.0.11" icons="true" always-add-relationships="false" generalizations="true" realizations="true" 
   associations="true" dependencies="false" nesting-relationships="true">  
-  <class id="1" corner="BOTTOM_RIGHT" language="java" name="ch.tom.mc.Messages" project="MC" 
-    file="/MC/src/ch/tom/mc/Messages.java" binary="false">    
-    <position height="-1" width="-1" x="394" y="149"/>    
+  <class id="1" corner="BOTTOM_RIGHT" language="java" name="ch.tom.mc.Message" project="MC" 
+    file="/MC/src/ch/tom/mc/Message.java" binary="false">    
+    <position height="-1" width="-1" x="811" y="187"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      
       <operations public="true" package="true" protected="true" private="true"/>    
@@ -10,7 +10,7 @@
   </class>  
   <class id="2" corner="BOTTOM_RIGHT" language="java" name="ch.tom.mc.Email" project="MC" 
     file="/MC/src/ch/tom/mc/Email.java" binary="false">    
-    <position height="-1" width="-1" x="96" y="349"/>    
+    <position height="163" width="105" x="512" y="444"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      
       <operations public="true" package="true" protected="true" private="true"/>    
@@ -18,7 +18,7 @@
   </class>  
   <class id="3" corner="BOTTOM_RIGHT" language="java" name="ch.tom.mc.SMS" project="MC" 
     file="/MC/src/ch/tom/mc/SMS.java" binary="false">    
-    <position height="-1" width="-1" x="298" y="327"/>    
+    <position height="129" width="92" x="657" y="444"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      
       <operations public="true" package="true" protected="true" private="true"/>    
@@ -26,90 +26,50 @@
   </class>  
   <class id="4" corner="BOTTOM_RIGHT" language="java" name="ch.tom.mc.MessageProcessor" project="MC" 
     file="/MC/src/ch/tom/mc/MessageProcessor.java" binary="false">    
-    <position height="-1" width="-1" x="158" y="149"/>    
+    <position height="112" width="136" x="535" y="156"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      
       <operations public="true" package="true" protected="true" private="true"/>    
     </display>  
   </class>  
-  <interface id="5" corner="BOTTOM_RIGHT" language="java" name="ch.tom.mc.Message" project="MC" 
+  <class id="1" corner="BOTTOM_RIGHT" language="java" name="ch.tom.mc.Message" project="MC" 
     file="/MC/src/ch/tom/mc/Message.java" binary="false">    
-    <position height="-1" width="-1" x="412" y="553"/>    
+    <position height="-1" width="-1" x="823" y="780"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      
       <operations public="true" package="true" protected="true" private="true"/>    
     </display>  
-  </interface>  
-  <class id="6" corner="BOTTOM_RIGHT" language="java" name="ch.tom.mc.MMS" project="MC" 
+  </class>  
+  <class id="5" corner="BOTTOM_RIGHT" language="java" name="ch.tom.mc.MMS" project="MC" 
     file="/MC/src/ch/tom/mc/MMS.java" binary="false">    
-    <position height="-1" width="-1" x="434" y="358"/>    
+    <position height="248" width="147" x="789" y="444"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      
       <operations public="true" package="true" protected="true" private="true"/>    
     </display>  
   </class>  
-  <class id="7" corner="BOTTOM_RIGHT" language="java" name="ch.tom.mc.Contacts" project="MC" 
-    file="/MC/src/ch/tom/mc/Contacts.java" binary="false">    
-    <position height="-1" width="-1" x="817" y="293"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true"/>      
-      <operations public="true" package="true" protected="true" private="true"/>    
-    </display>  
-  </class>  
-  <class id="8" corner="BOTTOM_RIGHT" language="java" name="ch.tom.mc.Print" project="MC" 
+  <class id="6" corner="BOTTOM_RIGHT" language="java" name="ch.tom.mc.Print" project="MC" 
     file="/MC/src/ch/tom/mc/Print.java" binary="false">    
-    <position height="-1" width="-1" x="536" y="336"/>    
+    <position height="146" width="105" x="976" y="444"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      
       <operations public="true" package="true" protected="true" private="true"/>    
     </display>  
   </class>  
-  <realization id="9">    
-    <end type="SOURCE" refId="8"/>    
-    <end type="TARGET" refId="5"/>  
-  </realization>  
-  <association id="10">    
-    <end type="SOURCE" refId="1" navigable="false">      
-      <attribute id="11" name="sender"/>      
-      <multiplicity id="12" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="7" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <realization id="13">    
-    <end type="SOURCE" refId="2"/>    
-    <end type="TARGET" refId="5"/>  
-  </realization>  
-  <association id="14">    
-    <end type="SOURCE" refId="1" navigable="false">      
-      <attribute id="15" name="recipient"/>      
-      <multiplicity id="16" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="7" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <generalization id="17">    
-    <end type="SOURCE" refId="3"/>    
+  <generalization id="7">    
+    <end type="SOURCE" refId="5"/>    
     <end type="TARGET" refId="1"/>  
   </generalization>  
-  <generalization id="18">    
+  <generalization id="8">    
     <end type="SOURCE" refId="6"/>    
     <end type="TARGET" refId="1"/>  
   </generalization>  
-  <realization id="19">    
-    <end type="SOURCE" refId="6"/>    
-    <end type="TARGET" refId="5"/>  
-  </realization>  
-  <realization id="20">    
+  <generalization id="9">    
     <end type="SOURCE" refId="3"/>    
-    <end type="TARGET" refId="5"/>  
-  </realization>  
-  <generalization id="21">    
-    <end type="SOURCE" refId="2"/>    
     <end type="TARGET" refId="1"/>  
   </generalization>  
-  <generalization id="22">    
-    <end type="SOURCE" refId="8"/>    
+  <generalization id="10">    
+    <end type="SOURCE" refId="2"/>    
     <end type="TARGET" refId="1"/>  
   </generalization>  
   <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
