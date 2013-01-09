@@ -76,7 +76,10 @@ public class FileHandler {
 
 	public static void main(String[] args) throws Exception {
 		/* Location of XML File */
-		String XMLLocation = "D:/hwz/java/hwz_workspace/MC/dataFiles/Contacts.xml";
+//		Pfad Thomas
+//		String XMLLocation = "D:/hwz/java/hwz_workspace/MC/dataFiles/Contacts.xml";
+//		Pfad Niko
+		String XMLLocation = "D:/Privat/HWZ/3. Semester/Java 1 und 2/Projekt/workspace/MC/dataFiles/Contacts.xml";
 		File contactsFile = new File(XMLLocation);
 
 		FileHandler serializer = new FileHandler();

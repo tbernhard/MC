@@ -8,6 +8,8 @@ public class Email extends Message {
 	private File[] attachment;
 
 	public void validate() {
+		
+		
 	}
 
 	public void log() {
