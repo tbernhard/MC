@@ -144,7 +144,7 @@ public class MenuLayoutDemo implements ActionListener {
 
 	public JMenu createMenuKontakte(String title) {
 		JMenu m = new HorizontalMenu(title);
-
+//		m.addActionListener(new NachrichtenListener(mainPanel)); 
 		JMenuItem x = m.add("Kontakte verwalten");
 		x.addActionListener(new NachrichtenListener(mainPanel)); 
 		return m;
