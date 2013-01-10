@@ -90,6 +90,10 @@ public class MessageProcessor {
 		
 		MessageProcessor mc = new MessageProcessor();
 		mc.send(sms);
+		
+		Email email = new Email();
+		email.setRecipient(cr);
+		email.validate();
 
 		
 		
