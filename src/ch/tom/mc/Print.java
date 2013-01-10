@@ -3,10 +3,7 @@ package ch.tom.mc;
 
 import java.io.File;
 
-public class Print extends Message  {
-	private File[] attachment;
-
-	
+public class Print extends Message  {	
 	
 	public void validate() {
 	}

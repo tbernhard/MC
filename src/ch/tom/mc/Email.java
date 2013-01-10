@@ -6,7 +6,6 @@ import java.util.regex.Pattern;
 
 public class Email extends Message {
 	private String subject;
-	private File[] attachment;
 
 	public void validate() {
 

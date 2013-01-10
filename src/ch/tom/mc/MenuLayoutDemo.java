@@ -90,7 +90,6 @@ public class MenuLayoutDemo implements ActionListener {
 		menuBar.setLayout(new BoxLayout(menuBar, BoxLayout.PAGE_AXIS));
 		menuBar.add(createMenu("Nachrichten"));
 		menuBar.add(createMenuKontakte("Kontakte      "));
-		// menuBar.add(createMenu("Menu 3"));
 
 		menuBar.setBorder(BorderFactory.createMatteBorder(0, 0, 0, 1,
 				Color.BLACK));
@@ -129,11 +128,15 @@ public class MenuLayoutDemo implements ActionListener {
 		JMenu m = new HorizontalMenu(title);
 
 		JMenu submenu = new HorizontalMenu("Senden");
+		
 		JMenuItem x = submenu.add("SMS");
 		x.addActionListener(new SmsListener(mainPanel));
 		
 		submenu.add("MMS");
-		submenu.add("E-Mail");
+		
+		JMenuItem y = submenu.add("E-Mail");
+		y.addActionListener(new EmailListener(mainPanel));
+		
 		submenu.add("PrintJob");
 		m.add(submenu);
 

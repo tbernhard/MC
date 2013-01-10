@@ -14,9 +14,9 @@ public class MessageProcessor {
 //		Load data from xml
 		FileHandler fh = new FileHandler();
 //		Pfad Thomas
-//		String XMLLocation = "D:/hwz/java/hwz_workspace/MC/dataFiles/Contacts.xml";
+		String XMLLocation = "D:/hwz/java/hwz_workspace/MC/dataFiles/Contacts.xml";
 //		Pfad Niko
-		String XMLLocation = "D:/Privat/HWZ/3. Semester/Java 1 und 2/Projekt/workspace/MC/dataFiles/Contacts.xml";
+//		String XMLLocation = "D:/Privat/HWZ/3. Semester/Java 1 und 2/Projekt/workspace/MC/dataFiles/Contacts.xml";
 		File contactsFile = new File(XMLLocation);
 		
 		Contacts c = new Contacts();
@@ -25,11 +25,11 @@ public class MessageProcessor {
 		
 //		TODO How to choose from a list of all contacts the one you need
 //		create a new contacts object and add the one you need
-		Contacts cs = new Contacts();		// sender contact
-		cs.add(c.getEntries().getFirst());
+//		Contacts cs = new Contacts();		// sender contact
+//		cs.add(c.getEntries().getFirst());
 //		System.out.println(c.getEntries());
-		Contacts cr = new Contacts();		// recipient contact
-		cr.add(c.getEntries().getLast());
+//		Contacts cr = new Contacts();		// recipient contact
+//		cr.add(c.getEntries().getLast());
 		
 		
 //		Test MMS erstellen		
@@ -47,16 +47,16 @@ public class MessageProcessor {
 //		Pfad Thomas
 //		String newFile = "D:/hwz/java/hwz_workspace/MC/dataFiles/Contacts.xml";
 //		Pfad Niko
-		String newFile = "D:/Privat/HWZ/3. Semester/Java 1 und 2/Projekt/workspace/MC/dataFiles/Contacts.xml";
+//		String newFile = "D:/Privat/HWZ/3. Semester/Java 1 und 2/Projekt/workspace/MC/dataFiles/Contacts.xml";
 //		ACHTUNG: Attachment ist ein Array. Muss noch angepasst werden
-		File attachment[] = {new File(newFile)};
+//		File attachment[] = {new File(newFile)};
 		
-		mms.setSender(cs);
-		mms.setRecipient(cr);
+		mms.setSender(c.getEntries().getFirst());
+		mms.setRecipient(c.getEntries().getLast());
 //		Dieser Text ist 16 Byte gross.
 		mms.setMessage("Dies ist ein MMS");
 		mms.setSubject("MMS");
-		mms.setAttachment(attachment);
+//		mms.setAttachment(attachment);
 		
 //		mms.print();
 		
@@ -71,29 +71,29 @@ public class MessageProcessor {
 		
 		
 //  	Test SMS erstellen
-		SMS sms = new SMS();
+//		SMS sms = new SMS();
 
 //		Attachment erstellen	-- möglich so files zu übermitteln?	
 //		String newFile = "D:/hwz/java/hwz_workspace/MC/dataFiles/HalloMMS.txt";
 //		File attachment[] = {new File(newFile)};
 		
-		sms.setSender(cs);
-		sms.setRecipient(cr);
+//		sms.setSender(cs);
+//		sms.setRecipient(cr);
 //		Nachricht grösser als 160 Zeichen setzen zum testen
 //		sms.setMessage("Dieser Text ist sicher über 160 Zeichen lang, damit getestet werden kann ob die SMS Nachricht nicht länger sein kann. Es sollte ein Fehler ausgeben werden… Ist noch ziemlich viel Text… HA HA HA total=176Zeichen");
 //		Nachricht nicht grösser als 160 Zeichen
-		sms.setMessage("Dieser Text ist sicher nicht über 160 Zeichen. Ende");
+//		sms.setMessage("Dieser Text ist sicher nicht über 160 Zeichen. Ende");
 		
 //		sms.print();
 //		sms.validate();
 		
 		
-		MessageProcessor mc = new MessageProcessor();
-		mc.send(sms);
+//		MessageProcessor mc = new MessageProcessor();
+//		mc.send(sms);
 		
-		Email email = new Email();
-		email.setRecipient(cr);
-		email.validate();
+//		Email email = new Email();
+//		email.setRecipient(cr);
+//		email.validate();
 
 		
 		

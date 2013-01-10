@@ -4,7 +4,7 @@ import java.io.File;
 
 public class MMS extends Message {
 	private String subject;
-	private File[] attachment;
+
 
 	public void validate() {
 		
@@ -12,19 +12,19 @@ public class MMS extends Message {
 //		System.out.println("Grösse der MMS Nachricht ist: " + this.getMessage().length() + " Byte.");
 //		System.out.println("Grösse des Anhang ist: " + this.getAttachment()[0].length() + "Byte");
 		
-		try {
-//			ACHTUNG: Attachment ist ein Array. Muss noch angepasst werden
-			long size = this.getAttachment()[0].length() + this.getMessage().length();
-			System.out.println("Validiere MMS: ");
-			if (size > 307200) {
-				System.out.println("Validierung NOK: Grösse von 300KB Anhang überschritten.");
-			} else {
-				System.out.println("Validierung OK");
-			}
-		} catch (Throwable t) {
-			System.out.println("MMS Null Pointer Exception. Keine Nachricht übergeben");
-
-		}
+//		try {
+////			ACHTUNG: Attachment ist ein Array. Muss noch angepasst werden
+//			long size = this.getAttachment()[0].length() + this.getMessage().length();
+//			System.out.println("Validiere MMS: ");
+//			if (size > 307200) {
+//				System.out.println("Validierung NOK: Grösse von 300KB Anhang überschritten.");
+//			} else {
+//				System.out.println("Validierung OK");
+//			}
+//		} catch (Throwable t) {
+//			System.out.println("MMS Null Pointer Exception. Keine Nachricht übergeben");
+//
+//		}
 	}
 
 	public void log() {
@@ -39,14 +39,6 @@ public class MMS extends Message {
 
 	public void setSubject(String subject) {
 		this.subject = subject;
-	}
-
-	public File[] getAttachment() {
-		return attachment;
-	}
-
-	public void setAttachment(File[] attachment) {
-		this.attachment = attachment;
 	}
 
 	public void print() {
@@ -66,8 +58,7 @@ public class MMS extends Message {
 //		System.out.println(this.getAttachment()[0].getName());
 //		System.out.println(this.getAttachment()[0].getAbsolutePath());
 //		System.out.println(this.getAttachment()[0].getTotalSpace());
-		
-		System.out.println("MMS wurde gesendet. \nAn Empfänger: " + this.getRecipient() + "\nNachrichtentext:" + this.getMessage());
+		System.out.println("MMS wurde gesendet. \nAn Empfänger: " + this.getRecipient(AddressType.EMAIL) + "\nNachrichtentext:" + this.getMessage());
 
 
 	}

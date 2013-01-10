@@ -1,23 +1,28 @@
 package ch.tom.mc;
 
 public abstract class Message {
-	private Contacts sender;
-	private Contacts recipient;
+	private Entry sender;
+	private Entry recipient;
 	private String message;
 
-	public Contacts getSender() {
+	public Entry getSender() {
 		return sender;
 	}
 
-	public void setSender(Contacts sender) {
+	public void setSender(Entry sender) {
 		this.sender = sender;
 	}
 
-	public Contacts getRecipient() {
-		return recipient;
+//	public Entry getRecipient() {
+//		return recipient;
+//	}
+	
+	public String getRecipient(AddressType adressType) {
+		int i = this.recipient.getIndexOfAddress(adressType);
+		return this.recipient.addresses.get(i).getAddressText();
 	}
 
-	public void setRecipient(Contacts recipient) {
+	public void setRecipient(Entry recipient) {
 		this.recipient = recipient;
 	}
 

@@ -9,7 +9,7 @@ public class Address {
 	public AddressType getType() {
 		return type;
 	}
-
+	
 
 	public void setType(AddressType type) {
 		this.type = type;
@@ -28,6 +28,10 @@ public class Address {
 
 	public void print() {
 		System.out.println("Address{" + type + ":" + addressText + "}");
-	};
+	}
+	
+	public String get(AddressType addressType){
+		return "Test";
+	}
 
 }
