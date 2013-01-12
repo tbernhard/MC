@@ -36,4 +36,8 @@
         <name>Niko Herrmann</name>
         <salutation>Herr</salutation>
     </entries>
+    <entries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="component">
+        <name>Drucker</name>
+        <location>Zürich Hauptsitz</location>
+    </entries>
 </Contacts>

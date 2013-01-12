@@ -4,11 +4,12 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlType
 public class Component extends Entry {
-	private String name;
+	private String location;
 
 	public Component() {
 		super();
-		this.name = "Name";
+		this.location = "Location";
+		super.name = "Component name";
 	}
 
 	// @Override
@@ -20,19 +21,20 @@ public class Component extends Entry {
 	// return "Das Object "+ this.getName() +" wurde in "+ XMLLocation;
 	// }
 
-	public String getName() {
-		return name;
+	public String getLocation() {
+		return location;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setLocation(String location) {
+		this.location = location;
 	}
 
 
 	public void print() {
 		System.out
 				.println("--------------------Component----------------------");
-		System.out.println(this.name);
+		System.out.println(this.location);
+		System.out.println(super.name);
 		printAddress();		
 		System.out
 				.println("----------------------------------------------------");

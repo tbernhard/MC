@@ -4,6 +4,15 @@ import java.util.LinkedList;
 
 public abstract class Entry {
 	protected LinkedList<Address> addresses = new LinkedList<Address>();
+	protected String name;
+	
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
 
 	public void add(Address address) {
 		this.addresses.add(address);
@@ -14,7 +23,8 @@ public abstract class Entry {
 	}
 
 	public abstract void print();
-
+	
+	
 	public abstract void printAddress();
 
 	public LinkedList<Address> getAddresses() {

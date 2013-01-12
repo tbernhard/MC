@@ -77,9 +77,9 @@ public class FileHandler {
 	public static void main(String[] args) throws Exception {
 		/* Location of XML File */
 //		Pfad Thomas
-//		String XMLLocation = "D:/hwz/java/hwz_workspace/MC/dataFiles/Contacts.xml";
+		String XMLLocation = "D:/hwz/java/hwz_workspace/MC/dataFiles/Contacts.xml";
 //		Pfad Niko
-		String XMLLocation = "D:/Privat/HWZ/3. Semester/Java 1 und 2/Projekt/workspace/MC/dataFiles/Contacts.xml";
+//		String XMLLocation = "D:/Privat/HWZ/3. Semester/Java 1 und 2/Projekt/workspace/MC/dataFiles/Contacts.xml";
 		File contactsFile = new File(XMLLocation);
 
 		FileHandler serializer = new FileHandler();
@@ -141,11 +141,15 @@ public class FileHandler {
 		// Component hinzufügen
 		Component e1 = new Component();
 		e1.setName("Drucker");
+		e1.setLocation("Zürich Hauptsitz");
 
 		Address n = new Address();
 		n.setAddressText("127.0.0.1");
 		n.setType(AddressType.NETWORK);
+		
+		c.add(e1);
 
+	
 		/* Serialzing Object to XML */
 		serializer.writeContacts(c, contactsFile);
 

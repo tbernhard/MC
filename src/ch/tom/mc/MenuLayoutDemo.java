@@ -35,6 +35,7 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Container;
 import java.awt.Dimension;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -70,7 +71,7 @@ public class MenuLayoutDemo implements ActionListener {
 
 	public MenuLayoutDemo(JPanel mainPanel) {
 		this.mainPanel = mainPanel;
-		mainPanel.setBackground(Color.WHITE); 
+		mainPanel.setBackground(Color.WHITE);
 		// TODO Auto-generated constructor stub
 	}
 
@@ -83,8 +84,6 @@ public class MenuLayoutDemo implements ActionListener {
 		subjectField = new JTextField("Betreff", 20);
 		textField = new JTextField("Nachrichten Text", 20);
 		printerField = new JTextField("Printer", 20);
-
-		
 
 		JMenuBar menuBar = new JMenuBar();
 		menuBar.setLayout(new BoxLayout(menuBar, BoxLayout.PAGE_AXIS));
@@ -121,22 +120,21 @@ public class MenuLayoutDemo implements ActionListener {
 
 		return menuBar;
 	}
-	
-	
+
 	// used by createMenuBar
 	public JMenu createMenu(String title) {
 		JMenu m = new HorizontalMenu(title);
 
 		JMenu submenu = new HorizontalMenu("Senden");
-		
+
 		JMenuItem x = submenu.add("SMS");
 		x.addActionListener(new SmsListener(mainPanel));
-		
+
 		submenu.add("MMS");
-		
+
 		JMenuItem y = submenu.add("E-Mail");
 		y.addActionListener(new EmailListener(mainPanel));
-		
+
 		submenu.add("PrintJob");
 		m.add(submenu);
 
@@ -147,19 +145,18 @@ public class MenuLayoutDemo implements ActionListener {
 
 	public JMenu createMenuKontakte(String title) {
 		JMenu m = new HorizontalMenu(title);
-//		m.addActionListener(new NachrichtenListener(mainPanel)); 
+		// m.addActionListener(new NachrichtenListener(mainPanel));
 		JMenuItem x = m.add("Kontakte verwalten");
-		x.addActionListener(new NachrichtenListener(mainPanel)); 
+		x.addActionListener(new NachrichtenListener(mainPanel));
 		return m;
 	}
-	
+
 	public JMenu createMain(String title) {
 		JMenu m = new HorizontalMenu(title);
 
 		m.add(title + " verwalten");
 		return m;
 	}
-	
 
 	/**
 	 * Create the GUI and show it. For thread safety, this method should be
@@ -168,20 +165,23 @@ public class MenuLayoutDemo implements ActionListener {
 	private static void createAndShowGUI() {
 		// Create and set up the window.
 		JFrame frame = new JFrame("MultiChannel");
+		frame.setSize(400, 150);
+		// Set the frame in the center of the monitor
+		Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+		frame.setLocation(dim.width / 2 - frame.getSize().width / 2, dim.height
+				/ 2 - frame.getSize().height / 2);
+
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		// Create and set up the content pane.
 		JPanel mainPanel = new JPanel();
-		
+
 		MenuLayoutDemo demo = new MenuLayoutDemo(mainPanel);
 		Container contentPane = frame.getContentPane();
 		contentPane.add(demo.createMenuBar(), BorderLayout.LINE_START);
-		contentPane.add(mainPanel, BorderLayout.CENTER); 
-		
-//		contentPane.add(comp);
-		
+		contentPane.add(mainPanel, BorderLayout.CENTER);
+
 		// Display the window.
-		frame.setSize(500, 250);
 		frame.setVisible(true);
 	}
 
@@ -236,8 +236,8 @@ public class MenuLayoutDemo implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-//		if(e.getSource()==){}
+		// if(e.getSource()==){}
 		System.out.println("SMS");
-		
+
 	}
 }

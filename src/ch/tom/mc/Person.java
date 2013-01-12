@@ -5,12 +5,10 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType
 public class Person extends Entry {
 	private String salutation;
-	private String name;
 
 	public Person() {
-//		super();
 		this.salutation = "Salutation";
-		this.name = "Name";
+		super.name = "Person name";
 	}
 
 	public String getSalutation() {
@@ -19,14 +17,6 @@ public class Person extends Entry {
 
 	public void setSalutation(String salutation) {
 		this.salutation = salutation;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
 	}
 
 	// @Override
@@ -42,7 +32,7 @@ public class Person extends Entry {
 		System.out
 				.println("--------------------Person------------------------");
 		System.out.println(this.salutation);
-		System.out.println(this.name);
+		System.out.println(super.name);
 		this.printAddress();
 		// super.print();
 		System.out
