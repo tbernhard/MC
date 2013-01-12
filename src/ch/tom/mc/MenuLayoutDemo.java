@@ -175,7 +175,6 @@ public class MenuLayoutDemo implements ActionListener {
 
 		// Create and set up the content pane.
 		JPanel mainPanel = new JPanel();
-
 		MenuLayoutDemo demo = new MenuLayoutDemo(mainPanel);
 		Container contentPane = frame.getContentPane();
 		contentPane.add(demo.createMenuBar(), BorderLayout.LINE_START);
