@@ -3,7 +3,6 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-import javax.swing.JTextPane;
 
 import com.jgoodies.forms.factories.FormFactory;
 import com.jgoodies.forms.layout.ColumnSpec;
@@ -11,22 +10,27 @@ import com.jgoodies.forms.layout.FormLayout;
 import com.jgoodies.forms.layout.RowSpec;
 
 
-public class PanelSMS extends JPanel {
+public class PanelAddPerson extends JPanel {
 	private JTextField textField;
+	private JTextField textField_1;
 
 	/**
 	 * Create the panel.
 	 */
-	public PanelSMS() {
+	public PanelAddPerson() {
 		setLayout(new FormLayout(new ColumnSpec[] {
 				FormFactory.DEFAULT_COLSPEC,
 				FormFactory.RELATED_GAP_COLSPEC,
-				FormFactory.DEFAULT_COLSPEC,
+				ColumnSpec.decode("50dlu"),
 				FormFactory.RELATED_GAP_COLSPEC,
-				ColumnSpec.decode("default:grow"),
-				FormFactory.DEFAULT_COLSPEC,
-				FormFactory.DEFAULT_COLSPEC,},
+				ColumnSpec.decode("50dlu:grow"),
+				ColumnSpec.decode("max(27dlu;default)"),
+				ColumnSpec.decode("max(7dlu;default)"),},
 			new RowSpec[] {
+				FormFactory.RELATED_GAP_ROWSPEC,
+				FormFactory.DEFAULT_ROWSPEC,
+				FormFactory.RELATED_GAP_ROWSPEC,
+				FormFactory.DEFAULT_ROWSPEC,
 				FormFactory.RELATED_GAP_ROWSPEC,
 				FormFactory.DEFAULT_ROWSPEC,
 				FormFactory.RELATED_GAP_ROWSPEC,
@@ -34,23 +38,31 @@ public class PanelSMS extends JPanel {
 				FormFactory.RELATED_GAP_ROWSPEC,
 				FormFactory.DEFAULT_ROWSPEC,
 				FormFactory.RELATED_GAP_ROWSPEC,
+				FormFactory.DEFAULT_ROWSPEC,
+				FormFactory.RELATED_GAP_ROWSPEC,
 				FormFactory.DEFAULT_ROWSPEC,}));
 		
-		JLabel lblNewLabel = new JLabel("Number");
-		add(lblNewLabel, "3, 2, right, default");
+		JLabel lblNewLabel = new JLabel("Geschlaecht");
+		add(lblNewLabel, "3, 2, left, default");
 		
 		textField = new JTextField();
 		add(textField, "5, 2, fill, default");
 		textField.setColumns(10);
 		
-		JLabel lblText = new JLabel("Text");
-		add(lblText, "3, 4");
+		JLabel lblName = new JLabel("Name");
+		add(lblName, "3, 4, default, center");
 		
-		JTextPane textPane = new JTextPane();
-		add(textPane, "5, 4, 2, 1, fill, fill");
+		JTextField txtPName = new JTextField();
+		add(txtPName, "5, 4, fill, default");
 		
-		JButton btnSend = new JButton("Send");
-		add(btnSend, "6, 6");
+		JLabel label = new JLabel("Vorname");
+		add(label, "3, 6, left, default");
+		
+		textField_1 = new JTextField();
+		add(textField_1, "5, 6, fill, default");
+		
+		JButton btnSend = new JButton("Save");
+		add(btnSend, "6, 8, left, fill");
 
 	}
 

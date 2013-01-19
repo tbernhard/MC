@@ -18,7 +18,7 @@ import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 
 import ch.hwz.nhtb.gui.panels.PanelEmail;
-import ch.hwz.nhtb.gui.panels.PanelKontakte;
+import ch.hwz.nhtb.gui.panels.PanelContact;
 import ch.hwz.nhtb.gui.panels.PanelMMS;
 import ch.hwz.nhtb.gui.panels.PanelPrint;
 import ch.hwz.nhtb.gui.panels.PanelSMS;
@@ -58,7 +58,7 @@ public class App {
 
 		// Create and set up the window.
 		frame = new JFrame("MultiChannel");
-		frame.setSize(400, 150);
+		frame.setSize(400, 200);
 		// Set the frame in the center of the monitor
 		Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
 		frame.setLocation(dim.width / 2 - frame.getSize().width / 2, dim.height
@@ -135,7 +135,7 @@ public class App {
 			@Override
 			public void mousePressed(MouseEvent arg0) {
 				frame.getContentPane().remove(panel);
-				panel = new PanelKontakte();
+				panel = new PanelContact();
 				frame.getContentPane().add(panel, BorderLayout.CENTER);
 				frame.setVisible(true);
 			}

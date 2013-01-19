@@ -39,6 +39,10 @@
         <salutation>Herr</salutation>
     </entries>
     <entries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="component">
+        <addresses>
+            <addressText>127.0.0.1</addressText>
+            <type>NETWORK</type>
+        </addresses>
         <name>Drucker</name>
         <location>Zürich Hauptsitz</location>
     </entries>

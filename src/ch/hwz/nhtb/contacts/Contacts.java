@@ -36,6 +36,41 @@ public class Contacts {
 		return s;
 	}
 
+	public String[] getContacts() {
+		String[] s = new String[this.entries.size()];
+
+		for (int i = 0; i < this.entries.size(); i++) {
+			System.out.println(this.entries.get(i).getClass());
+			if (this.entries.get(i).getClass().isInstance(new Person())) {
+				Person e = (Person) this.entries.get(i);
+				System.out.println("Person");
+				System.out.println(e.getSalutation());
+				System.out.println(e.getPrename());
+				System.out.println(e.getName());
+				s[i] = e.getSalutation() + " " + e.getPrename() + " "
+						+ e.getName();
+				for (int j = 0; j < e.getAddresses().size(); j++) {
+					System.out
+							.println(e.getAddresses().get(j).getAddressText());
+					s[i] += " " + e.getAddresses().get(j).getAddressText();
+				}
+			} else {
+				Component c = (Component) this.entries.get(i);
+				System.out.println("Component");
+				System.out.println(c.getLocation());
+				System.out.println(c.getName());
+				s[i] = c.getLocation() + " " + c.getName();
+				for (int j = 0; j < c.getAddresses().size(); j++) {
+					System.out
+							.println(c.getAddresses().get(j).getAddressText());
+					s[i] += " " + c.getAddresses().get(j).getAddressText();
+				}
+			}
+		}
+		return s;
+
+	}
+
 	public String[] getCRest() {
 		String[] s = new String[this.entries.size()];
 
@@ -46,19 +81,20 @@ public class Contacts {
 		return s;
 	}
 
-//	public String[][] getContacs() {
-//			String[][] s = new String[this.entries.size()][this.entries.get(1).getAddresses().get(i)];
-//	
-//			for (int i = 0; i < this.entries.size(); i++) {
-//				s[i] = this.entries.get(i).getName();
-//			}
-//			for (int i = 0; i < this.entries.size(); i++) {
-//				s[i] = this.entries.get(i).get();
-//			}
-//	
-////		 s;
-//		return new String[][] {{" ", " "},{" ", " "}};
-//	}
+	// public String[][] getContacs() {
+	// String[][] s = new
+	// String[this.entries.size()][this.entries.get(1).getAddresses().get(i)];
+	//
+	// for (int i = 0; i < this.entries.size(); i++) {
+	// s[i] = this.entries.get(i).getName();
+	// }
+	// for (int i = 0; i < this.entries.size(); i++) {
+	// s[i] = this.entries.get(i).get();
+	// }
+	//
+	// // s;
+	// return new String[][] {{" ", " "},{" ", " "}};
+	// }
 
 	public void print() {
 		for (int i = 0; i < this.entries.size(); i++) {
@@ -90,19 +126,20 @@ public class Contacts {
 		}
 
 		// ------------------------------------------------------------------------------------------------------------------------
-		c.print();
+		// c.print();
 		// c.getCNames();
 
-		System.out.println();
-		System.out.println();
-		System.out.println("TEST");
+		// System.out.println();
+		// System.out.println();
+		// System.out.println("TEST");
+		//
+		// System.out.println(c.getCRest()[0]);
+		// System.out.println(c.getCNames()[0]);
+		//
+		// System.out.println(c.getCRest()[2]);
+		// System.out.println(c.getCNames()[2]);
 
-		System.out.println(c.getCRest()[0]);
-		System.out.println(c.getCNames()[0]);
-
-		System.out.println(c.getCRest()[2]);
-		System.out.println(c.getCNames()[2]);
-
+//		c.getContacts();
 	}
 
 }

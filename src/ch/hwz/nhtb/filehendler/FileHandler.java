@@ -154,7 +154,7 @@ public class FileHandler {
 		Address n = new Address();
 		n.setAddressText("127.0.0.1");
 		n.setType(AddressType.NETWORK);
-		
+		e1.add(n);
 		c.add(e1);
 
 	

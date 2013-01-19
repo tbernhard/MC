@@ -17,7 +17,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.WindowConstants;
 
-class AddContactListener implements ActionListener {
+class AddContactListener_old implements ActionListener {
 
 	private JPanel mainPanel;
 	private final JButton addAddress;
@@ -25,7 +25,7 @@ class AddContactListener implements ActionListener {
 	private final JTextField yourPrenameField;
 	private final JTextField yourNameField;
 
-	public AddContactListener() {
+	public AddContactListener_old() {
 		// JPanel mainPanel
 		// this.mainPanel = mainPanel;
 		this.addAddress = new JButton("Add Address");
@@ -36,7 +36,7 @@ class AddContactListener implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		AddContactListener app = new AddContactListener();
+		AddContactListener_old app = new AddContactListener_old();
 
 		JFrame frame = new JFrame("MultiChannel - Kontakte Hinzufuegen");
 		frame.getContentPane().setLayout(new BorderLayout());

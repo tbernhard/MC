@@ -24,7 +24,7 @@ class NachrichtenListener implements ActionListener {
 	NachrichtenListener(JPanel mainPanel)  {
 		this.mainPanel = mainPanel; 
 		this.addContact = new JButton("Add");
-		addContact.addActionListener(new AddContactListener());//mainPanel
+		addContact.addActionListener(new AddContactListener_old());//mainPanel
 	}
 	@Override
 	public void actionPerformed(ActionEvent e) {
