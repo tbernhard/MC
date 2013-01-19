@@ -1,7 +1,5 @@
 package ch.hwz.nhtb;
 
-import java.awt.List;
-
 import javax.swing.table.AbstractTableModel;
 
 import ch.hwz.nhtb.contacts.Contacts;
@@ -34,7 +32,7 @@ class TableModel extends AbstractTableModel {
 		entry = contacts.getEntries().get(row);
 		switch (column) {
 		case 0:
-			return entry.addresses.getFirst();
+			return entry.getAddresses().getFirst();
 			// case 1:
 			// return entity.;
 		default:
