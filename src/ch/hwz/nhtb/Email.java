@@ -1,8 +1,10 @@
-package ch.tom.mc;
+package ch.hwz.nhtb;
 
 import java.io.File;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import ch.hwz.nhtb.contacts.AddressType;
 
 public class Email extends Message {
 	private String subject;
@@ -11,7 +13,7 @@ public class Email extends Message {
 
 //		String email = "nhe@c-ch.ch";
 		Pattern p = Pattern.compile(".+@.+\\.[a-z]+");
-		Matcher m = p.matcher((CharSequence) this.getRecipient());
+		Matcher m = p.matcher((CharSequence) this.getRecipient(AddressType.EMAIL));
 //		Matcher m = p.matcher((CharSequence) email);
 		
 		boolean validemail = m.matches();

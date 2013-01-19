@@ -1,6 +1,7 @@
-package ch.tom.mc;
+package ch.hwz.nhtb;
 
-import java.io.File;
+import ch.hwz.nhtb.contacts.AddressType;
+
 
 public class SMS extends Message {
 
@@ -33,7 +34,7 @@ public class SMS extends Message {
 	@Override
 	public void print() {
 		// TODO Auto-generated method stub
-		System.out.println("SMS wurde gesendet. \nAn Empfänger: " + this.getRecipient() + "\nNachrichtentext:" + this.getMessage());
+		System.out.println("SMS wurde gesendet. \nAn Empfänger: " + this.getRecipient(AddressType.MOBILE) + "\nNachrichtentext:" + this.getMessage());
 
 	}
 }

@@ -1,6 +1,8 @@
-package ch.tom.mc;
+package ch.hwz.nhtb;
 
 import java.io.File;
+
+import ch.hwz.nhtb.contacts.AddressType;
 
 public class MMS extends Message {
 	private String subject;
@@ -58,7 +60,7 @@ public class MMS extends Message {
 //		System.out.println(this.getAttachment()[0].getName());
 //		System.out.println(this.getAttachment()[0].getAbsolutePath());
 //		System.out.println(this.getAttachment()[0].getTotalSpace());
-		System.out.println("MMS wurde gesendet. \nAn Empfänger: " + this.getRecipient(AddressType.EMAIL) + "\nNachrichtentext:" + this.getMessage());
+		System.out.println("MMS wurde gesendet. \nAn Empfänger: " + this.getRecipient(AddressType.MOBILE) + "\nNachrichtentext:" + this.getMessage());
 
 
 	}

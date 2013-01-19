@@ -1,11 +1,11 @@
-package ch.tom.mc;
+package ch.hwz.nhtb.contacts;
 
 import java.util.LinkedList;
 
 public abstract class Entry {
-	protected LinkedList<Address> addresses = new LinkedList<Address>();
+	private LinkedList<Address> addresses = new LinkedList<Address>();
 	protected String name;
-	
+
 	public String getName() {
 		return name;
 	}
@@ -13,7 +13,7 @@ public abstract class Entry {
 	public void setName(String name) {
 		this.name = name;
 	}
-
+	
 	public void add(Address address) {
 		this.addresses.add(address);
 	}
@@ -23,8 +23,7 @@ public abstract class Entry {
 	}
 
 	public abstract void print();
-	
-	
+
 	public abstract void printAddress();
 
 	public LinkedList<Address> getAddresses() {
@@ -35,16 +34,18 @@ public abstract class Entry {
 		this.addresses = addresses;
 	}
 
-	public int getIndexOfAddress(AddressType addressType){
+	public abstract String get();
+
+	public int getIndexOfAddress(AddressType addressType) {
 		int i = 0;
-		while(this.addresses.get(i).getType() != addressType){
+		while (this.addresses.get(i).getType() != addressType) {
 			i++;
 		}
-//		for(i=0;i < this.addresses.size() ; i++){
-//			if(this.addresses.get(i).getType() == addressType){
-//				
-//			}
-//		}
-		return i;	
+		// for(i=0;i < this.addresses.size() ; i++){
+		// if(this.addresses.get(i).getType() == addressType){
+		//
+		// }
+		// }
+		return i;
 	}
 }

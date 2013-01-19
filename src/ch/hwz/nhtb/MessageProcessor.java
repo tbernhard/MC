@@ -1,8 +1,11 @@
-package ch.tom.mc;
+package ch.hwz.nhtb;
 
 import java.io.File;
 
 import javax.xml.bind.JAXBException;
+
+import ch.hwz.nhtb.contacts.Contacts;
+import ch.hwz.nhtb.filehendler.FileHandler;
 
 public class MessageProcessor {
 

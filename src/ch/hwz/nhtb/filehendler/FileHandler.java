@@ -1,4 +1,4 @@
-package ch.tom.mc;
+package ch.hwz.nhtb.filehendler;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -9,6 +9,12 @@ import javax.xml.bind.JAXB;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
+
+import ch.hwz.nhtb.contacts.Address;
+import ch.hwz.nhtb.contacts.AddressType;
+import ch.hwz.nhtb.contacts.Component;
+import ch.hwz.nhtb.contacts.Contacts;
+import ch.hwz.nhtb.contacts.Person;
 
 public class FileHandler {
 
@@ -90,7 +96,8 @@ public class FileHandler {
 
 		// Person hinzufügen
 		Person e = new Person();
-		e.setName("Thomas Bernhard");
+		e.setName("Bernhard");
+		e.setPrename("Thomas");
 		e.setSalutation("Herr");
 
 		c.add(e);
@@ -108,7 +115,8 @@ public class FileHandler {
 
 		// Person hinzufügen
 		Person e2 = new Person();
-		e2.setName("Niko Herrmann");
+		e2.setName("Herrmann");
+		e2.setPrename("Niko");
 		e2.setSalutation("Herr");
 
 		c.add(e2);

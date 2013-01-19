@@ -1,4 +1,4 @@
-package ch.tom.mc;
+package ch.hwz.nhtb.gui.listener;
 
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
@@ -11,6 +11,9 @@ import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.table.AbstractTableModel;
 import javax.xml.bind.JAXBException;
+
+import ch.hwz.nhtb.contacts.Contacts;
+import ch.hwz.nhtb.filehendler.FileHandler;
 
 
 class NachrichtenListener implements ActionListener {

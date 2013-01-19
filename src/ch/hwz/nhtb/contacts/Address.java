@@ -1,4 +1,4 @@
-package ch.tom.mc;
+package ch.hwz.nhtb.contacts;
 
 public class Address {
 

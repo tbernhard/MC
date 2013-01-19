@@ -1,14 +1,30 @@
-package ch.tom.mc;
+package ch.hwz.nhtb.contacts;
 
 import javax.xml.bind.annotation.XmlType;
 
 @XmlType
 public class Person extends Entry {
 	private String salutation;
+	private String prename;
 
 	public Person() {
-		this.salutation = "Salutation";
 		super.name = "Person name";
+		this.prename = "Person prename";
+		this.salutation = "Salutation";
+	}	
+	
+	public Person(String name, String prename, String salutation) {
+		super.name = name;
+		this.prename = prename;
+		this.salutation = salutation;
+	}	
+	
+	public String getPrename() {
+		return prename;
+	}
+
+	public void setPrename(String prename) {
+		this.prename = prename;
 	}
 
 	public String getSalutation() {
@@ -18,15 +34,10 @@ public class Person extends Entry {
 	public void setSalutation(String salutation) {
 		this.salutation = salutation;
 	}
-
-	// @Override
-	// public String toXML() throws Exception{
-	// String XMLLocation = "D:/hwz/java/hwz_workspace/MultiChannelTest/xml/"+
-	// this.getClass() +".xml";
-	// ObjectSerializationToXML serializer = new ObjectSerializationToXML();
-	// serializer.serializeObjectToXML(XMLLocation, this);
-	// return "Das Object "+ this.getName() +" wurde in "+ XMLLocation;
-	// }
+	
+	public String get(){
+		return getPrename() + getSalutation();
+	}
 
 	public void print() {
 		System.out
@@ -40,11 +51,9 @@ public class Person extends Entry {
 	}
 
 	public void printAddress() {
-		for (int i = 0; i < this.addresses.size(); i++) {
-			this.addresses.get(i).print();
+		for (int i = 0; i < this.getAddresses().size(); i++) {
+			this.getAddresses().get(i).print();
 		}
 	}
-	
-	
 
 }

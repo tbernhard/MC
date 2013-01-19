@@ -1,8 +1,11 @@
-package ch.tom.mc;
+package ch.hwz.nhtb;
 
 import java.awt.List;
 
 import javax.swing.table.AbstractTableModel;
+
+import ch.hwz.nhtb.contacts.Contacts;
+import ch.hwz.nhtb.contacts.Entry;
 
 class TableModel extends AbstractTableModel {
 

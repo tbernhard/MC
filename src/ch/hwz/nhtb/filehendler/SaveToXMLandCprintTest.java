@@ -1,4 +1,10 @@
-package ch.tom.mc;
+package ch.hwz.nhtb.filehendler;
+
+import ch.hwz.nhtb.contacts.Address;
+import ch.hwz.nhtb.contacts.AddressType;
+import ch.hwz.nhtb.contacts.Component;
+import ch.hwz.nhtb.contacts.Contacts;
+import ch.hwz.nhtb.contacts.Person;
 
 public class SaveToXMLandCprintTest {
 

@@ -1,8 +1,10 @@
-package ch.tom.mc;
+package ch.hwz.nhtb.filehendler;
 
 import java.io.File;
 
 import javax.xml.bind.JAXBException;
+
+import ch.hwz.nhtb.contacts.Contacts;
 
 public class UploadFromXMLTest {
 	

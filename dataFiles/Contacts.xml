@@ -9,7 +9,8 @@
             <addressText>012312312</addressText>
             <type>MOBILE</type>
         </addresses>
-        <name>Thomas Bernhard</name>
+        <name>Bernhard</name>
+        <prename>Thomas</prename>
         <salutation>Herr</salutation>
     </entries>
     <entries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="person">
@@ -33,7 +34,8 @@
             <addressText>0623453636</addressText>
             <type>FESTNETZ</type>
         </addresses>
-        <name>Niko Herrmann</name>
+        <name>Herrmann</name>
+        <prename>Niko</prename>
         <salutation>Herr</salutation>
     </entries>
     <entries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="component">

@@ -1,4 +1,4 @@
-package ch.tom.mc;
+package ch.hwz.nhtb;
 
 import java.awt.BorderLayout;
 import java.util.ArrayList;

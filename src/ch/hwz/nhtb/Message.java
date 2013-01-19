@@ -1,4 +1,7 @@
-package ch.tom.mc;
+package ch.hwz.nhtb;
+
+import ch.hwz.nhtb.contacts.AddressType;
+import ch.hwz.nhtb.contacts.Entry;
 
 public abstract class Message {
 	private Entry sender;
@@ -19,7 +22,7 @@ public abstract class Message {
 	
 	public String getRecipient(AddressType adressType) {
 		int i = this.recipient.getIndexOfAddress(adressType);
-		return this.recipient.addresses.get(i).getAddressText();
+		return this.recipient.getAddresses().get(i).getAddressText();
 	}
 
 	public void setRecipient(Entry recipient) {
