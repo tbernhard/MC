@@ -39,7 +39,7 @@ public class FileHandler {
 	// return deSerializedObject;
 	// }
 
-	private void writeContacts(Contacts c, File file) throws JAXBException {
+	public void writeContacts(Contacts c, File file) throws JAXBException {
 		JAXBContext jc = JAXBContext.newInstance(Contacts.class);
 		Marshaller m = jc.createMarshaller();
 		m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
@@ -103,11 +103,11 @@ public class FileHandler {
 		c.add(e);
 
 		Address a = new Address();
-		a.setType(AddressType.EMAIL); 
+		a.setType(AddressType.EMail); 
 		a.setAddressText("tbernhard87@gmail.com");
 
 		Address m = new Address();
-		m.setType(AddressType.MOBILE); 
+		m.setType(AddressType.Mobile); 
 		m.setAddressText("012312312"); 
 
 		e.add(a);
@@ -122,21 +122,21 @@ public class FileHandler {
 		c.add(e2);
 
 		Address a2 = new Address();
-		a2.setType(AddressType.EMAIL); 
+		a2.setType(AddressType.EMail); 
 		a2.setAddressText("nhe@cnd-ag.ch");
 
 		Address m2 = new Address();
-		m2.setType(AddressType.MOBILE);
+		m2.setType(AddressType.Mobile);
 		m2.setAddressText("0792231212");
 
 		Address t1 = new Address();
-		t1.setType(AddressType.MOBILE); 
+		t1.setType(AddressType.Mobile); 
 		t1.setAddressText("0663453636"); 
 		Address t2 = new Address();
 		t2.setType(AddressType.FAX); 
 		t2.setAddressText("0663444636"); 
 		Address t3 = new Address();
-		t3.setType(AddressType.FESTNETZ); 
+		t3.setType(AddressType.Tel); 
 		t3.setAddressText("0623453636"); 
 
 
@@ -153,7 +153,7 @@ public class FileHandler {
 
 		Address n = new Address();
 		n.setAddressText("127.0.0.1");
-		n.setType(AddressType.NETWORK);
+		n.setType(AddressType.IP);
 		e1.add(n);
 		c.add(e1);
 

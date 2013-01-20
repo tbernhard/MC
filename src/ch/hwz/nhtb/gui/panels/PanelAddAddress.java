@@ -31,20 +31,17 @@ public class PanelAddAddress extends JPanel implements ActionListener {
 	private JComboBox jcbEntry;
 	private JOptionPane jopR;
 	private JButton btnAdd;
-	private JButton btnDel;
 
 	private Contacts c;
-
-	// private final String[] sal = { "Herr", "Frau" };
-
+	
 	/**
 	 * Create the panel.
 	 */
-	public PanelAddAddress(final JFrame frame, Contacts c) {
+	
+	public PanelAddAddress(final JFrame frame) {
 		this.frame = frame;
-		this.c = c;
 		setLayout(new FormLayout(new ColumnSpec[] {
-				ColumnSpec.decode("max(8dlu;default)"),
+				ColumnSpec.decode("max(44dlu;default)"),
 				FormFactory.RELATED_GAP_COLSPEC,
 				ColumnSpec.decode("max(6dlu;default)"),
 				FormFactory.RELATED_GAP_COLSPEC,
@@ -54,7 +51,8 @@ public class PanelAddAddress extends JPanel implements ActionListener {
 				FormFactory.RELATED_GAP_COLSPEC,
 				ColumnSpec.decode("19dlu"),
 				FormFactory.RELATED_GAP_COLSPEC,
-				ColumnSpec.decode("21dlu"),
+				ColumnSpec.decode("27dlu"),
+				FormFactory.DEFAULT_COLSPEC,
 				FormFactory.RELATED_GAP_COLSPEC,},
 			new RowSpec[] {
 				RowSpec.decode("1dlu"),
@@ -65,11 +63,8 @@ public class PanelAddAddress extends JPanel implements ActionListener {
 		jtfAdd = new JTextField();
 		add(jtfAdd, "4, 2, 4, 1, fill, default");
 
-		btnDel = new JButton("-");
-		add(btnDel, "9, 2, left, center");
-
-		btnAdd = new JButton("+");
-		add(btnAdd, "11, 2, left, center");
+		btnAdd = new JButton("Add");
+		add(btnAdd, "10, 2, 2, 1, fill, center");
 		btnAdd.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mousePressed(MouseEvent arg0) {
@@ -77,22 +72,28 @@ public class PanelAddAddress extends JPanel implements ActionListener {
 				Address a = new Address();
 				a.setType((AddressType) jcbEntry.getSelectedItem());
 				a.setAddressText(jtfAdd.getText());
-
-				// c.add(a);
-
 				System.out.println(a.getType());
 				System.out.println(a.getAddressText());
-
 				jopR.showMessageDialog(
 						new JFrame(),
 						a.getType()
 								+ " "
 								+ a.getAddressText()
-								+ " wurde erfolgreich zu den Kontakten hinzugefügt");
-				frame.setVisible(false);
+								+ " wurde erfolgreich zu den Kontakten hinzugefügt",
+								"Speichervorgang",
+								JOptionPane.INFORMATION_MESSAGE);
+				jtfAdd.setText("");
 			}
 		});
 
+	}
+	
+	public Contacts getContact(){
+		return this.c;
+	}
+	
+	public void deliverContact(Contacts c){
+		this.c = c;
 	}
 
 	@Override

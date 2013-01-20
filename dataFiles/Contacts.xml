@@ -3,11 +3,11 @@
     <entries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="person">
         <addresses>
             <addressText>tbernhard87@gmail.com</addressText>
-            <type>EMAIL</type>
+            <type>EMail</type>
         </addresses>
         <addresses>
             <addressText>012312312</addressText>
-            <type>MOBILE</type>
+            <type>Mobile</type>
         </addresses>
         <name>Bernhard</name>
         <prename>Thomas</prename>
@@ -16,15 +16,15 @@
     <entries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="person">
         <addresses>
             <addressText>nhe@cnd-ag.ch</addressText>
-            <type>EMAIL</type>
+            <type>EMail</type>
         </addresses>
         <addresses>
             <addressText>0792231212</addressText>
-            <type>MOBILE</type>
+            <type>Mobile</type>
         </addresses>
         <addresses>
             <addressText>0663453636</addressText>
-            <type>MOBILE</type>
+            <type>Mobile</type>
         </addresses>
         <addresses>
             <addressText>0663444636</addressText>
@@ -32,7 +32,7 @@
         </addresses>
         <addresses>
             <addressText>0623453636</addressText>
-            <type>FESTNETZ</type>
+            <type>Tel</type>
         </addresses>
         <name>Herrmann</name>
         <prename>Niko</prename>
@@ -41,9 +41,17 @@
     <entries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="component">
         <addresses>
             <addressText>127.0.0.1</addressText>
-            <type>NETWORK</type>
+            <type>IP</type>
         </addresses>
         <name>Drucker</name>
         <location>Zürich Hauptsitz</location>
+    </entries>
+    <entries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="component">
+        <addresses>
+            <addressText>192.168.1.1</addressText>
+            <type>IP</type>
+        </addresses>
+        <name>Name</name>
+        <location>Location</location>
     </entries>
 </Contacts>

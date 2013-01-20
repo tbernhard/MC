@@ -16,7 +16,6 @@ import javax.swing.JTextField;
 
 import ch.hwz.nhtb.gui.panels.PanelAddComponent;
 import ch.hwz.nhtb.gui.panels.PanelAddPerson;
-import ch.hwz.nhtb.gui.panels.TESTPanelAddPerson;
 
 import com.jgoodies.forms.factories.FormFactory;
 import com.jgoodies.forms.layout.ColumnSpec;
@@ -35,7 +34,7 @@ public class AddContacts extends JFrame implements ActionListener {
 	public AddContacts() {
 		// Create and set up the window.
 		frame = new JFrame("MultiChannel - Kontakte hinzufuegen");
-		frame.setSize(380, 260);
+		frame.setSize(380, 230);
 		// Set the frame in the center of the monitor
 		Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
 		frame.setLocation(dim.width / 2 - frame.getSize().width / 2, dim.height

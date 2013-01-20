@@ -2,9 +2,9 @@ package ch.hwz.nhtb.contacts;
 
 public enum AddressType {
 
-	EMAIL, 
-	MOBILE, 
+	EMail, 
+	Mobile, 
 	FAX, 
-	FESTNETZ, 
-	NETWORK; 
+	Tel, 
+	IP; 
 }
