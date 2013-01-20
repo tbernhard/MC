@@ -1,7 +1,5 @@
 package ch.hwz.nhtb;
 
-import java.io.File;
-
 import ch.hwz.nhtb.contacts.AddressType;
 
 public class MMS extends Message {

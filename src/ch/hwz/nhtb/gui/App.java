@@ -17,8 +17,8 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 
-import ch.hwz.nhtb.gui.panels.PanelEmail;
 import ch.hwz.nhtb.gui.panels.PanelContact;
+import ch.hwz.nhtb.gui.panels.PanelEmail;
 import ch.hwz.nhtb.gui.panels.PanelMMS;
 import ch.hwz.nhtb.gui.panels.PanelPrint;
 import ch.hwz.nhtb.gui.panels.PanelSMS;

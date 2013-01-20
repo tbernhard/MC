@@ -8,8 +8,6 @@ import java.io.File;
 import javax.swing.JButton;
 import javax.swing.JList;
 import javax.swing.JPanel;
-import javax.swing.JTable;
-import javax.swing.table.AbstractTableModel;
 import javax.xml.bind.JAXBException;
 
 import ch.hwz.nhtb.contacts.Contacts;

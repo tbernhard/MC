@@ -40,35 +40,70 @@ public class Contacts {
 		String[] s = new String[this.entries.size()];
 
 		for (int i = 0; i < this.entries.size(); i++) {
-//			System.out.println(this.entries.get(i).getClass());
 			if (this.entries.get(i).getClass().isInstance(new Person())) {
 				Person e = (Person) this.entries.get(i);
-//				System.out.println("Person");
-//				System.out.println(e.getSalutation());
-//				System.out.println(e.getPrename());
-//				System.out.println(e.getName());
 				s[i] = e.getSalutation() + " " + e.getPrename() + " "
 						+ e.getName();
 				for (int j = 0; j < e.getAddresses().size(); j++) {
-//					System.out
-//							.println(e.getAddresses().get(j).getAddressText());
 					s[i] += " " + e.getAddresses().get(j).getAddressText();
 				}
 			} else {
 				Component c = (Component) this.entries.get(i);
-//				System.out.println("Component");
-//				System.out.println(c.getLocation());
-//				System.out.println(c.getName());
 				s[i] = c.getLocation() + " " + c.getName();
 				for (int j = 0; j < c.getAddresses().size(); j++) {
-//					System.out
-//							.println(c.getAddresses().get(j).getAddressText());
 					s[i] += " " + c.getAddresses().get(j).getAddressText();
 				}
 			}
 		}
 		return s;
+	}
 
+	public String[] getContact() {
+		String[] s = new String[this.entries.size()];
+
+		for (int i = 0; i < this.entries.size(); i++) {
+			if (this.entries.get(i).getClass().isInstance(new Person())) {
+				Person e = (Person) this.entries.get(i);
+				s[i] = e.getSalutation() + " " + e.getPrename() + " "
+						+ e.getName();
+			} else {
+				Component c = (Component) this.entries.get(i);
+				s[i] = c.getLocation() + " " + c.getName();
+			}
+		}
+		return s;
+	}
+
+	public int search(String search) {
+		if(!search.isEmpty()){
+		String[] s = new String[this.entries.size()];
+		int index = 0;
+		for (int i = 0; i < this.entries.size(); i++) {
+			if (this.entries.get(i).getClass().isInstance(new Person())) {
+				Person e = (Person) this.entries.get(i);
+				for (int j = 0; j < e.getAddresses().size(); j++) {
+					if (search.matches("(.*)"+e.getPrename()+"(.*)")
+							|| search.matches("(.*)"+e.getName()+"(.*)")
+							|| search.matches("(.*)"+e.getName()+"(.*)")
+							|| search.matches("(.*)"+e.getAddresses().get(j)
+									.getAddressText()+"(.*)")) {
+						index = i; 
+					}
+				}
+			} else {
+				Component c = (Component) this.entries.get(i);
+				for (int j = 0; j < c.getAddresses().size(); j++) {
+					if (search.matches("(.*)"+c.getName()+"(.*)")
+							|| search.matches("(.*)"+c.getLocation()+"(.*)")
+							|| search.matches("(.*)"+c.getAddresses().get(j)
+									.getAddressText()+"(.*)")) {
+						index = i; 
+					}
+				}
+			}
+		}
+		return index;
+		} return -1;
 	}
 
 	public String[] getCRest() {
@@ -125,6 +160,11 @@ public class Contacts {
 		// System.out.println(c.getCNames()[2]);
 
 		// c.getContacts();
+//		int x = c.search("Bernhard");
+//		c.entries.get(x).print();
+//		c.entries.remove(x);
+		
+		
 	}
 
 }

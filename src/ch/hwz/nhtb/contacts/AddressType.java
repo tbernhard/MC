@@ -7,5 +7,4 @@ public enum AddressType {
 	Fax, 
 	Tel, 
 	IP; 
-
 }

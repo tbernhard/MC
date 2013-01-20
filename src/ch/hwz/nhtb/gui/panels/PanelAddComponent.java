@@ -43,7 +43,6 @@ public class PanelAddComponent extends JPanel implements ActionListener {
 	private Contacts cPAC = new Contacts();
 	private Component comp = new Component();
 	private Address a = new Address();
-	private String[] sAdd = {AddressType.IP.toString(), AddressType.EMail.toString(), AddressType.Fax.toString()};;
 
 	private File contactsFile;
 	private String XMLLocation;
@@ -116,7 +115,7 @@ public class PanelAddComponent extends JPanel implements ActionListener {
 		jtfCName = new JTextField();
 		add(jtfCName, "5, 4, 3, 1, fill, default");
 		
-		jcbAddress = new JComboBox(sAdd);
+		jcbAddress = new JComboBox(AddressType.values());
 		add(jcbAddress, "3, 6, left, default");
 
 		jtfAdd = new JTextField();

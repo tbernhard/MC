@@ -1,7 +1,6 @@
 package ch.hwz.nhtb;
 
 
-import java.io.File;
 
 public class Print extends Message  {	
 	

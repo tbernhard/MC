@@ -41,8 +41,6 @@ public class PanelAddPerson extends JPanel implements ActionListener {
 	private JButton btnSave;
 	private JButton btnAdd;
 	private JTextField jtfAdd;
-	
-	private String[] sAdd = {AddressType.EMail.toString(),AddressType.Mobile.toString(),AddressType.Tel.toString(),AddressType.Fax.toString()};;
 
 	private Contacts cPAP = new Contacts();
 	private Person p = new Person();
@@ -77,6 +75,7 @@ public class PanelAddPerson extends JPanel implements ActionListener {
 		// -----------------------------------------------------------------------------------------------------------------
 		this.frame = frame;
 		cPAP = c;
+				
 		setLayout(new FormLayout(new ColumnSpec[] {
 				FormFactory.DEFAULT_COLSPEC,
 				FormFactory.RELATED_GAP_COLSPEC,
@@ -124,7 +123,7 @@ public class PanelAddPerson extends JPanel implements ActionListener {
 		add(jtfPName, "6, 4, 3, 1, fill, default");
 		frame.getContentPane().add(this, BorderLayout.CENTER);
 
-		jcbAddress = new JComboBox(sAdd);
+		jcbAddress = new JComboBox(AddressType.values());
 		add(jcbAddress, "4, 8, 2, 1, left, default");
 
 		jtfAdd = new JTextField();
