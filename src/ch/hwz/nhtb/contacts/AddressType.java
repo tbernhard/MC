@@ -4,7 +4,8 @@ public enum AddressType {
 
 	EMail, 
 	Mobile, 
-	FAX, 
+	Fax, 
 	Tel, 
 	IP; 
+
 }

@@ -41,6 +41,8 @@ public class PanelAddPerson extends JPanel implements ActionListener {
 	private JButton btnSave;
 	private JButton btnAdd;
 	private JTextField jtfAdd;
+	
+	private String[] sAdd = {AddressType.EMail.toString(),AddressType.Mobile.toString(),AddressType.Tel.toString(),AddressType.Fax.toString()};;
 
 	private Contacts cPAP = new Contacts();
 	private Person p = new Person();
@@ -76,9 +78,11 @@ public class PanelAddPerson extends JPanel implements ActionListener {
 		this.frame = frame;
 		cPAP = c;
 		setLayout(new FormLayout(new ColumnSpec[] {
-				FormFactory.DEFAULT_COLSPEC, FormFactory.RELATED_GAP_COLSPEC,
+				FormFactory.DEFAULT_COLSPEC,
+				FormFactory.RELATED_GAP_COLSPEC,
 				ColumnSpec.decode("default:grow"),
-				FormFactory.RELATED_GAP_COLSPEC, ColumnSpec.decode("50dlu"),
+				FormFactory.RELATED_GAP_COLSPEC,
+				ColumnSpec.decode("50dlu"),
 				FormFactory.RELATED_GAP_COLSPEC,
 				ColumnSpec.decode("left:34dlu:grow"),
 				ColumnSpec.decode("max(27dlu;default)"),
@@ -86,15 +90,19 @@ public class PanelAddPerson extends JPanel implements ActionListener {
 				ColumnSpec.decode("max(14dlu;default)"),
 				ColumnSpec.decode("left:max(20dlu;default)"),
 				FormFactory.DEFAULT_COLSPEC,
-				ColumnSpec.decode("max(20dlu;default)"), }, new RowSpec[] {
-				FormFactory.RELATED_GAP_ROWSPEC, FormFactory.DEFAULT_ROWSPEC,
-				FormFactory.RELATED_GAP_ROWSPEC, FormFactory.DEFAULT_ROWSPEC,
-				FormFactory.RELATED_GAP_ROWSPEC, FormFactory.DEFAULT_ROWSPEC,
+				ColumnSpec.decode("max(20dlu;default)"),},
+			new RowSpec[] {
+				FormFactory.RELATED_GAP_ROWSPEC,
+				FormFactory.DEFAULT_ROWSPEC,
+				FormFactory.RELATED_GAP_ROWSPEC,
+				FormFactory.DEFAULT_ROWSPEC,
+				FormFactory.RELATED_GAP_ROWSPEC,
+				FormFactory.DEFAULT_ROWSPEC,
 				FormFactory.RELATED_GAP_ROWSPEC,
 				RowSpec.decode("max(14dlu;default)"),
 				FormFactory.RELATED_GAP_ROWSPEC,
 				RowSpec.decode("max(9dlu;default)"),
-				FormFactory.RELATED_GAP_ROWSPEC, }));
+				FormFactory.RELATED_GAP_ROWSPEC,}));
 
 		// Anrede
 		lblSal = new JLabel("Anrede");
@@ -116,7 +124,7 @@ public class PanelAddPerson extends JPanel implements ActionListener {
 		add(jtfPName, "6, 4, 3, 1, fill, default");
 		frame.getContentPane().add(this, BorderLayout.CENTER);
 
-		jcbAddress = new JComboBox(AddressType.values());
+		jcbAddress = new JComboBox(sAdd);
 		add(jcbAddress, "4, 8, 2, 1, left, default");
 
 		jtfAdd = new JTextField();

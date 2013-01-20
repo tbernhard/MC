@@ -24,11 +24,11 @@ public class SaveToXMLandCprintTest {
 		c.add(e);
 
 		Address a = new Address();
-		a.setType(AddressType.EMAIL); 
+		a.setType(AddressType.EMail); 
 		a.setAddressText("tbernhard87@gmail.com");
 
 		Address m = new Address();
-		m.setType(AddressType.MOBILE); 
+		m.setType(AddressType.Mobile); 
 		m.setAddressText("0796564664");
 
 		e.add(a);
@@ -42,7 +42,7 @@ public class SaveToXMLandCprintTest {
 		c.add(e1);
 		e1.add(n);
 		n.setAddressText("127.0.0.1");
-		n.setType(AddressType.NETWORK);
+		n.setType(AddressType.IP);
 		
 		System.out.println("c Print:");
 		c.print();

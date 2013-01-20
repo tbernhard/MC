@@ -43,6 +43,7 @@ public class PanelAddComponent extends JPanel implements ActionListener {
 	private Contacts cPAC = new Contacts();
 	private Component comp = new Component();
 	private Address a = new Address();
+	private String[] sAdd = {AddressType.IP.toString(), AddressType.EMail.toString(), AddressType.Fax.toString()};;
 
 	private File contactsFile;
 	private String XMLLocation;
@@ -74,75 +75,90 @@ public class PanelAddComponent extends JPanel implements ActionListener {
 		cPAC = c;
 
 		setLayout(new FormLayout(new ColumnSpec[] {
-				FormFactory.DEFAULT_COLSPEC, FormFactory.RELATED_GAP_COLSPEC,
-				ColumnSpec.decode("50dlu"), FormFactory.RELATED_GAP_COLSPEC,
-				ColumnSpec.decode("default:grow"), FormFactory.DEFAULT_COLSPEC,
-				ColumnSpec.decode("max(7dlu;default)"), }, new RowSpec[] {
-				FormFactory.RELATED_GAP_ROWSPEC, FormFactory.DEFAULT_ROWSPEC,
+				FormFactory.DEFAULT_COLSPEC,
+				FormFactory.RELATED_GAP_COLSPEC,
+				ColumnSpec.decode("50dlu"),
+				FormFactory.RELATED_GAP_COLSPEC,
+				ColumnSpec.decode("max(32dlu;default)"),
+				ColumnSpec.decode("20dlu"),
+				ColumnSpec.decode("max(13dlu;default)"),
+				ColumnSpec.decode("max(14dlu;default)"),
+				FormFactory.RELATED_GAP_COLSPEC,
+				FormFactory.DEFAULT_COLSPEC,},
+			new RowSpec[] {
+				RowSpec.decode("max(24dlu;default)"),
+				FormFactory.DEFAULT_ROWSPEC,
+				FormFactory.RELATED_GAP_ROWSPEC,
+				FormFactory.DEFAULT_ROWSPEC,
 				FormFactory.RELATED_GAP_ROWSPEC,
 				RowSpec.decode("default:grow"),
-				FormFactory.RELATED_GAP_ROWSPEC, FormFactory.DEFAULT_ROWSPEC,
-				FormFactory.RELATED_GAP_ROWSPEC, FormFactory.DEFAULT_ROWSPEC,
-				FormFactory.RELATED_GAP_ROWSPEC, FormFactory.DEFAULT_ROWSPEC,
-				FormFactory.RELATED_GAP_ROWSPEC, FormFactory.DEFAULT_ROWSPEC,
-				FormFactory.RELATED_GAP_ROWSPEC, FormFactory.DEFAULT_ROWSPEC, }));
+				FormFactory.RELATED_GAP_ROWSPEC,
+				FormFactory.DEFAULT_ROWSPEC,
+				FormFactory.RELATED_GAP_ROWSPEC,
+				FormFactory.DEFAULT_ROWSPEC,
+				FormFactory.RELATED_GAP_ROWSPEC,
+				FormFactory.DEFAULT_ROWSPEC,
+				FormFactory.RELATED_GAP_ROWSPEC,
+				FormFactory.DEFAULT_ROWSPEC,
+				FormFactory.RELATED_GAP_ROWSPEC,
+				FormFactory.DEFAULT_ROWSPEC,}));
 
 		lblLoc = new JLabel("Location");
 		add(lblLoc, "3, 2, left, default");
 
 		jtfLoc = new JTextField();
-		add(jtfLoc, "5, 2, fill, default");
+		add(jtfLoc, "5, 2, 3, 1, fill, default");
 		jtfLoc.setColumns(10);
 
 		lblName = new JLabel("Name");
 		add(lblName, "3, 4, default, center");
 
 		jtfCName = new JTextField();
-		add(jtfCName, "5, 4, fill, default");
-
-		jcbAddress = new JComboBox(AddressType.values());
+		add(jtfCName, "5, 4, 3, 1, fill, default");
+		
+		jcbAddress = new JComboBox(sAdd);
 		add(jcbAddress, "3, 6, left, default");
 
 		jtfAdd = new JTextField();
-		add(jtfAdd, "5, 6, fill, default");
+		add(jtfAdd, "5, 6, 3, 1, fill, default");
+		
+				btnAdd = new JButton("Add");
+				add(btnAdd, "10, 6, fill, center");
+				btnAdd.addMouseListener(new MouseAdapter() {
+					@Override
+					public void mousePressed(MouseEvent arg0) {
+						Address ad = new Address();
 
-		btnAdd = new JButton("Add");
-		add(btnAdd, "7, 6, fill, center");
-		btnAdd.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mousePressed(MouseEvent arg0) {
-				Address ad = new Address();
+						if ((jtfCName.getText() == null)
+								|| "".equals(jtfCName.getText().trim())
+								|| (jtfLoc.getText() == null)
+								|| "".equals(jtfLoc.getText().trim())) {
+							JOptionPane.showMessageDialog(new JFrame(),
+									"Bitte Location und Name angeben.", "Achtung",
+									JOptionPane.WARNING_MESSAGE);
+							doLayout();
+						} else {
+							comp.setName(jtfCName.getText());
+							comp.setLocation(jtfLoc.getText());
 
-				if ((jtfCName.getText() == null)
-						|| "".equals(jtfCName.getText().trim())
-						|| (jtfLoc.getText() == null)
-						|| "".equals(jtfLoc.getText().trim())) {
-					JOptionPane.showMessageDialog(new JFrame(),
-							"Bitte Location und Name angeben.", "Achtung",
-							JOptionPane.WARNING_MESSAGE);
-					doLayout();
-				} else {
-					comp.setName(jtfCName.getText());
-					comp.setLocation(jtfLoc.getText());
+							jtfLoc.disable();
+							jtfCName.disable();
 
-					jtfLoc.disable();
-					jtfCName.disable();
+							ad.setType((AddressType) jcbAddress.getSelectedItem());
+							ad.setAddressText(jtfAdd.getText());
+							comp.add(ad);
+							JOptionPane.showMessageDialog(new JFrame(), ad.getType()
+									.toString()
+									+ " wurde erfolgreich zum Kontakt "
+									+ comp.getName() + " hinzugefügt.");
+							jtfAdd.setText("");
+						}
 
-					ad.setType((AddressType) jcbAddress.getSelectedItem());
-					ad.setAddressText(jtfAdd.getText());
-					comp.add(ad);
-					JOptionPane.showMessageDialog(new JFrame(), ad.getType()
-							.toString()
-							+ " wurde erfolgreich zum Kontakt "
-							+ comp.getName() + " hinzugefügt.");
-					jtfAdd.setText("");
-				}
-
-			}
-		});
-
-		btnSave = new JButton("Save");
-		add(btnSave, "7, 8, fill, fill");
+					}
+				});
+		
+				btnSave = new JButton("Save");
+				add(btnSave, "10, 8, fill, fill");
 		btnSave.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mousePressed(MouseEvent arg0) {

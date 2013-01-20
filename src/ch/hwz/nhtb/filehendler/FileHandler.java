@@ -133,7 +133,7 @@ public class FileHandler {
 		t1.setType(AddressType.Mobile); 
 		t1.setAddressText("0663453636"); 
 		Address t2 = new Address();
-		t2.setType(AddressType.FAX); 
+		t2.setType(AddressType.Fax); 
 		t2.setAddressText("0663444636"); 
 		Address t3 = new Address();
 		t3.setType(AddressType.Tel); 
