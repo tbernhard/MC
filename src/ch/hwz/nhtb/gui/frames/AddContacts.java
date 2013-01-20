@@ -5,8 +5,9 @@ import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
-import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -25,7 +26,7 @@ public class AddContacts extends JFrame implements ActionListener {
 	private JTextField textField;
 	private JFrame frame = new JFrame();
 	private JPanel panel = new JPanel();
-	private JPanel panel_1 = new JPanel();
+	private JPanel subPanel = new JPanel();
 
 	/**
 	 * Create the panel.
@@ -33,7 +34,7 @@ public class AddContacts extends JFrame implements ActionListener {
 	public AddContacts() {
 		// Create and set up the window.
 		frame = new JFrame("MultiChannel - Kontakte hinzufuegen");
-		frame.setSize(400, 200);
+		frame.setSize(380, 233);
 		// Set the frame in the center of the monitor
 		Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
 		frame.setLocation(dim.width / 2 - frame.getSize().width / 2, dim.height
@@ -54,6 +55,14 @@ public class AddContacts extends JFrame implements ActionListener {
 				FormFactory.RELATED_GAP_COLSPEC,
 				ColumnSpec.decode("max(69dlu;default)"),
 				FormFactory.DEFAULT_COLSPEC,
+				FormFactory.DEFAULT_COLSPEC,
+				FormFactory.DEFAULT_COLSPEC,
+				FormFactory.DEFAULT_COLSPEC,
+				FormFactory.DEFAULT_COLSPEC,
+				FormFactory.DEFAULT_COLSPEC,
+				FormFactory.DEFAULT_COLSPEC,
+				FormFactory.DEFAULT_COLSPEC,
+				FormFactory.DEFAULT_COLSPEC,
 				ColumnSpec.decode("max(5dlu;default)"),},
 			new RowSpec[] {
 				FormFactory.RELATED_GAP_ROWSPEC,
@@ -65,42 +74,48 @@ public class AddContacts extends JFrame implements ActionListener {
 				FormFactory.RELATED_GAP_ROWSPEC,
 				FormFactory.DEFAULT_ROWSPEC,}));
 		String[] entryTypes = { "Person", "Component" };
-		
-				// Kind of contact
-				JLabel lblNewLabel = new JLabel("Kontakt Art");
-				
-						panel.add(lblNewLabel, "3, 2, left, default");
+
+		// Kind of contact
+		JLabel lblCKind = new JLabel("Kontakt Art");
+
+		panel.add(lblCKind, "3, 2, left, default");
 		JComboBox jcbEntry = new JComboBox(entryTypes);
 		panel.add(jcbEntry, "5, 2, right, default");
 		jcbEntry.addActionListener(this);
 
 		// frame.remove(panel);
-		panel_1 = new PanelAddPerson();
+		subPanel = new PanelAddPerson(frame);
 
-		panel.add(panel_1, "1, 3, 9, 6, fill, fill");
-
+		panel.add(subPanel, "1, 3, 17, 6, fill, fill");
 		frame.getContentPane().add(panel, BorderLayout.CENTER);
 		frame.setVisible(true);
+
+		frame.addWindowListener(new WindowAdapter() {
+			public void windowClosing(WindowEvent e) {
+				System.exit(0);
+			}
+		});
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		System.out.println(e.getSource());
 		JComboBox jcbEntry = (JComboBox) e.getSource();
-		panel_1.removeAll();
-		panel.remove(panel_1);
+		subPanel.removeAll();
+		panel.remove(subPanel);
 		if (jcbEntry.getSelectedIndex() == 0) {
-			panel_1 = new PanelAddPerson();
-			panel.add(panel_1, "1, 3, 7, 6, fill, fill");
+			subPanel = new PanelAddPerson(frame);
+			panel.add(subPanel, "1, 3, 7, 6, fill, fill");
 			frame.getContentPane().add(panel, BorderLayout.CENTER);
 			frame.setVisible(true);
-			System.out.println("PanelAddPerson");
-
-		} else {
-			panel_1 = new PanelAddComponent();
-			panel.add(panel_1, "1, 3, 7, 6, fill, fill");
+			// System.out.println("PanelAddPerson");
+		} else if (jcbEntry.getSelectedIndex() == 1) {
+			subPanel = new PanelAddComponent(frame);
+			panel.add(subPanel, "1, 3, 7, 6, fill, fill");
 			frame.getContentPane().add(panel, BorderLayout.CENTER);
 			frame.setVisible(true);
-			System.out.println("PanelAddComponent");
+			// System.out.println("PanelAddComponent");
 		}
+
 	}
 }

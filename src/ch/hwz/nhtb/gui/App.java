@@ -58,7 +58,7 @@ public class App {
 
 		// Create and set up the window.
 		frame = new JFrame("MultiChannel");
-		frame.setSize(400, 200);
+		frame.setSize(380, 233);
 		// Set the frame in the center of the monitor
 		Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
 		frame.setLocation(dim.width / 2 - frame.getSize().width / 2, dim.height

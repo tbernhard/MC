@@ -5,7 +5,6 @@ import java.awt.event.ActionListener;
 import java.io.File;
 
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -20,9 +19,12 @@ import com.jgoodies.forms.layout.ColumnSpec;
 import com.jgoodies.forms.layout.FormLayout;
 import com.jgoodies.forms.layout.RowSpec;
 
+//TODO Refresh after add contacts
+
 public class PanelContact extends JPanel {
-	private JFrame frame;
-	private JPanel panel = new JPanel();
+	private JList jlContacts;
+	private JScrollPane jsp;
+	private JButton btnAdd;
 
 	/**
 	 * Create the panel.
@@ -61,18 +63,27 @@ public class PanelContact extends JPanel {
 				FormFactory.RELATED_GAP_ROWSPEC, FormFactory.DEFAULT_ROWSPEC,
 				FormFactory.RELATED_GAP_ROWSPEC, FormFactory.DEFAULT_ROWSPEC, }));
 
-		JList list = new JList(c.getContacts());
-		list.ensureIndexIsVisible(14);
-		JScrollPane jsp = new JScrollPane(list);
+		jlContacts = new JList(c.getContacts());
+		jlContacts.ensureIndexIsVisible(14);
+		jsp = new JScrollPane(jlContacts);
 		add(jsp, "5, 2, 2, 3, fill, fill");
 
-		JButton btnAdd = new JButton("Add");
+		btnAdd = new JButton("Add");
 		btnAdd.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				new AddContacts();
+//				revalidate();
+//				validate();
+//				doLayout();
 			}
 		});
 		add(btnAdd, "6, 6");
+
+//		addActionListener(new ActionListener(){
+//			public void actionPerformed(ActionEvent arg0) {
+//				new AddContacts();
+//			}
+//		});
 
 	}
 
