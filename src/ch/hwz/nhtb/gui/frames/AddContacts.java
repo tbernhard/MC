@@ -16,6 +16,7 @@ import javax.swing.JTextField;
 
 import ch.hwz.nhtb.gui.panels.PanelAddComponent;
 import ch.hwz.nhtb.gui.panels.PanelAddPerson;
+import ch.hwz.nhtb.gui.panels.TESTPanelAddPerson;
 
 import com.jgoodies.forms.factories.FormFactory;
 import com.jgoodies.forms.layout.ColumnSpec;
@@ -34,7 +35,7 @@ public class AddContacts extends JFrame implements ActionListener {
 	public AddContacts() {
 		// Create and set up the window.
 		frame = new JFrame("MultiChannel - Kontakte hinzufuegen");
-		frame.setSize(380, 233);
+		frame.setSize(380, 260);
 		// Set the frame in the center of the monitor
 		Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
 		frame.setLocation(dim.width / 2 - frame.getSize().width / 2, dim.height
@@ -99,23 +100,24 @@ public class AddContacts extends JFrame implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		System.out.println(e.getSource());
 		JComboBox jcbEntry = (JComboBox) e.getSource();
 		subPanel.removeAll();
 		panel.remove(subPanel);
 		if (jcbEntry.getSelectedIndex() == 0) {
+			frame.setVisible(false);
 			subPanel = new PanelAddPerson(frame);
 			panel.add(subPanel, "1, 3, 7, 6, fill, fill");
 			frame.getContentPane().add(panel, BorderLayout.CENTER);
+			
 			frame.setVisible(true);
 			// System.out.println("PanelAddPerson");
 		} else if (jcbEntry.getSelectedIndex() == 1) {
+			frame.setVisible(false);
 			subPanel = new PanelAddComponent(frame);
 			panel.add(subPanel, "1, 3, 7, 6, fill, fill");
 			frame.getContentPane().add(panel, BorderLayout.CENTER);
 			frame.setVisible(true);
 			// System.out.println("PanelAddComponent");
 		}
-
 	}
 }
