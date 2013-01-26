@@ -98,17 +98,12 @@ public class PanelContact extends JPanel {
 							"Wollen Sie die Auswahl wirklich löschen?",
 							"Achtung", JOptionPane.YES_NO_OPTION);
 					if (n == 0) {
-						System.out.println("JA, löschen.");
-						System.out.println("Folgende "
-								+ jlContacts.getSelectedValues().length
-								+ " Kontakte werden gelöscht");
 						for (int i = 0; i < jlContacts.getSelectedValues().length; i++) {
-							System.out.println(jlContacts.getSelectedValues()[i]);
 							int index = cPC.search(jlContacts
 									.getSelectedValues()[i].toString());
-							if(index >= 0){
+							if (index >= 0) {
 								cPC.getEntries().remove(index);
-							}									
+							}
 						}
 
 						try {
@@ -117,20 +112,15 @@ public class PanelContact extends JPanel {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
 						}
-					} else {
-						System.out.println("Nein, nicht löschen.");
 					}
-
 				} else {
 					JOptionPane.showMessageDialog(new JFrame(),
 							"Es wurde kein Kontakt ausgewählt.", "Achtung",
 							JOptionPane.WARNING_MESSAGE);
 				}
 
-
 				setVisible(false);
 
-				
 			}
 		});
 		add(btnDel, "7, 6");
