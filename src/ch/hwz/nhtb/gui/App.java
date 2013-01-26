@@ -33,6 +33,7 @@ public class App {
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
+			@Override
 			public void run() {
 				try {
 					App window = new App();
@@ -134,10 +135,7 @@ public class App {
 		jmKVer.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mousePressed(MouseEvent arg0) {
-				frame.getContentPane().remove(panel);
-				panel = new PanelContact();
-				frame.getContentPane().add(panel, BorderLayout.CENTER);
-				frame.setVisible(true);
+				loadContactPanel();
 			}
 		});
 		menuBar.add(jmKVer);
@@ -145,5 +143,12 @@ public class App {
 		// Create and set up the content pane.
 		Container contentPane = frame.getContentPane();
 		contentPane.add(menuBar, BorderLayout.LINE_START);
+	}
+	
+	private void loadContactPanel(){
+		frame.getContentPane().remove(panel);
+		panel = new PanelContact();
+		frame.getContentPane().add(panel, BorderLayout.CENTER);
+		frame.setVisible(true);
 	}
 }

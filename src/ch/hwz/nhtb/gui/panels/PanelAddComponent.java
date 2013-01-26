@@ -55,7 +55,7 @@ public class PanelAddComponent extends JPanel implements ActionListener {
 		// ------TestContactUpload-----------------------------------------------------------------------------------------
 		serializer = new FileHandler();
 		// Pfad Thomas
-		XMLLocation = "D:/hwz/java/hwz_workspace/MC/dataFiles/Contacts.xml";
+		XMLLocation = "src/files/Contacts.xml";
 		// Pfad Niko
 		// String XMLLocation =
 		// "D:/Privat/HWZ/3. Semester/Java 1 und 2/Projekt/workspace/MC/dataFiles/Contacts.xml";

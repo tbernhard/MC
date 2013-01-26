@@ -32,7 +32,7 @@ public class PanelContact extends JPanel {
 	private JButton btnAdd;
 	private JButton btnDel;
 	private Contacts cPC;
-
+	private String XMLLocation = "src/files/Contacts.xml";
 	/**
 	 * Create the panel.
 	 */
@@ -42,7 +42,7 @@ public class PanelContact extends JPanel {
 		// Load data from xml
 		final FileHandler serializer = new FileHandler();
 		// Pfad Thomas
-		String XMLLocation = "D:/hwz/java/hwz_workspace/MC/dataFiles/Contacts.xml";
+		
 		// Pfad Niko
 		// String XMLLocation =
 		// "D:/Privat/HWZ/3. Semester/Java 1 und 2/Projekt/workspace/MC/dataFiles/Contacts.xml";
@@ -55,6 +55,7 @@ public class PanelContact extends JPanel {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
+		
 
 		// ------------------------------------------------------------------------------------------------------------------------
 
@@ -136,4 +137,16 @@ public class PanelContact extends JPanel {
 		add(btnAdd, "9, 6");
 
 	}
+//	public Contacts getLoadContacts(){
+//		Contacts c = new Contacts();
+//		final FileHandler serializer = new FileHandler();
+//		File contactsFile = new File(XMLLocation);
+//		try {
+//			c = serializer.readContacts(contactsFile);
+//		} catch (JAXBException e1) {
+//			// TODO Auto-generated catch block
+//			e1.printStackTrace();
+//		}
+//		return c;
+//	}
 }

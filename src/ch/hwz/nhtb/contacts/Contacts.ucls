@@ -2,7 +2,7 @@
   associations="true" dependencies="false" nesting-relationships="true">  
   <class id="1" corner="BOTTOM_RIGHT" language="java" name="ch.hwz.nhtb.contacts.Address" project="MC" 
     file="/MC/src/ch/hwz/nhtb/contacts/Address.java" binary="false">    
-    <position height="197" width="160" x="282" y="679"/>    
+    <position x="282" y="679" width="160" height="197"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      
       <operations public="true" package="true" protected="true" private="true"/>    
@@ -10,7 +10,7 @@
   </class>  
   <enumeration id="2" corner="BOTTOM_RIGHT" language="java" name="ch.hwz.nhtb.contacts.AddressType" project="MC" 
     file="/MC/src/ch/hwz/nhtb/contacts/AddressType.java" binary="false">    
-    <position height="163" width="124" x="282" y="967"/>    
+    <position x="282" y="967" width="124" height="163"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      
       <operations public="true" package="true" protected="true" private="true"/>    
@@ -18,7 +18,7 @@
   </enumeration>  
   <enumeration id="3" corner="BOTTOM_RIGHT" language="java" name="ch.hwz.nhtb.contacts.Salutation" project="MC" 
     file="/MC/src/ch/hwz/nhtb/contacts/Salutation.java" binary="false">    
-    <position height="112" width="117" x="304" y="120"/>    
+    <position x="304" y="120" width="117" height="112"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      
       <operations public="true" package="true" protected="true" private="true"/>    
@@ -26,7 +26,7 @@
   </enumeration>  
   <class id="4" corner="BOTTOM_RIGHT" language="java" name="ch.hwz.nhtb.contacts.Component" project="MC" 
     file="/MC/src/ch/hwz/nhtb/contacts/Component.java" binary="false">    
-    <position height="197" width="145" x="482" y="679"/>    
+    <position x="482" y="679" width="145" height="197"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      
       <operations public="true" package="true" protected="true" private="true"/>    
@@ -34,58 +34,42 @@
   </class>  
   <class id="5" corner="BOTTOM_RIGHT" language="java" name="ch.hwz.nhtb.contacts.Entry" project="MC" 
     file="/MC/src/ch/hwz/nhtb/contacts/Entry.java" binary="false">    
-    <position height="265" width="226" x="482" y="374"/>    
+    <position x="482" y="374" width="226" height="265"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      
       <operations public="true" package="true" protected="true" private="true"/>    
     </display>  
   </class>  
-  <class id="6" corner="BOTTOM_RIGHT" language="java" name="ch.hwz.nhtb.contacts.Contacts" project="MC" 
-    file="/MC/src/ch/hwz/nhtb/contacts/Contacts.java" binary="false">    
-    <position height="214" width="188" x="482" y="120"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true"/>      
-      <operations public="true" package="true" protected="true" private="true"/>    
-    </display>  
-  </class>  
-  <class id="7" corner="BOTTOM_RIGHT" language="java" name="ch.hwz.nhtb.contacts.Person" project="MC" 
+  <class id="6" corner="BOTTOM_RIGHT" language="java" name="ch.hwz.nhtb.contacts.Person" project="MC" 
     file="/MC/src/ch/hwz/nhtb/contacts/Person.java" binary="false">    
-    <position height="248" width="156" x="667" y="679"/>    
+    <position x="667" y="679" width="156" height="248"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      
       <operations public="true" package="true" protected="true" private="true"/>    
     </display>  
   </class>  
-  <generalization id="8">    
-    <end type="SOURCE" refId="7"/>    
-    <end type="TARGET" refId="5"/>  
-  </generalization>  
-  <association id="9">    
-    <end type="SOURCE" refId="1" navigable="false">      
-      <attribute id="10" name="type"/>      
-      <multiplicity id="11" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="2" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <generalization id="12">    
+  <generalization id="7">    
     <end type="SOURCE" refId="4"/>    
     <end type="TARGET" refId="5"/>  
   </generalization>  
-  <association id="13">    
+  <generalization id="8">    
+    <end type="SOURCE" refId="6"/>    
+    <end type="TARGET" refId="5"/>  
+  </generalization>  
+  <association id="9">    
     <end type="SOURCE" refId="5" navigable="false">      
-      <attribute id="14" name="addresses"/>      
-      <multiplicity id="15" minimum="0" maximum="2147483647"/>    
+      <attribute id="10" name="addresses"/>      
+      <multiplicity id="11" minimum="0" maximum="2147483647"/>    
     </end>    
     <end type="TARGET" refId="1" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="16">    
-    <end type="SOURCE" refId="6" navigable="false">      
-      <attribute id="17" name="entries"/>      
-      <multiplicity id="18" minimum="0" maximum="2147483647"/>    
+  <association id="12">    
+    <end type="SOURCE" refId="1" navigable="false">      
+      <attribute id="13" name="type"/>      
+      <multiplicity id="14" minimum="0" maximum="1"/>    
     </end>    
-    <end type="TARGET" refId="5" navigable="true"/>    
+    <end type="TARGET" refId="2" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 

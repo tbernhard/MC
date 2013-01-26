@@ -39,8 +39,6 @@ public class AddContacts extends JFrame implements ActionListener {
 		Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
 		frame.setLocation(dim.width / 2 - frame.getSize().width / 2, dim.height
 				/ 2 - frame.getSize().height / 2);
-
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		// panel.setBackground(Color.WHITE);
 
 		frame.getContentPane().remove(panel);
@@ -89,10 +87,12 @@ public class AddContacts extends JFrame implements ActionListener {
 		panel.add(subPanel, "1, 3, 17, 6, fill, fill");
 		frame.getContentPane().add(panel, BorderLayout.CENTER);
 		frame.setVisible(true);
-
+		frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+		
+		
 		frame.addWindowListener(new WindowAdapter() {
 			public void windowClosing(WindowEvent e) {
-				System.exit(0);
+				
 			}
 		});
 	}
