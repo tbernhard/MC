@@ -23,6 +23,7 @@ import ch.hwz.nhtb.contacts.Contacts;
 import ch.hwz.nhtb.contacts.Person;
 import ch.hwz.nhtb.contacts.Salutation;
 import ch.hwz.nhtb.filehendler.FileHandler;
+import ch.hwz.nhtb.gui.App;
 
 import com.jgoodies.forms.factories.FormFactory;
 import com.jgoodies.forms.layout.ColumnSpec;
@@ -56,23 +57,10 @@ public class PanelAddPerson extends JPanel implements ActionListener {
 	 * Create the panel.
 	 */
 	public PanelAddPerson(final JFrame frame) {
-		// ------TestContactUpload-----------------------------------------------------------------------------------------
 		serializer = new FileHandler();
-		// Pfad Thomas
-		XMLLocation = "src/files/Contacts.xml";
-		// Pfad Niko
-		// String XMLLocation =
-		// "D:/Privat/HWZ/3. Semester/Java 1 und 2/Projekt/workspace/MC/dataFiles/Contacts.xml";
-		contactsFile = new File(XMLLocation);
-		Contacts c = new Contacts();
-		try {
-			c = serializer.readContacts(contactsFile);
-		} catch (JAXBException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
-		// -----------------------------------------------------------------------------------------------------------------
+		Contacts c = serializer.getContactsFromXML();
+		contactsFile = serializer.getFile();
+		
 		this.frame = frame;
 		cPAP = c;
 				
@@ -210,6 +198,8 @@ public class PanelAddPerson extends JPanel implements ActionListener {
 					a = new Address();
 					cPAP = new Contacts();
 					frame.setVisible(false);
+					App app = new App();
+					app.loadContactPanel();
 					
 				}
 

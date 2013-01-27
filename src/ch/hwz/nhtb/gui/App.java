@@ -145,10 +145,11 @@ public class App {
 		contentPane.add(menuBar, BorderLayout.LINE_START);
 	}
 	
-	private void loadContactPanel(){
+	public void loadContactPanel(){
 		frame.getContentPane().remove(panel);
-		panel = new PanelContact();
+		panel = new PanelContact(frame);
 		frame.getContentPane().add(panel, BorderLayout.CENTER);
 		frame.setVisible(true);
 	}
+	
 }

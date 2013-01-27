@@ -18,6 +18,10 @@ import ch.hwz.nhtb.contacts.Person;
 
 public class FileHandler {
 
+	private final String XMLLocation = "files/Contacts.xml";
+	private File contactsFile;
+
+	
 	/*
 	 * @TODO serializeObjectToXML changed to ObjectToXML deserializeXMLToObject
 	 * changed to XMLToObject implement into Contact.java implement Properties
@@ -39,6 +43,14 @@ public class FileHandler {
 	// return deSerializedObject;
 	// }
 
+	public FileHandler(){
+		this.contactsFile = new File(this.XMLLocation);
+	}
+	
+	public File getFile(){
+		return this.contactsFile;
+	}
+	
 	public void writeContacts(Contacts c, File file) throws JAXBException {
 		JAXBContext jc = JAXBContext.newInstance(Contacts.class);
 		Marshaller m = jc.createMarshaller();
@@ -48,6 +60,16 @@ public class FileHandler {
 
 	public Contacts readContacts(File file) throws JAXBException {
 		return JAXB.unmarshal(file, Contacts.class);
+	}
+	
+	public Contacts getContactsFromXML(){
+		try {
+			return this.readContacts(this.contactsFile);
+		} catch (JAXBException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
 	}
 
 	// @TODO Properties File .properties oder .xml nur importieren
@@ -82,12 +104,8 @@ public class FileHandler {
 
 	public static void main(String[] args) throws Exception {
 		/* Location of XML File */
-//		Pfad Thomas
 		String XMLLocation = "files/Contacts.xml";
-//		Pfad Niko
-//		String XMLLocation = "D:/Privat/HWZ/3. Semester/Java 1 und 2/Projekt/workspace/MC/dataFiles/Contacts.xml";
 		File contactsFile = new File(XMLLocation);
-
 		FileHandler serializer = new FileHandler();
 
 		/* Creating and filling a bean object */

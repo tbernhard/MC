@@ -12,7 +12,7 @@ public class Email extends Message {
 
 //		String email = "nhe@c-ch.ch";
 		Pattern p = Pattern.compile(".+@.+\\.[a-z]+");
-		Matcher m = p.matcher((CharSequence) this.getRecipient(AddressType.EMAIL));
+		Matcher m = p.matcher((CharSequence) this.getRecipient(AddressType.EMail));
 //		Matcher m = p.matcher((CharSequence) email);
 		
 		boolean validemail = m.matches();

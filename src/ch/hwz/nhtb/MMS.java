@@ -58,7 +58,7 @@ public class MMS extends Message {
 //		System.out.println(this.getAttachment()[0].getName());
 //		System.out.println(this.getAttachment()[0].getAbsolutePath());
 //		System.out.println(this.getAttachment()[0].getTotalSpace());
-		System.out.println("MMS wurde gesendet. \nAn Empfänger: " + this.getRecipient(AddressType.MOBILE) + "\nNachrichtentext:" + this.getMessage());
+		System.out.println("MMS wurde gesendet. \nAn Empfänger: " + this.getRecipient(AddressType.Mobile) + "\nNachrichtentext:" + this.getMessage());
 
 
 	}

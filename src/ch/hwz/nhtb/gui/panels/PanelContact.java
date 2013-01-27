@@ -1,6 +1,5 @@
 package ch.hwz.nhtb.gui.panels;
 
-import java.awt.Frame;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
@@ -17,6 +16,7 @@ import javax.xml.bind.JAXBException;
 
 import ch.hwz.nhtb.contacts.Contacts;
 import ch.hwz.nhtb.filehendler.FileHandler;
+import ch.hwz.nhtb.gui.App;
 import ch.hwz.nhtb.gui.frames.AddContacts;
 
 import com.jgoodies.forms.factories.FormFactory;
@@ -32,32 +32,20 @@ public class PanelContact extends JPanel {
 	private JButton btnAdd;
 	private JButton btnDel;
 	private Contacts cPC;
-	private String XMLLocation = "src/files/Contacts.xml";
+	private FileHandler serializer;
+	private File contactsFile;
+	private JFrame frame;
+
 	/**
 	 * Create the panel.
 	 */
-	public PanelContact() {
+	public PanelContact(final JFrame frame) {
 
-		// ------------------------------------------------------------------------------------------------------------------------
-		// Load data from xml
-		final FileHandler serializer = new FileHandler();
-		// Pfad Thomas
+		this.frame = frame;
 		
-		// Pfad Niko
-		// String XMLLocation =
-		// "D:/Privat/HWZ/3. Semester/Java 1 und 2/Projekt/workspace/MC/dataFiles/Contacts.xml";
-		final File contactsFile = new File(XMLLocation);
-
-		Contacts c = new Contacts();
-		try {
-			c = serializer.readContacts(contactsFile);
-		} catch (JAXBException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
-		
-
-		// ------------------------------------------------------------------------------------------------------------------------
+		serializer = new FileHandler();
+		Contacts c = serializer.getContactsFromXML();
+		contactsFile = serializer.getFile();
 
 		cPC = c;
 		setLayout(new FormLayout(new ColumnSpec[] {
@@ -85,6 +73,7 @@ public class PanelContact extends JPanel {
 		btnAdd = new JButton("Add");
 		btnAdd.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				frame.setVisible(false);
 				new AddContacts();
 			}
 		});
@@ -119,24 +108,16 @@ public class PanelContact extends JPanel {
 							JOptionPane.WARNING_MESSAGE);
 				}
 
-				setVisible(false);
+				frame.setVisible(false);
+				App app = new App();
+				app.loadContactPanel();
 
 			}
 		});
+
 		add(btnDel, "7, 6");
 		add(btnAdd, "9, 6");
 
 	}
-//	public Contacts getLoadContacts(){
-//		Contacts c = new Contacts();
-//		final FileHandler serializer = new FileHandler();
-//		File contactsFile = new File(XMLLocation);
-//		try {
-//			c = serializer.readContacts(contactsFile);
-//		} catch (JAXBException e1) {
-//			// TODO Auto-generated catch block
-//			e1.printStackTrace();
-//		}
-//		return c;
-//	}
+
 }

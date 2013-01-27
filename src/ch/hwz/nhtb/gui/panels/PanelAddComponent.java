@@ -20,6 +20,7 @@ import ch.hwz.nhtb.contacts.AddressType;
 import ch.hwz.nhtb.contacts.Component;
 import ch.hwz.nhtb.contacts.Contacts;
 import ch.hwz.nhtb.filehendler.FileHandler;
+import ch.hwz.nhtb.gui.App;
 
 import com.jgoodies.forms.factories.FormFactory;
 import com.jgoodies.forms.layout.ColumnSpec;
@@ -52,24 +53,10 @@ public class PanelAddComponent extends JPanel implements ActionListener {
 	 * Create the panel.
 	 */
 	public PanelAddComponent(final JFrame frame) {
-		// ------TestContactUpload-----------------------------------------------------------------------------------------
 		serializer = new FileHandler();
-		// Pfad Thomas
-		XMLLocation = "src/files/Contacts.xml";
-		// Pfad Niko
-		// String XMLLocation =
-		// "D:/Privat/HWZ/3. Semester/Java 1 und 2/Projekt/workspace/MC/dataFiles/Contacts.xml";
-		contactsFile = new File(XMLLocation);
-		Contacts c = new Contacts();
-		try {
-			c = serializer.readContacts(contactsFile);
-		} catch (JAXBException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
-		// -----------------------------------------------------------------------------------------------------------------
-
+		Contacts c = serializer.getContactsFromXML();
+		contactsFile = serializer.getFile();
+		
 		this.frame = frame;
 		cPAC = c;
 
@@ -172,6 +159,10 @@ public class PanelAddComponent extends JPanel implements ActionListener {
 					doLayout();
 				} else if ((jtfAdd.getText() == null)
 						|| "".equals(jtfAdd.getText().trim())) {
+					JOptionPane.showMessageDialog(new JFrame(),
+							"Bitte Location und Name angeben.", "Achtung",
+							JOptionPane.WARNING_MESSAGE);
+					doLayout();
 				} else {
 					comp.setName(jtfCName.getText());
 					comp.setLocation(jtfLoc.getText());
@@ -195,6 +186,10 @@ public class PanelAddComponent extends JPanel implements ActionListener {
 					a = new Address();
 					cPAC = new Contacts();
 					frame.setVisible(false);
+					App app = new App();
+					app.loadContactPanel();
+					
+					
 				}
 
 			}
