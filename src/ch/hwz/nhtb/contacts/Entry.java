@@ -18,8 +18,8 @@ public abstract class Entry {
 		this.addresses.add(address);
 	}
 
-	public Address getAddressTextOf(int index) {
-		return this.addresses.get(index);
+	public String getAddressTextOf(int index) {
+		return this.addresses.get(index).getAddressText();
 	}
 
 	public abstract void print();
@@ -41,11 +41,6 @@ public abstract class Entry {
 		while (this.addresses.get(i).getType() != addressType) {
 			i++;
 		}
-		// for(i=0;i < this.addresses.size() ; i++){
-		// if(this.addresses.get(i).getType() == addressType){
-		//
-		// }
-		// }
 		return i;
 	}
 }

@@ -22,7 +22,15 @@ public enum AddressType {
 		return p;
 	}
 	
-	public static AddressType[] getMMSAddT(){
+	public static AddressType[] getEmailMMSAddT(){
+		AddressType[] p = new AddressType[2];
+		p[0] = AddressType.Mobile;
+		p[1] = AddressType.EMail;
+		
+		return p;
+	}
+	
+	public static AddressType[] getPrintAddT(){
 		AddressType[] p = new AddressType[2];
 		p[0] = AddressType.Mobile;
 		p[1] = AddressType.EMail;

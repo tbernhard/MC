@@ -27,7 +27,7 @@
             <type>Mobile</type>
         </addresses>
         <name>Testname 1</name>
-        <prename>Nur Mobile</prename>
+        <prename>Nur Mobile T1</prename>
         <salutation>Herr</salutation>
     </entries>
     <entries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="person">
@@ -36,7 +36,7 @@
             <type>EMail</type>
         </addresses>
         <name>Testname 2</name>
-        <prename>Nur Email</prename>
+        <prename>Nur Email T2</prename>
         <salutation>Herr</salutation>
     </entries>
     <entries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="person">
@@ -49,7 +49,7 @@
             <type>EMail</type>
         </addresses>
         <name>Testname 3</name>
-        <prename>Beides</prename>
+        <prename>Beides T3</prename>
         <salutation>Herr</salutation>
     </entries>
     <entries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="component">
@@ -65,7 +65,7 @@
             <addressText>componente@drucker.ch</addressText>
             <type>EMail</type>
         </addresses>
-        <name>Nur Email</name>
+        <name>Nur Email TC2</name>
         <location>Testcomponente 2</location>
     </entries>
     <entries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="component">
@@ -77,7 +77,7 @@
             <addressText>componente3@beides.ch</addressText>
             <type>EMail</type>
         </addresses>
-        <name>Beides</name>
+        <name>Beides TC3</name>
         <location>Testcomponente 3</location>
     </entries>
 </Contacts>

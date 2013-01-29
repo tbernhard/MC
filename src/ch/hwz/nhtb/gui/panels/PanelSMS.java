@@ -74,19 +74,19 @@ public class PanelSMS extends JPanel implements ActionListener {
 		jcbEntry.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				remove(jcbAddress);
-				jcbAddress = new JComboBox(c.getAdressOnIndex(jcbEntry
-						.getSelectedIndex()));
+				jcbAddress = new JComboBox(c.getAddressOnIndex(jcbEntry
+						.getSelectedItem().toString(), AddressType.Mobile));
 				add(jcbAddress, "5, 3, fill, default");
 				doLayout();
 				jcbAddress.doLayout();
 
-				System.out.println();
-				for (int i = 0; i < c.getAdressOnIndex(jcbEntry
-						.getSelectedIndex()).length; i++) {
-					System.out.println(c.getAdressOnIndex(jcbEntry
-							.getSelectedIndex())[i]);
-				}
-				System.out.println();
+//				System.out.println();
+//				for (int i = 0; i < c.getAddressOnIndex(jcbEntry
+//						.getSelectedIndex()).length; i++) {
+//					System.out.println(c.getAddressOnIndex(jcbEntry
+//							.getSelectedIndex())[i]);
+//				}
+//				System.out.println();
 			}
 		});
 		
@@ -128,7 +128,8 @@ public class PanelSMS extends JPanel implements ActionListener {
 //				.get(c.search(jcbEntry.getSelectedItem().toString()))
 //				.getAddressTextOf(1).getAddressText();
 
-		jcbAddress = new JComboBox(c.getAdressOnIndex(jcbEntry.getSelectedIndex()));
+		jcbAddress = new JComboBox(c.getAddressOnIndex(jcbEntry
+				.getSelectedItem().toString(), AddressType.Mobile));
 		add(jcbAddress, "5, 3, fill, default");
 
 		lblText = new JLabel("Text");
@@ -202,14 +203,14 @@ public class PanelSMS extends JPanel implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		remove(jcbAddress);
-		jcbAddress = new JComboBox(c.getAdressOnIndex(jcbEntry.getSelectedIndex()));
+		jcbAddress = new JComboBox(c.getAddressOnIndex(jcbEntry.getSelectedIndex()));
 		add(jcbAddress, "5, 3, fill, default");
 		doLayout();
 		jcbAddress.doLayout();
 		
 		System.out.println();
-		for (int i = 0; i < c.getAdressOnIndex(jcbEntry.getSelectedIndex()).length; i++) {
-			System.out.println(c.getAdressOnIndex(jcbEntry.getSelectedIndex())[i]);
+		for (int i = 0; i < c.getAddressOnIndex(jcbEntry.getSelectedIndex()).length; i++) {
+			System.out.println(c.getAddressOnIndex(jcbEntry.getSelectedIndex())[i]);
 		}
 		System.out.println();
 		

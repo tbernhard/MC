@@ -65,29 +65,32 @@ public class PanelMMS extends JPanel{
 		lblCKind = new JLabel("Empfänger");
 		add(lblCKind, "3, 2, left, default");
 
-		jcbEntry = new JComboBox(c.getContact(AddressType.getMMSAddT()));
+		jcbEntry = new JComboBox(c.getContact(AddressType.getEmailMMSAddT()));
 		add(jcbEntry, "5, 2, fill, default");
 		jcbEntry.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				remove(jcbAddress);
-				jcbAddress = new JComboBox(c.getAdressOnIndex(jcbEntry
-						.getSelectedIndex()));
+				jcbAddress = new JComboBox(c.getAddressOnIndex(jcbEntry
+						.getSelectedItem().toString(), AddressType.getEmailMMSAddT()));
+				System.out.println("GetSelectedIndex JCB: "+ jcbEntry
+						.getSelectedIndex());
 				add(jcbAddress, "5, 3, fill, default");
 				doLayout();
 				jcbAddress.doLayout();
 
 				System.out.println();
-				for (int i = 0; i < c.getAdressOnIndex(jcbEntry
+				for (int i = 0; i < c.getAddressOnIndex(jcbEntry
 						.getSelectedIndex()).length; i++) {
-					System.out.println(c.getAdressOnIndex(jcbEntry
+					System.out.println(c.getAddressOnIndex(jcbEntry
 							.getSelectedIndex())[i]);
 				}
 				System.out.println();
 			}
 		});
 
-		jcbAddress = new JComboBox(c.getAdressOnIndex(jcbEntry
-				.getSelectedIndex()));
+		jcbAddress = new JComboBox(c.getAddressOnIndex(jcbEntry
+				.getSelectedItem().toString(), AddressType.getEmailMMSAddT()));
+
 		add(jcbAddress, "5, 3, fill, default");
 
 		lblText = new JLabel("Text");
