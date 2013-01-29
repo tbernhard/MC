@@ -15,7 +15,7 @@ import ch.hwz.nhtb.filehendler.FileHandler;
 @XmlSeeAlso({ Entry.class, Person.class, Component.class })
 public class Contacts {
 	private LinkedList<Entry> entries = new LinkedList<Entry>();
-	
+
 	private static File contactsFile;
 	private String XMLLocation;
 	private static FileHandler serializer;
@@ -48,8 +48,7 @@ public class Contacts {
 		for (int i = 0; i < this.entries.size(); i++) {
 			if (this.entries.get(i).getClass().isInstance(new Person())) {
 				Person e = (Person) this.entries.get(i);
-				s[i] = e.getPrename() + " "
-						+ e.getName();
+				s[i] = e.getPrename() + " " + e.getName();
 				for (int j = 0; j < e.getAddresses().size(); j++) {
 					s[i] += " " + e.getAddresses().get(j).getAddressText();
 				}
@@ -63,8 +62,6 @@ public class Contacts {
 		}
 		return s;
 	}
-	
-
 
 	public String[] getContact() {
 		String[] s = new String[this.entries.size()];
@@ -72,8 +69,7 @@ public class Contacts {
 		for (int i = 0; i < this.entries.size(); i++) {
 			if (this.entries.get(i).getClass().isInstance(new Person())) {
 				Person e = (Person) this.entries.get(i);
-				s[i] = e.getPrename() + " "
-						+ e.getName();
+				s[i] = e.getPrename() + " " + e.getName();
 			} else {
 				Component c = (Component) this.entries.get(i);
 				s[i] = c.getLocation() + " " + c.getName();
@@ -83,35 +79,51 @@ public class Contacts {
 	}
 
 	public int search(String search) {
-		if(!search.isEmpty()){
-		String[] s = new String[this.entries.size()];
-		int index = 0;
-		for (int i = 0; i < this.entries.size(); i++) {
-			if (this.entries.get(i).getClass().isInstance(new Person())) {
-				Person e = (Person) this.entries.get(i);
-				for (int j = 0; j < e.getAddresses().size(); j++) {
-					if (search.matches("(.*)"+e.getPrename()+"(.*)")
-							|| search.matches("(.*)"+e.getName()+"(.*)")
-							|| search.matches("(.*)"+e.getName()+"(.*)")
-							|| search.matches("(.*)"+e.getAddresses().get(j)
-									.getAddressText()+"(.*)")) {
-						index = i; 
+		if (!search.isEmpty()) {
+			String[] s = new String[this.entries.size()];
+			int index = 0;
+			for (int i = 0; i < this.entries.size(); i++) {
+				if (this.entries.get(i).getClass().isInstance(new Person())) {
+					Person e = (Person) this.entries.get(i);
+					for (int j = 0; j < e.getAddresses().size(); j++) {
+						if (search.matches("(.*)" + e.getPrename() + "(.*)")
+								|| search
+										.matches("(.*)" + e.getName() + "(.*)")
+								|| search
+										.matches("(.*)" + e.getName() + "(.*)")
+								|| search.matches("(.*)"
+										+ e.getAddresses().get(j)
+												.getAddressText() + "(.*)")) {
+							index = i;
+						}
 					}
-				}
-			} else {
-				Component c = (Component) this.entries.get(i);
-				for (int j = 0; j < c.getAddresses().size(); j++) {
-					if (search.matches("(.*)"+c.getName()+"(.*)")
-							|| search.matches("(.*)"+c.getLocation()+"(.*)")
-							|| search.matches("(.*)"+c.getAddresses().get(j)
-									.getAddressText()+"(.*)")) {
-						index = i; 
+				} else {
+					Component c = (Component) this.entries.get(i);
+					for (int j = 0; j < c.getAddresses().size(); j++) {
+						if (search.matches("(.*)" + c.getName() + "(.*)")
+								|| search.matches("(.*)" + c.getLocation()
+										+ "(.*)")
+								|| search.matches("(.*)"
+										+ c.getAddresses().get(j)
+												.getAddressText() + "(.*)")) {
+							index = i;
+						}
 					}
 				}
 			}
+			return index;
 		}
-		return index;
-		} return -1;
+		return -1;
+	}
+
+	public String[] getAdressOnIndex(int index) {
+		String[] add = new String[this.entries.get(index).getAddresses().size()];
+		for (int i = 0; i < this.entries.get(index).getAddresses().size(); i++) {
+			add[i] = this.entries.get(index).getAddresses().get(i).getAddressText();
+		}
+		
+		return add;
+
 	}
 
 	public String[] getCRest() {
@@ -138,7 +150,11 @@ public class Contacts {
 		serializer = new FileHandler();
 		Contacts c = serializer.getContactsFromXML();
 		contactsFile = serializer.getFile();
-		
+
+		for (int i = 0; i < c.getAdressOnIndex(1).length; i++) {
+			System.out.println(c.getAdressOnIndex(1)[i]);
+		}
+
 		// c.print();
 		// c.getCNames();
 
@@ -153,11 +169,10 @@ public class Contacts {
 		// System.out.println(c.getCNames()[2]);
 
 		// c.getContacts();
-//		int x = c.search("Bernhard");
-//		c.entries.get(x).print();
-//		c.entries.remove(x);
-		
-		
+		// int x = c.search("Bernhard");
+		// c.entries.get(x).print();
+		// c.entries.remove(x);
+
 	}
 
 }

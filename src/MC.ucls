@@ -1,5 +1,125 @@
 <class-diagram version="1.0.11" icons="true" always-add-relationships="false" generalizations="true" realizations="true" 
   associations="true" dependencies="false" nesting-relationships="true">  
+  <class id="1" corner="BOTTOM_RIGHT" language="java" name="ch.hwz.nhtb.gui.panels.PanelAddAddress" project="MC" 
+    file="/MC/src/ch/hwz/nhtb/gui/panels/PanelAddAddress.java" binary="false">    
+    <position height="-1" width="-1" x="1741" y="212"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="2" corner="BOTTOM_RIGHT" language="java" name="ch.hwz.nhtb.gui.panels.PanelAddPerson" project="MC" 
+    file="/MC/src/ch/hwz/nhtb/gui/panels/PanelAddPerson.java" binary="false">    
+    <position height="-1" width="-1" x="1028" y="569"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="3" corner="BOTTOM_RIGHT" language="java" name="ch.hwz.nhtb.gui.panels.PanelMMS" project="MC" 
+    file="/MC/src/ch/hwz/nhtb/gui/panels/PanelMMS.java" binary="false">    
+    <position height="-1" width="-1" x="817" y="632"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="4" corner="BOTTOM_RIGHT" language="java" name="ch.hwz.nhtb.gui.panels.PanelEmail" project="MC" 
+    file="/MC/src/ch/hwz/nhtb/gui/panels/PanelEmail.java" binary="false">    
+    <position height="-1" width="-1" x="647" y="715"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="5" corner="BOTTOM_RIGHT" language="java" name="ch.hwz.nhtb.gui.panels.PanelSMS" project="MC" 
+    file="/MC/src/ch/hwz/nhtb/gui/panels/PanelSMS.java" binary="false">    
+    <position height="-1" width="-1" x="1248" y="547"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="6" corner="BOTTOM_RIGHT" language="java" name="ch.hwz.nhtb.gui.panels.PanelContact" project="MC" 
+    file="/MC/src/ch/hwz/nhtb/gui/panels/PanelContact.java" binary="false">    
+    <position height="-1" width="-1" x="1425" y="538"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="7" corner="BOTTOM_RIGHT" language="java" name="ch.hwz.nhtb.gui.App" project="MC" 
+    file="/MC/src/ch/hwz/nhtb/gui/App.java" binary="false">    
+    <position height="-1" width="-1" x="559" y="340"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="8" corner="BOTTOM_RIGHT" language="java" name="ch.hwz.nhtb.gui.frames.AddContacts" project="MC" 
+    file="/MC/src/ch/hwz/nhtb/gui/frames/AddContacts.java" binary="false">    
+    <position height="-1" width="-1" x="1496" y="205"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="9" corner="BOTTOM_RIGHT" language="java" name="ch.hwz.nhtb.gui.panels.PanelAddComponent" project="MC" 
+    file="/MC/src/ch/hwz/nhtb/gui/panels/PanelAddComponent.java" binary="false">    
+    <position height="-1" width="-1" x="1626" y="606"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="10" corner="BOTTOM_RIGHT" language="java" name="ch.hwz.nhtb.gui.panels.PanelPrint" project="MC" 
+    file="/MC/src/ch/hwz/nhtb/gui/panels/PanelPrint.java" binary="false">    
+    <position height="-1" width="-1" x="464" y="767"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="11" corner="BOTTOM_RIGHT" language="java" name="ch.hwz.nhtb.filehendler.FileHandler" project="MC" 
+    file="/MC/src/ch/hwz/nhtb/filehendler/FileHandler.java" binary="false">    
+    <position height="-1" width="-1" x="1008" y="1069"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <association id="12">    
+    <end type="SOURCE" refId="6" navigable="false">      
+      <attribute id="13" name="serializer"/>      
+      <multiplicity id="14" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="11" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="15">    
+    <end type="SOURCE" refId="2" navigable="false">      
+      <attribute id="16" name="serializer"/>      
+      <multiplicity id="17" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="11" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="18">    
+    <end type="SOURCE" refId="5" navigable="false">      
+      <attribute id="19" name="serializer"/>      
+      <multiplicity id="20" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="11" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="21">    
+    <end type="SOURCE" refId="9" navigable="false">      
+      <attribute id="22" name="serializer"/>      
+      <multiplicity id="23" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="11" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
   <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
     visibility="true">    
     <attributes public="true" package="true" protected="true" private="true"/>    

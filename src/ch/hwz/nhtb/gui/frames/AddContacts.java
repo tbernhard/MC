@@ -34,7 +34,7 @@ public class AddContacts extends JFrame implements ActionListener {
 	public AddContacts() {
 		// Create and set up the window.
 		frame = new JFrame("MultiChannel - Kontakte hinzufuegen");
-		frame.setSize(380, 230);
+		frame.setSize(390, 240);
 		// Set the frame in the center of the monitor
 		Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
 		frame.setLocation(dim.width / 2 - frame.getSize().width / 2, dim.height
