@@ -12,6 +12,7 @@ import javax.swing.JTextField;
 import javax.swing.JTextPane;
 
 import ch.hwz.nhtb.SMS;
+import ch.hwz.nhtb.contacts.AddressType;
 import ch.hwz.nhtb.contacts.Contacts;
 import ch.hwz.nhtb.filehendler.FileHandler;
 
@@ -53,8 +54,6 @@ public class PanelSMS extends JPanel implements ActionListener {
 				FormFactory.DEFAULT_COLSPEC,},
 			new RowSpec[] {
 				FormFactory.RELATED_GAP_ROWSPEC,
-				FormFactory.DEFAULT_ROWSPEC,
-				FormFactory.RELATED_GAP_ROWSPEC,
 				RowSpec.decode("14dlu"),
 				RowSpec.decode("14dlu"),
 				FormFactory.RELATED_GAP_ROWSPEC,
@@ -64,14 +63,14 @@ public class PanelSMS extends JPanel implements ActionListener {
 				FormFactory.RELATED_GAP_ROWSPEC,
 				FormFactory.DEFAULT_ROWSPEC,}));
 		
-		lblPanel = new JLabel("SMS");
-		add(lblPanel, "3, 2, 4, 1");
+//		lblPanel = new JLabel("SMS");
+//		add(lblPanel, "3, 2, 4, 1");
 
 		lblCKind = new JLabel("Empf\u00E4nger");
-		add(lblCKind, "3, 4, left, default");
+		add(lblCKind, "3, 2, left, default");
 	
-		jcbEntry = new JComboBox(c.getContact());
-		add(jcbEntry, "5, 4, fill, default");
+		jcbEntry = new JComboBox(c.getContact(AddressType.Mobile));
+		add(jcbEntry, "5, 2, fill, default");
 		jcbEntry.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				remove(jcbAddress);
@@ -130,16 +129,16 @@ public class PanelSMS extends JPanel implements ActionListener {
 //				.getAddressTextOf(1).getAddressText();
 
 		jcbAddress = new JComboBox(c.getAdressOnIndex(jcbEntry.getSelectedIndex()));
-		add(jcbAddress, "5, 5, fill, default");
+		add(jcbAddress, "5, 3, fill, default");
 
 		lblText = new JLabel("Text");
-		add(lblText, "3, 7");
+		add(lblText, "3, 5");
 
 		textPane = new JTextPane();
-		add(textPane, "5, 7, fill, fill");
+		add(textPane, "5, 5, fill, fill");
 
 		btnSend = new JButton("Send");
-		add(btnSend, "5, 9, right, default");
+		add(btnSend, "5, 7, right, default");
 		
 		btnSend.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {

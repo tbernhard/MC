@@ -1,9 +1,10 @@
 package ch.hwz.nhtb.contacts;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.List;
 
-import javax.xml.bind.JAXBException;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlSeeAlso;
 
@@ -119,11 +120,100 @@ public class Contacts {
 	public String[] getAdressOnIndex(int index) {
 		String[] add = new String[this.entries.get(index).getAddresses().size()];
 		for (int i = 0; i < this.entries.get(index).getAddresses().size(); i++) {
-			add[i] = this.entries.get(index).getAddresses().get(i).getAddressText();
+			add[i] = this.entries.get(index).getAddresses().get(i)
+					.getAddressText();
 		}
-		
+
 		return add;
 
+	}
+
+	public boolean hasContactFor(AddressType add) {
+		boolean b = false;
+
+		for (int i = 0; i < this.entries.size(); i++) {
+			if (this.entries.get(i).getClass().isInstance(new Person())) {
+				Person e = (Person) this.entries.get(i);
+				for (int j = 0; j < e.getAddresses().size(); j++) {
+					if (e.getAddresses().get(j).getType() == add) {
+						b = !b;
+					}
+				}
+			} else {
+				Component c = (Component) this.entries.get(i);
+				for (int j = 0; j < c.getAddresses().size(); j++) {
+					if (c.getAddresses().get(j).getType() == add) {
+						b = !b;
+					}
+				}
+			}
+		}
+
+		return b;
+	}
+
+	public String[] getContact(AddressType add) {
+		String[] s = new String[this.entries.size()];
+		List<String> list = new ArrayList<String>();
+
+		for (int i = 0; i < this.entries.size(); i++) {
+			if (this.entries.get(i).getClass().isInstance(new Person())) {
+				Person e = (Person) this.entries.get(i);
+				for (int j = 0; j < e.getAddresses().size(); j++) {
+					if (e.getAddresses().get(j).getType() == add) {
+						s[i] = e.getPrename() + " " + e.getName();
+					}
+				}
+			} else {
+				Component c = (Component) this.entries.get(i);
+				for (int j = 0; j < c.getAddresses().size(); j++) {
+					if (c.getAddresses().get(j).getType() == add) {
+						s[i] = c.getLocation() + " " + c.getName();
+					}
+				}
+			}
+		}
+		// Delete the null elements
+		for (String p : s) {
+			if (p != null && p.length() > 0) {
+				list.add(p);
+			}
+		}
+		return list.toArray(new String[list.size()]);
+	}
+
+	public String[] getContact(AddressType[] add) {
+		String[] s = new String[this.entries.size()];
+		List<String> list = new ArrayList<String>();
+
+		for (int i = 0; i < this.entries.size(); i++) {
+			if (this.entries.get(i).getClass().isInstance(new Person())) {
+				Person e = (Person) this.entries.get(i);
+				for (int j = 0; j < e.getAddresses().size(); j++) {
+					for (int j2 = 0; j2 < add.length; j2++) {
+						if (e.getAddresses().get(j).getType() == add[j2]) {
+							s[i] = e.getPrename() + " " + e.getName();
+						}
+					}
+				}
+			} else {
+				Component c = (Component) this.entries.get(i);
+				for (int j = 0; j < c.getAddresses().size(); j++) {
+					for (int j2 = 0; j2 < add.length; j2++) {
+						if (c.getAddresses().get(j).getType() == add[j2]) {
+							s[i] = c.getLocation() + " " + c.getName();
+						}
+					}
+				}
+			}
+		}
+		// Delete the null elements
+		for (String p : s) {
+			if (p != null && p.length() > 0) {
+				list.add(p);
+			}
+		}
+		return list.toArray(new String[list.size()]);
 	}
 
 	public String[] getCRest() {
@@ -151,8 +241,8 @@ public class Contacts {
 		Contacts c = serializer.getContactsFromXML();
 		contactsFile = serializer.getFile();
 
-		for (int i = 0; i < c.getAdressOnIndex(1).length; i++) {
-			System.out.println(c.getAdressOnIndex(1)[i]);
+		for (int i = 0; i < c.getContact(AddressType.Mobile).length; i++) {
+			System.out.println(c.getContact(AddressType.Mobile)[i]);
 		}
 
 		// c.print();

@@ -27,10 +27,8 @@ import com.jgoodies.forms.layout.ColumnSpec;
 import com.jgoodies.forms.layout.FormLayout;
 import com.jgoodies.forms.layout.RowSpec;
 
-//TODO	Kontakte incl. Addressen speichern 
-//TODO	Addresse an PAnelAddPErson zurückgeben und dort als xml speichern
-
 public class PanelAddComponent extends JPanel implements ActionListener {
+	private static final long serialVersionUID = 1L;
 	private JFrame frame;
 	private JLabel lblLoc;
 	private JLabel lblName;
@@ -46,7 +44,6 @@ public class PanelAddComponent extends JPanel implements ActionListener {
 	private Address a = new Address();
 
 	private File contactsFile;
-	private String XMLLocation;
 	private FileHandler serializer;
 
 	/**
@@ -57,7 +54,7 @@ public class PanelAddComponent extends JPanel implements ActionListener {
 		Contacts c = serializer.getContactsFromXML();
 		contactsFile = serializer.getFile();
 		
-		this.frame = frame;
+		this.setFrame(frame);
 		cPAC = c;
 
 		setLayout(new FormLayout(new ColumnSpec[] {
@@ -111,6 +108,7 @@ public class PanelAddComponent extends JPanel implements ActionListener {
 				btnAdd = new JButton("Add");
 				add(btnAdd, "10, 6, fill, center");
 				btnAdd.addMouseListener(new MouseAdapter() {
+					@SuppressWarnings({ "deprecation" })
 					@Override
 					public void mousePressed(MouseEvent arg0) {
 						Address ad = new Address();
@@ -202,6 +200,14 @@ public class PanelAddComponent extends JPanel implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 
+	}
+
+	public JFrame getFrame() {
+		return frame;
+	}
+
+	public void setFrame(JFrame frame) {
+		this.frame = frame;
 	}
 
 }

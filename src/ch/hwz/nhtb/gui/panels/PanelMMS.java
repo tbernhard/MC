@@ -17,6 +17,7 @@ import javax.swing.JTextField;
 import javax.swing.JTextPane;
 
 import ch.hwz.nhtb.MMS;
+import ch.hwz.nhtb.contacts.AddressType;
 import ch.hwz.nhtb.contacts.Contacts;
 import ch.hwz.nhtb.filehendler.FileHandler;
 
@@ -64,7 +65,7 @@ public class PanelMMS extends JPanel{
 		lblCKind = new JLabel("Empfänger");
 		add(lblCKind, "3, 2, left, default");
 
-		jcbEntry = new JComboBox(c.getContact());
+		jcbEntry = new JComboBox(c.getContact(AddressType.getMMSAddT()));
 		add(jcbEntry, "5, 2, fill, default");
 		jcbEntry.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {

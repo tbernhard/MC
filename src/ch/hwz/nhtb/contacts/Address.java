@@ -42,16 +42,18 @@ public class Address {
 		Matcher m;
 		Boolean val = false;
 		switch (add) {
-		case IP:	
+		case IP:
+			val=!val;
 			break;
 		case EMail:
 			p = Pattern.compile(EMAIL_PATTERN);
 			m = p.matcher((CharSequence) addTxt);
 			if(m.matches()){
-				val = true;
+				val=!val;
 			}
 			break;
 		case Mobile:
+			val=!val;
 			break;
 		default:
 			break;

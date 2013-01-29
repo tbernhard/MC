@@ -31,6 +31,7 @@ import com.jgoodies.forms.layout.FormLayout;
 import com.jgoodies.forms.layout.RowSpec;
 
 public class PanelAddPerson extends JPanel implements ActionListener {
+	private static final long serialVersionUID = 1L;
 	private JFrame frame;
 	private JTextField jtfPPn;
 	private JTextField jtfPName;
@@ -48,10 +49,7 @@ public class PanelAddPerson extends JPanel implements ActionListener {
 	private Address a = new Address();
 
 	private File contactsFile;
-	private String XMLLocation;
 	private FileHandler serializer;
-
-	// private static aAdd = 0;
 
 	/**
 	 * Create the panel.
@@ -61,7 +59,7 @@ public class PanelAddPerson extends JPanel implements ActionListener {
 		Contacts c = serializer.getContactsFromXML();
 		contactsFile = serializer.getFile();
 
-		this.frame = frame;
+		this.setFrame(frame);
 		cPAP = c;
 
 		setLayout(new FormLayout(new ColumnSpec[] {
@@ -114,6 +112,7 @@ public class PanelAddPerson extends JPanel implements ActionListener {
 		btnAdd = new JButton("Add");
 		add(btnAdd, "11, 8, fill, center");
 		btnAdd.addMouseListener(new MouseAdapter() {
+			@SuppressWarnings("deprecation")
 			@Override
 			public void mousePressed(MouseEvent arg0) {
 				Address ad = new Address();
@@ -212,5 +211,13 @@ public class PanelAddPerson extends JPanel implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
+	}
+
+	public JFrame getFrame() {
+		return frame;
+	}
+
+	public void setFrame(JFrame frame) {
+		this.frame = frame;
 	}
 }
