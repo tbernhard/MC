@@ -26,6 +26,7 @@ public class SMS extends Message {
 	}
 
 	public void log() {
+		
 	}
 
 	public void archive() {

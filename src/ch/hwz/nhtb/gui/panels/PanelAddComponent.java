@@ -40,7 +40,7 @@ public class PanelAddComponent extends JPanel implements ActionListener {
 	private JComboBox jcbAddress;
 	private JButton btnSave;
 	private JButton btnAdd;
-
+	
 	private Contacts cPAC = new Contacts();
 	private Component comp = new Component();
 	private Address a = new Address();
@@ -101,8 +101,8 @@ public class PanelAddComponent extends JPanel implements ActionListener {
 
 		jtfCName = new JTextField();
 		add(jtfCName, "5, 4, 3, 1, fill, default");
-		
-		jcbAddress = new JComboBox(AddressType.values());
+				
+		jcbAddress = new JComboBox(AddressType.getCompAddT());
 		add(jcbAddress, "3, 6, left, default");
 
 		jtfAdd = new JTextField();
@@ -130,6 +130,7 @@ public class PanelAddComponent extends JPanel implements ActionListener {
 							jtfLoc.disable();
 							jtfCName.disable();
 
+							//TODO Methode zur Addressen validierung
 							ad.setType((AddressType) jcbAddress.getSelectedItem());
 							ad.setAddressText(jtfAdd.getText());
 							comp.add(ad);

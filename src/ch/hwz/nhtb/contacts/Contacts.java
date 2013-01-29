@@ -9,10 +9,16 @@ import javax.xml.bind.annotation.XmlSeeAlso;
 
 import ch.hwz.nhtb.filehendler.FileHandler;
 
+//TODO	Methode erstellen welche nur Kontakte zurückgibt welche zu den Sendearten (SMS,MMS,Email,PrintJob) passen.
+
 @XmlRootElement(name = "Contacts")
 @XmlSeeAlso({ Entry.class, Person.class, Component.class })
 public class Contacts {
 	private LinkedList<Entry> entries = new LinkedList<Entry>();
+	
+	private static File contactsFile;
+	private String XMLLocation;
+	private static FileHandler serializer;
 
 	public LinkedList<Entry> getEntries() {
 		return entries;
@@ -42,7 +48,7 @@ public class Contacts {
 		for (int i = 0; i < this.entries.size(); i++) {
 			if (this.entries.get(i).getClass().isInstance(new Person())) {
 				Person e = (Person) this.entries.get(i);
-				s[i] = e.getSalutation() + " " + e.getPrename() + " "
+				s[i] = e.getPrename() + " "
 						+ e.getName();
 				for (int j = 0; j < e.getAddresses().size(); j++) {
 					s[i] += " " + e.getAddresses().get(j).getAddressText();
@@ -57,6 +63,8 @@ public class Contacts {
 		}
 		return s;
 	}
+	
+
 
 	public String[] getContact() {
 		String[] s = new String[this.entries.size()];
@@ -64,7 +72,7 @@ public class Contacts {
 		for (int i = 0; i < this.entries.size(); i++) {
 			if (this.entries.get(i).getClass().isInstance(new Person())) {
 				Person e = (Person) this.entries.get(i);
-				s[i] = e.getSalutation() + " " + e.getPrename() + " "
+				s[i] = e.getPrename() + " "
 						+ e.getName();
 			} else {
 				Component c = (Component) this.entries.get(i);
@@ -127,25 +135,10 @@ public class Contacts {
 	}
 
 	public static void main(String[] args) {
-		// ------------------------------------------------------------------------------------------------------------------------
-		// Load data from xml
-		FileHandler fh = new FileHandler();
-		// Pfad Thomas
-		String XMLLocation = "D:/hwz/java/hwz_workspace/MC/dataFiles/Contacts.xml";
-		// Pfad Niko
-		// String XMLLocation =
-		// "D:/Privat/HWZ/3. Semester/Java 1 und 2/Projekt/workspace/MC/dataFiles/Contacts.xml";
-		File contactsFile = new File(XMLLocation);
-
-		Contacts c = new Contacts();
-		try {
-			c = fh.readContacts(contactsFile);
-		} catch (JAXBException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
-
-		// ------------------------------------------------------------------------------------------------------------------------
+		serializer = new FileHandler();
+		Contacts c = serializer.getContactsFromXML();
+		contactsFile = serializer.getFile();
+		
 		// c.print();
 		// c.getCNames();
 
