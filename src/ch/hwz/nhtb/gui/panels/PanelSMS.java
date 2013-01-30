@@ -8,6 +8,7 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.JTextPane;
 
@@ -38,6 +39,7 @@ public class PanelSMS extends JPanel implements ActionListener {
 	private File contactsFile;
 	private final Contacts c;
 	private JLabel lblPanel;
+	private JScrollPane jsp;
 
 	/**
 	 * Create the panel.
@@ -135,7 +137,8 @@ public class PanelSMS extends JPanel implements ActionListener {
 		add(lblText, "3, 5");
 
 		textPane = new JTextPane();
-		add(textPane, "5, 5, fill, fill");
+		jsp = new JScrollPane(textPane);
+		add(jsp, "5, 5, fill, fill");
 
 		btnSend = new JButton("Send");
 		add(btnSend, "5, 7, right, default");
