@@ -20,6 +20,10 @@ public abstract class Message {
 		int i = this.recipient.getIndexOfAddress(adressType);
 		return this.recipient.getAddresses().get(i).getAddressText();
 	}
+	
+	public String getRecipient() {
+		return this.recipient.getAddresses().getFirst().getAddressText();
+	}
 
 	public void setRecipient(Entry recipient) {
 		this.recipient = recipient;

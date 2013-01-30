@@ -14,7 +14,7 @@ public class Print extends Message {
 
 	@Override
 	public void print() {
-		// TODO Auto-generated method stub
+		System.out.println("Print wurde gesendet. \nAn Empfänger: " + this.getRecipient() + "\nNachrichtentext:" + this.getMessage());
 
 	}
 }

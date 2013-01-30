@@ -12,8 +12,13 @@ import javax.swing.JTextField;
 import javax.swing.JTextPane;
 
 import ch.hwz.nhtb.Email;
+import ch.hwz.nhtb.Message;
+import ch.hwz.nhtb.SMS;
 import ch.hwz.nhtb.contacts.AddressType;
+import ch.hwz.nhtb.contacts.Component;
 import ch.hwz.nhtb.contacts.Contacts;
+import ch.hwz.nhtb.contacts.Entry;
+import ch.hwz.nhtb.contacts.Person;
 import ch.hwz.nhtb.filehendler.FileHandler;
 
 import com.jgoodies.forms.factories.FormFactory;
@@ -94,15 +99,28 @@ public class PanelEmail extends JPanel{
 		add(btnSend, "5, 7, right, default");
 		btnSend.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				System.out.println("Email mit dem Inhalt: ");
-				System.out.println(textPane.getText());
-				System.out.println(" an : ");
-				System.out.println(jcbEntry.getSelectedItem().toString());
-				System.out.println(" verschickt...");
-
+				jcbEntry.getSelectedItem().toString();
+				jcbAddress.getSelectedItem().toString();
+				Entry e = c.getEntries().get(
+						c.search(jcbEntry.getSelectedItem().toString()));
+				if (e.isPerson()) {
+					e = new Person();
+					e = e.createEntry(jcbEntry.getSelectedItem().toString(), jcbAddress
+						.getSelectedItem().toString());
+				}else{
+					e = new Component();
+					e = e.createEntry(jcbEntry.getSelectedItem().toString(), jcbAddress
+						.getSelectedItem().toString());
+				}
+				
 				Email email = new Email();
 				email.setMessage(textPane.getText());
-				System.out.println(email.getMessage());
+				email.setRecipient(e);
+				if (email.validate()) {
+					Message m = new Email();
+					m.send(email);
+				}
+
 			}
 		});
 	}
