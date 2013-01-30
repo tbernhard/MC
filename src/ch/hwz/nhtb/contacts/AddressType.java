@@ -6,15 +6,10 @@ public enum AddressType {
 	Mobile, 
 	IP; 
 	
-	public static AddressType[] getCompAddT(){
-		AddressType[] c = new AddressType[2];
-		c[0] = AddressType.IP;
-		c[1] = AddressType.EMail;
-		
-		return c;
-	}
-	
-	public static AddressType[] getPersAddT(){
+	/**
+	 * Gibt AddressTypen für Personen zurück
+	 */
+	public static AddressType[] getPersAddTyp(){
 		AddressType[] p = new AddressType[2];
 		p[0] = AddressType.Mobile;
 		p[1] = AddressType.EMail;
@@ -22,18 +17,13 @@ public enum AddressType {
 		return p;
 	}
 	
-	public static AddressType[] getEmailMMSAddT(){
+	/**
+	 * Gibt AddressTypen für das versenden MMS zurück
+	 */
+	public static AddressType[] getMMSAddTyp(){
 		AddressType[] p = new AddressType[2];
 		p[0] = AddressType.Mobile;
 		p[1] = AddressType.EMail;
-		
-		return p;
-	}
-	
-	public static AddressType[] getPrintAddT(){
-		AddressType[] p = new AddressType[2];
-		p[0] = AddressType.EMail;
-		p[1] = AddressType.IP;
 		
 		return p;
 	}

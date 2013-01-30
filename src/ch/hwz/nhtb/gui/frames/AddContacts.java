@@ -74,7 +74,7 @@ public class AddContacts extends JFrame implements ActionListener {
 				FormFactory.DEFAULT_ROWSPEC,
 				FormFactory.RELATED_GAP_ROWSPEC,
 				FormFactory.DEFAULT_ROWSPEC,}));
-		String[] entryTypes = { "Person", "Component" };
+		String[] entryTypes = { "Person", "Komponente" };
 
 		// Kind of contact
 		JLabel lblCKind = new JLabel("Kontakt Art");

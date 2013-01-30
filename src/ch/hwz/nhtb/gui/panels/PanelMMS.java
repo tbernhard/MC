@@ -94,14 +94,14 @@ public class PanelMMS extends JPanel {
 		lblCKind = new JLabel("Empfänger");
 		add(lblCKind, "3, 4, left, default");
 
-		jcbEntry = new JComboBox(c.getContact(AddressType.getEmailMMSAddT()));
+		jcbEntry = new JComboBox(c.getContact(AddressType.getMMSAddTyp()));
 		add(jcbEntry, "5, 4, fill, default");
 		jcbEntry.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				remove(jcbAddress);
 				jcbAddress = new JComboBox(c.getAddressOnIndex(jcbEntry
 						.getSelectedItem().toString(), AddressType
-						.getEmailMMSAddT()));
+						.getMMSAddTyp()));
 				add(jcbAddress, "5, 5, fill, default");
 				doLayout();
 				jcbAddress.doLayout();
@@ -117,7 +117,7 @@ public class PanelMMS extends JPanel {
 		});
 
 		jcbAddress = new JComboBox(c.getAddressOnIndex(jcbEntry
-				.getSelectedItem().toString(), AddressType.getEmailMMSAddT()));
+				.getSelectedItem().toString(), AddressType.getMMSAddTyp()));
 		add(jcbAddress, "5, 5, fill, default");
 		
 		lblSub = new JLabel("Betreff");

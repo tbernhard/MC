@@ -1,10 +1,7 @@
 package ch.hwz.nhtb.filehendler;
 
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.InputStream;
-import java.util.Properties;
 
 import javax.xml.bind.JAXB;
 import javax.xml.bind.JAXBContext;
@@ -17,38 +14,43 @@ public class FileHandler {
 
 	private final String XMLLocation = "files/Contacts.xml";
 	private File contactsFile = new File(this.XMLLocation);
-	private JAXBContext jc; 
-	private Marshaller m; 
-	
+	private JAXBContext jc;
+	private Marshaller m;
 
+	/**
+	 * Erstellt ein leeres XML File falls noch keines vorhanden ist
+	 */
 	public FileHandler() {
 		try {
 			jc = JAXBContext.newInstance(Contacts.class);
 			m = jc.createMarshaller();
 		} catch (JAXBException e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
 		if (!contactsFile.exists()) {
 			try {
 				try {
-					m.marshal(new Contacts(),contactsFile);
+					m.marshal(new Contacts(), contactsFile);
 				} catch (JAXBException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 				contactsFile.createNewFile();
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
-			}	
+			}
 		}
 	}
 
+	/**
+	 * Gibt ein File zurück welches den XML Pfad beinhaltet
+	 */
 	public File getFile() {
 		return this.contactsFile;
 	}
 
+	/**
+	 * Schreibt die mitgelieferten Kontakt in das Mitgelieferte XML File
+	 */
 	public void writeContacts(Contacts c, File file) throws JAXBException {
 		JAXBContext jc = JAXBContext.newInstance(Contacts.class);
 		Marshaller m = jc.createMarshaller();
@@ -56,10 +58,18 @@ public class FileHandler {
 		m.marshal(c, file);
 	}
 
+	/**
+	 * Gibt die Kontakte zurück welche im mitgelieferten XML File gespeichert
+	 * wurden
+	 */
 	public Contacts readContacts(File file) throws JAXBException {
 		return JAXB.unmarshal(file, Contacts.class);
 	}
 
+	/**
+	 * Gibt die Kontakte zurück welche im XML File "contactsFile" gespeichert
+	 * wurden
+	 */
 	public Contacts getContactsFromXML() {
 		try {
 			return this.readContacts(this.contactsFile);
@@ -69,30 +79,4 @@ public class FileHandler {
 		}
 		return null;
 	}
-
-	// @TODO Properties File .properties oder .xml nur importieren
-	public void LoadProperties() {
-		Properties props = new Properties();
-		InputStream is = null;
-
-		// First try loading from the current directory
-		try {
-			File f = new File("mc.properties");
-			is = new FileInputStream(f);
-		} catch (Exception e) {
-			is = null;
-		}
-
-		try {
-			if (is == null) {
-				// Try loading from classpath
-				is = getClass().getResourceAsStream("mc.properties");
-			}
-
-			// Try loading properties from the file (if found)
-			props.load(is);
-		} catch (Exception e) {
-		}
-	}
-
 }

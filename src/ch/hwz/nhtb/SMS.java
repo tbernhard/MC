@@ -28,13 +28,8 @@ public class SMS extends Message {
 
 	@Override
 	public void print() {
-		// TODO Auto-generated method stub
 		System.out.println("SMS wurde gesendet. \nAn Empfänger: "
 				+ this.getRecipient() + "\nNachrichtentext: "
 				+ this.getMessage());
-//		System.out.println("SMS wurde gesendet. \nAn Empfänger: "
-//				+ this.getRecipient(AddressType.Mobile) + "\nNachrichtentext: "
-//				+ this.getMessage());
-
 	}
 }

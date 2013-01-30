@@ -28,7 +28,7 @@ import com.jgoodies.forms.layout.ColumnSpec;
 import com.jgoodies.forms.layout.FormLayout;
 import com.jgoodies.forms.layout.RowSpec;
 
-public class PanelSMS extends JPanel implements ActionListener {
+public class PanelSMS extends JPanel {
 	private JButton btnSend;
 	private JComboBox jcbEntry;
 	private JComboBox jcbAddress = new JComboBox();
@@ -42,7 +42,6 @@ public class PanelSMS extends JPanel implements ActionListener {
 	private FileHandler serializer;
 	private File contactsFile;
 	private final Contacts c;
-
 
 	/**
 	 * Create the panel.
@@ -178,86 +177,5 @@ public class PanelSMS extends JPanel implements ActionListener {
 				}
 			}
 		});
-
-		// btnSend.addMouseListener(new MouseAdapter() {
-		// @Override
-		// public void mousePressed(MouseEvent arg0) {
-		// System.out.println("SMS mit dem Inhalt: ");
-		// System.out.println(textPane.getText());
-		// System.out.println(" an : ");
-		// System.out.println(jcbEntry.getSelectedItem().toString());
-		// System.out.println(" verschickt...");
-
-		// Address ad = new Address();
-		//
-		// if ((jtfPPn.getText() == null)
-		// || "".equals(jtfPPn.getText().trim())
-		// || (jtfPName.getText() == null)
-		// || "".equals(jtfPName.getText().trim())) {
-		// JOptionPane.showMessageDialog(new JFrame(),
-		// "Bitte Name und Vorname angeben.", "Achtung",
-		// JOptionPane.WARNING_MESSAGE);
-		// lblName.setBackground(Color.red);
-		// doLayout();
-		// } else {
-		// p.setPrename(jtfPPn.getText());
-		// p.setName(jtfPName.getText());
-		// p.setSalutation(jcbSal.getSelectedItem().toString());
-		// jtfPPn.disable();
-		// jtfPName.disable();
-		// jcbSal.disable();
-		// ad.setType((AddressType) jcbAddress.getSelectedItem());
-		// ad.setAddressText(jtfAdd.getText());
-		// p.add(ad);
-		// JOptionPane.showMessageDialog(
-		// new JFrame(),
-		// ad.getType().toString()
-		// + " wurde erfolgreich zum Kontakt "
-		// + p.getSalutation() + " " + p.getName()
-		// + " hinzugefügt.");
-		// jtfAdd.setText("");
-		// }
-		//
-		// }
-		// });
-
 	}
-
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		// remove(jcbAddress);
-		// jcbAddress = new
-		// JComboBox(c.getAddressOnIndex(jcbEntry.getSelectedIndex()));
-		// add(jcbAddress, "5, 3, fill, default");
-		// doLayout();
-		// jcbAddress.doLayout();
-		//
-		// System.out.println();
-		// for (int i = 0; i <
-		// c.getAddressOnIndex(jcbEntry.getSelectedIndex()).length; i++) {
-		// System.out.println(c.getAddressOnIndex(jcbEntry.getSelectedIndex())[i]);
-		// }
-		// System.out.println();
-
-		// System.out.println(e.getSource());
-		// System.out.println(jcbEntry.getSelectedItem().toString());
-		// jcbEntry.getSelectedIndex();
-		// if (jcbEntry.getSelectedIndex() == 0) {
-		// frame.setVisible(false);
-		// subPanel = new PanelAddPerson(frame);
-		// panel.add(subPanel, "1, 3, 7, 6, fill, fill");
-		// frame.getContentPane().add(panel, BorderLayout.CENTER);
-		//
-		// frame.setVisible(true);
-		// // System.out.println("PanelAddPerson");
-		// } else if (jcbEntry.getSelectedIndex() == 1) {
-		// frame.setVisible(false);
-		// subPanel = new PanelAddComponent(frame);
-		// panel.add(subPanel, "1, 3, 7, 6, fill, fill");
-		// frame.getContentPane().add(panel, BorderLayout.CENTER);
-		// frame.setVisible(true);
-		// // System.out.println("PanelAddComponent");
-		// }
-	}
-
 }

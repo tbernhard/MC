@@ -14,9 +14,10 @@ public class Address {
 			+ "([1]?\\d\\d?|2[1-4]\\d|25[0-5])\\."
 			+ "([01]?\\d\\d?|2[0-4]\\d|25[0-5])\\."
 			+ "([01]?\\d\\d?|2[0-4]\\d|25[0-5])$";
-	
-	String TEST_PATTERN = "^[01]?\\d\\d?";
 
+	/**
+	 * IPADDRESS_PATTERN Erklärung
+	 */
 	// ^ #start of the line
 	// ( #start of group #1
 	// [01]?\\d\\d? #Can be one or two digits. If three digits appear, it must
@@ -51,14 +52,9 @@ public class Address {
 		this.addressText = addressText;
 	}
 
-	public void print() {
-		System.out.println("Address{" + type + ":" + addressText + "}");
-	}
-
-	public String get(AddressType addressType) {
-		return "Test";
-	}
-
+	/**
+	 * Validierung der Addressen
+	 */
 	public boolean validate(AddressType add, String addTxt) {
 		Pattern p;
 		Matcher m;
@@ -89,59 +85,5 @@ public class Address {
 			break;
 		}
 		return val;
-	}
-
-	public boolean validate() {
-		Pattern p;
-		Matcher m;
-		Boolean val = false;
-		switch (this.type) {
-		case IP:
-			p = Pattern.compile(IPADDRESS_PATTERN);
-			m = p.matcher((CharSequence) this.addressText);
-			System.out.println(m);
-			if (m.matches()) {
-				val = !val;
-			}
-			break;
-		case EMail:
-			p = Pattern.compile(EMAIL_PATTERN);
-			m = p.matcher((CharSequence) this.addressText);
-			System.out.println(m);
-			if (m.matches()) {
-				val = !val;
-			}
-			break;
-		case Mobile:
-			p = Pattern.compile(MOBILE_PATTERN);
-			System.out.println(p);
-			m = p.matcher((CharSequence) this.addressText);
-			System.out.println(m);
-			if (m.matches()) {
-				val = !val;
-			}
-			break;
-		default:
-			break;
-		}
-		return val;
-	}
-
-	public static void main(String[] args) {
-		Address a = new Address();
-		a.setAddressText("0.168.00.1");
-		System.out.println(a.getAddressText());
-		a.setType(AddressType.IP);
-//		System.out.println(a.validate());
-		
-//		
-//		Pattern.compile(TEST_PATTERN);
-//		System.out.println(p);
-//		matcher((CharSequence) this.addressText);
-//		System.out.println(m);
-//		if (m.matches()) {
-//			val = !val;
-//		}
-		
 	}
 }

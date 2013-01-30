@@ -21,8 +21,6 @@ import com.jgoodies.forms.layout.ColumnSpec;
 import com.jgoodies.forms.layout.FormLayout;
 import com.jgoodies.forms.layout.RowSpec;
 
-//TODO	Kontakte inc 
-//TODO	Addresse an PAnelAddPErson zurückgeben und dort als xml speichern
 
 public class PanelAddAddress extends JPanel implements ActionListener {
 	private JFrame frame;

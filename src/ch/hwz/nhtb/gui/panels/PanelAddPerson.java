@@ -107,7 +107,7 @@ public class PanelAddPerson extends JPanel implements ActionListener {
 		add(jtfPName, "6, 4, 3, 1, fill, default");
 		frame.getContentPane().add(this, BorderLayout.CENTER);
 
-		jcbAddress = new JComboBox(AddressType.getPersAddT());
+		jcbAddress = new JComboBox(AddressType.getPersAddTyp());
 		add(jcbAddress, "4, 8, 2, 1, left, default");
 
 		jtfAdd = new JTextField();
