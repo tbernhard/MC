@@ -59,13 +59,13 @@ public class PanelEmail extends JPanel{
 		lblCKind = new JLabel("Empf\u00E4nger");
 		add(lblCKind, "3, 2, left, default");
 
-		jcbEntry = new JComboBox(c.getContact(AddressType.getEmailMMSAddT()));
+		jcbEntry = new JComboBox(c.getContact(AddressType.EMail));
 		add(jcbEntry, "5, 2, fill, default");
 		jcbEntry.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				remove(jcbAddress);
 				jcbAddress = new JComboBox(c.getAddressOnIndex(jcbEntry
-						.getSelectedItem().toString(), AddressType.getEmailMMSAddT()));
+						.getSelectedItem().toString(), AddressType.EMail));
 				add(jcbAddress, "5, 3, fill, default");
 				doLayout();
 				jcbAddress.doLayout();
@@ -74,15 +74,14 @@ public class PanelEmail extends JPanel{
 //				for (int i = 0; i < c.getAddressOnIndex(jcbEntry
 //						.getSelectedIndex()).length; i++) {
 //					System.out.println(c.getAddressOnIndex(jcbEntry
-//							.getSelectedIndex())[i]);
-//				}
+//							.getSelectedIndex())[i]);/				}
 //				System.out.println();
 			}
 		});
 		
 
 		jcbAddress = new JComboBox(c.getAddressOnIndex(jcbEntry
-				.getSelectedItem().toString(), AddressType.getEmailMMSAddT()));
+				.getSelectedItem().toString(), AddressType.EMail));
 		add(jcbAddress, "5, 3, fill, default");
 
 		lblText = new JLabel("Text");

@@ -32,7 +32,7 @@ public enum AddressType {
 	
 	public static AddressType[] getPrintAddT(){
 		AddressType[] p = new AddressType[2];
-		p[0] = AddressType.Mobile;
+		p[0] = AddressType.EMail;
 		p[1] = AddressType.IP;
 		
 		return p;

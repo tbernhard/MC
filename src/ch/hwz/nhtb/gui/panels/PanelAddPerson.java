@@ -45,6 +45,8 @@ public class PanelAddPerson extends JPanel implements ActionListener {
 	private JButton btnAdd;
 	private JTextField jtfAdd;
 
+	private boolean b = false;
+
 	private Contacts cPAP = new Contacts();
 	private Person p = new Person();
 	private Address a = new Address();
@@ -59,7 +61,7 @@ public class PanelAddPerson extends JPanel implements ActionListener {
 		serializer = new FileHandler();
 		Contacts c = serializer.getContactsFromXML();
 		contactsFile = serializer.getFile();
-		
+
 		this.setFrame(frame);
 		this.app = app;
 		cPAP = c;
@@ -132,25 +134,32 @@ public class PanelAddPerson extends JPanel implements ActionListener {
 					p.setPrename(jtfPPn.getText());
 					p.setName(jtfPName.getText());
 					p.setSalutation(jcbSal.getSelectedItem().toString());
+
 					jtfPPn.disable();
 					jtfPName.disable();
 					jcbSal.disable();
-					
-					if (ad.validate((AddressType) jcbAddress.getSelectedItem(), jtfAdd.getText())) {
+
+					if (ad.validate((AddressType) jcbAddress.getSelectedItem(),
+							jtfAdd.getText())) {
 						ad.setType((AddressType) jcbAddress.getSelectedItem());
 						ad.setAddressText(jtfAdd.getText());
 						p.add(ad);
 						JOptionPane.showMessageDialog(
 								new JFrame(),
 								ad.getType().toString()
-								+ " wurde erfolgreich zum Kontakt "
-								+ p.getSalutation() + " " + p.getName()
-								+ " hinzugefügt.");
+										+ " wurde erfolgreich zum Kontakt "
+										+ p.getSalutation() + " " + p.getName()
+										+ " hinzugefügt.");
 						jtfAdd.setText("");
-					}else{
-						JOptionPane.showMessageDialog(
-								new JFrame(),
-								"Ungültige "+(AddressType) jcbAddress.getSelectedItem()+" Adresse");
+						b = !b;
+					} else {
+						JOptionPane
+								.showMessageDialog(
+										new JFrame(),
+										"Ungültige "
+												+ (AddressType) jcbAddress
+														.getSelectedItem()
+												+ " Adresse");
 						jtfAdd.setBackground(Color.RED);
 					}
 				}
@@ -172,8 +181,33 @@ public class PanelAddPerson extends JPanel implements ActionListener {
 							"Bitte Name und Vorname angeben.", "Achtung",
 							JOptionPane.WARNING_MESSAGE);
 					doLayout();
-				} else if ((jtfAdd.getText() == null)
-						|| "".equals(jtfAdd.getText().trim())) {
+				} else if (((jtfAdd.getText() == null) || "".equals(jtfAdd
+						.getText().trim())) || b) {
+					p.setPrename(jtfPPn.getText());
+					p.setName(jtfPName.getText());
+					p.setSalutation(jcbSal.getSelectedItem().toString());
+
+					cPAP.add(p);
+					try {
+						serializer.writeContacts(cPAP, contactsFile);
+					} catch (JAXBException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+
+					JOptionPane.showMessageDialog(
+							new JFrame(),
+							p.getSalutation()
+									+ " "
+									+ p.getName()
+									+ " wurde erfolgreich zu den Kontakten hinzugefügt");
+
+					p = new Person();
+					a = new Address();
+					cPAP = new Contacts();
+					frame.setVisible(false);
+					App app = new App();
+					app.loadContactPanel();
 				} else {
 					p.setPrename(jtfPPn.getText());
 					p.setName(jtfPName.getText());

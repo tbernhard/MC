@@ -1,5 +1,6 @@
 package ch.hwz.nhtb.gui.panels;
 
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
@@ -39,6 +40,8 @@ public class PanelAddComponent extends JPanel implements ActionListener {
 	private JComboBox jcbAddress;
 	private JButton btnSave;
 	private JButton btnAdd;
+
+	private boolean b = false;
 
 	private Contacts cPAC = new Contacts();
 	private Component comp = new Component();
@@ -129,15 +132,27 @@ public class PanelAddComponent extends JPanel implements ActionListener {
 					jtfLoc.disable();
 					jtfCName.disable();
 
-					// TODO Methode zur Addressen validierung
-					ad.setType((AddressType) jcbAddress.getSelectedItem());
-					ad.setAddressText(jtfAdd.getText());
-					comp.add(ad);
-					JOptionPane.showMessageDialog(new JFrame(), ad.getType()
-							.toString()
-							+ " wurde erfolgreich zum Kontakt "
-							+ comp.getName() + " hinzugefügt.");
-					jtfAdd.setText("");
+					if (ad.validate((AddressType) jcbAddress.getSelectedItem(),
+							jtfAdd.getText())) {
+						ad.setType((AddressType) jcbAddress.getSelectedItem());
+						ad.setAddressText(jtfAdd.getText());
+						comp.add(ad);
+						JOptionPane.showMessageDialog(new JFrame(),
+								ad.getType().toString()
+										+ " wurde erfolgreich zum Kontakt "
+										+ comp.getName() + " hinzugefügt.");
+						jtfAdd.setText("");
+						b = !b;
+					} else {
+						JOptionPane
+								.showMessageDialog(
+										new JFrame(),
+										"Ungültige "
+												+ (AddressType) jcbAddress
+														.getSelectedItem()
+												+ " Adresse");
+						jtfAdd.setBackground(Color.RED);
+					}
 				}
 
 			}
@@ -157,12 +172,29 @@ public class PanelAddComponent extends JPanel implements ActionListener {
 							"Bitte Location und Name angeben.", "Achtung",
 							JOptionPane.WARNING_MESSAGE);
 					doLayout();
-				} else if ((jtfAdd.getText() == null)
-						|| "".equals(jtfAdd.getText().trim())) {
-					JOptionPane.showMessageDialog(new JFrame(),
-							"Bitte Location und Name angeben.", "Achtung",
-							JOptionPane.WARNING_MESSAGE);
-					doLayout();
+				} else if (((jtfAdd.getText() == null) || "".equals(jtfAdd
+						.getText().trim())) || b) {
+					comp.setName(jtfCName.getText());
+					comp.setLocation(jtfLoc.getText());
+				
+					cPAC.add(comp);
+
+					try {
+						serializer.writeContacts(cPAC, contactsFile);
+					} catch (JAXBException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+
+					JOptionPane.showMessageDialog(new JFrame(), comp.getName()
+							+ " wurde erfolgreich zu den Kontakten hinzugefügt");
+
+					comp = new Component();
+					a = new Address();
+					cPAC = new Contacts();
+					frame.setVisible(false);
+					App app = new App();
+					app.loadContactPanel();
 				} else {
 					comp.setName(jtfCName.getText());
 					comp.setLocation(jtfLoc.getText());
