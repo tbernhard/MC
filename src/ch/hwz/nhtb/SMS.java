@@ -5,12 +5,14 @@ import ch.hwz.nhtb.contacts.AddressType;
 
 public class SMS extends Message {
 
-	public void validate() {
+	public boolean validate() {
+		boolean b = false;
 		try {
 
 			// System.out.println(getMessage());
 			System.out.println("Validiere SMS: ");
 			if (this.getMessage().length() <= 160) {
+				b=!b;
 				System.out
 						.println("OK: Nachricht nicht grösser als 160 Zeichen");
 			} else {
@@ -22,6 +24,7 @@ public class SMS extends Message {
 					.println("SMS Null Pointer Exception. Keine Nachricht übergeben");
 
 		}
+		return b;
 
 	}
 

@@ -1,10 +1,9 @@
 package ch.hwz.nhtb;
 
+public class Print extends Message {
 
-
-public class Print extends Message  {	
-	
-	public void validate() {
+	public boolean validate() {
+		return true;
 	}
 
 	public void log() {
@@ -16,6 +15,6 @@ public class Print extends Message  {
 	@Override
 	public void print() {
 		// TODO Auto-generated method stub
-		
+
 	}
 }

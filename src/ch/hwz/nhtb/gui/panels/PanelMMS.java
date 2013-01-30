@@ -62,7 +62,7 @@ public class PanelMMS extends JPanel{
 						FormFactory.RELATED_GAP_ROWSPEC,
 						FormFactory.DEFAULT_ROWSPEC, }));
 
-		lblCKind = new JLabel("Empfänger");
+		lblCKind = new JLabel("Empf\u00E4nger");
 		add(lblCKind, "3, 2, left, default");
 
 		jcbEntry = new JComboBox(c.getContact(AddressType.getEmailMMSAddT()));
@@ -78,13 +78,13 @@ public class PanelMMS extends JPanel{
 				doLayout();
 				jcbAddress.doLayout();
 
-				System.out.println();
-				for (int i = 0; i < c.getAddressOnIndex(jcbEntry
-						.getSelectedIndex()).length; i++) {
-					System.out.println(c.getAddressOnIndex(jcbEntry
-							.getSelectedIndex())[i]);
-				}
-				System.out.println();
+//				System.out.println();
+//				for (int i = 0; i < c.getAddressOnIndex(jcbEntry
+//						.getSelectedIndex()).length; i++) {
+//					System.out.println(c.getAddressOnIndex(jcbEntry
+//							.getSelectedIndex())[i]);
+//				}
+//				System.out.println();
 			}
 		});
 

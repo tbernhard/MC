@@ -6,7 +6,7 @@ public class MMS extends Message {
 	private String subject;
 
 
-	public void validate() {
+	public boolean validate() {
 		
 //		Zum testen wie gross der Nachrichtentext und der Anhang ist.
 //		System.out.println("Grösse der MMS Nachricht ist: " + this.getMessage().length() + " Byte.");
@@ -25,6 +25,7 @@ public class MMS extends Message {
 //			System.out.println("MMS Null Pointer Exception. Keine Nachricht übergeben");
 //
 //		}
+		return true;
 	}
 
 	public void log() {

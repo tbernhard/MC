@@ -23,7 +23,7 @@
     </entries>
     <entries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="person">
         <addresses>
-            <addressText>0793990100</addressText>
+            <addressText>0793990101</addressText>
             <type>Mobile</type>
         </addresses>
         <name>Testname 1</name>
@@ -41,7 +41,7 @@
     </entries>
     <entries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="person">
         <addresses>
-            <addressText>0793990100</addressText>
+            <addressText>0793990102</addressText>
             <type>Mobile</type>
         </addresses>
         <addresses>
@@ -68,16 +68,13 @@
         <name>Nur Email TC2</name>
         <location>Testcomponente 2</location>
     </entries>
-    <entries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="component">
+    <entries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="person">
         <addresses>
-            <addressText>194.44.11.255</addressText>
-            <type>IP</type>
+            <addressText>0794433447</addressText>
+            <type>Mobile</type>
         </addresses>
-        <addresses>
-            <addressText>componente3@beides.ch</addressText>
-            <type>EMail</type>
-        </addresses>
-        <name>Beides TC3</name>
-        <location>Testcomponente 3</location>
+        <name>zzz</name>
+        <prename>zzzz</prename>
+        <salutation>Herr</salutation>
     </entries>
 </Contacts>

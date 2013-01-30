@@ -38,7 +38,7 @@ public abstract class Message {
 	}
 	
 	public abstract void print();
-	public abstract void validate();
+	public abstract boolean validate();
 	public abstract void log();
 	public abstract void archive();
 

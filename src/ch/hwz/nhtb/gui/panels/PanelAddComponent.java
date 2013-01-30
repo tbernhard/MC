@@ -30,6 +30,7 @@ import com.jgoodies.forms.layout.RowSpec;
 public class PanelAddComponent extends JPanel implements ActionListener {
 	private static final long serialVersionUID = 1L;
 	private JFrame frame;
+	private JFrame app;
 	private JLabel lblLoc;
 	private JLabel lblName;
 	private JTextField jtfLoc;
@@ -38,7 +39,7 @@ public class PanelAddComponent extends JPanel implements ActionListener {
 	private JComboBox jcbAddress;
 	private JButton btnSave;
 	private JButton btnAdd;
-	
+
 	private Contacts cPAC = new Contacts();
 	private Component comp = new Component();
 	private Address a = new Address();
@@ -49,42 +50,42 @@ public class PanelAddComponent extends JPanel implements ActionListener {
 	/**
 	 * Create the panel.
 	 */
-	public PanelAddComponent(final JFrame frame) {
+	public PanelAddComponent(final JFrame frame, final JFrame app) {
 		serializer = new FileHandler();
 		Contacts c = serializer.getContactsFromXML();
 		contactsFile = serializer.getFile();
-		
+
 		this.setFrame(frame);
+		this.app = app;
 		cPAC = c;
 
-		setLayout(new FormLayout(new ColumnSpec[] {
-				FormFactory.DEFAULT_COLSPEC,
-				FormFactory.RELATED_GAP_COLSPEC,
-				ColumnSpec.decode("50dlu"),
-				FormFactory.RELATED_GAP_COLSPEC,
-				ColumnSpec.decode("max(32dlu;default)"),
-				ColumnSpec.decode("20dlu"),
-				ColumnSpec.decode("max(13dlu;default)"),
-				ColumnSpec.decode("max(14dlu;default)"),
-				FormFactory.RELATED_GAP_COLSPEC,
-				FormFactory.DEFAULT_COLSPEC,},
-			new RowSpec[] {
-				RowSpec.decode("max(24dlu;default)"),
-				FormFactory.DEFAULT_ROWSPEC,
-				FormFactory.RELATED_GAP_ROWSPEC,
-				FormFactory.DEFAULT_ROWSPEC,
-				FormFactory.RELATED_GAP_ROWSPEC,
-				RowSpec.decode("default:grow"),
-				FormFactory.RELATED_GAP_ROWSPEC,
-				FormFactory.DEFAULT_ROWSPEC,
-				FormFactory.RELATED_GAP_ROWSPEC,
-				FormFactory.DEFAULT_ROWSPEC,
-				FormFactory.RELATED_GAP_ROWSPEC,
-				FormFactory.DEFAULT_ROWSPEC,
-				FormFactory.RELATED_GAP_ROWSPEC,
-				FormFactory.DEFAULT_ROWSPEC,
-				FormFactory.RELATED_GAP_ROWSPEC,
-				FormFactory.DEFAULT_ROWSPEC,}));
+		setLayout(new FormLayout(
+				new ColumnSpec[] { FormFactory.DEFAULT_COLSPEC,
+						FormFactory.RELATED_GAP_COLSPEC,
+						ColumnSpec.decode("50dlu"),
+						FormFactory.RELATED_GAP_COLSPEC,
+						ColumnSpec.decode("max(32dlu;default)"),
+						ColumnSpec.decode("20dlu"),
+						ColumnSpec.decode("max(13dlu;default)"),
+						ColumnSpec.decode("max(14dlu;default)"),
+						FormFactory.RELATED_GAP_COLSPEC,
+						FormFactory.DEFAULT_COLSPEC, }, new RowSpec[] {
+						RowSpec.decode("max(24dlu;default)"),
+						FormFactory.DEFAULT_ROWSPEC,
+						FormFactory.RELATED_GAP_ROWSPEC,
+						FormFactory.DEFAULT_ROWSPEC,
+						FormFactory.RELATED_GAP_ROWSPEC,
+						RowSpec.decode("default:grow"),
+						FormFactory.RELATED_GAP_ROWSPEC,
+						FormFactory.DEFAULT_ROWSPEC,
+						FormFactory.RELATED_GAP_ROWSPEC,
+						FormFactory.DEFAULT_ROWSPEC,
+						FormFactory.RELATED_GAP_ROWSPEC,
+						FormFactory.DEFAULT_ROWSPEC,
+						FormFactory.RELATED_GAP_ROWSPEC,
+						FormFactory.DEFAULT_ROWSPEC,
+						FormFactory.RELATED_GAP_ROWSPEC,
+						FormFactory.DEFAULT_ROWSPEC, }));
 
 		lblLoc = new JLabel("Location");
 		add(lblLoc, "3, 2, left, default");
@@ -98,56 +99,56 @@ public class PanelAddComponent extends JPanel implements ActionListener {
 
 		jtfCName = new JTextField();
 		add(jtfCName, "5, 4, 3, 1, fill, default");
-				
+
 		jcbAddress = new JComboBox(AddressType.getCompAddT());
 		add(jcbAddress, "3, 6, left, default");
 
 		jtfAdd = new JTextField();
 		add(jtfAdd, "5, 6, 3, 1, fill, default");
-		
-				btnAdd = new JButton("Add");
-				add(btnAdd, "10, 6, fill, center");
-				btnAdd.addMouseListener(new MouseAdapter() {
-					@SuppressWarnings({ "deprecation" })
-					@Override
-					public void mousePressed(MouseEvent arg0) {
-						Address ad = new Address();
 
-						if ((jtfCName.getText() == null)
-								|| "".equals(jtfCName.getText().trim())
-								|| (jtfLoc.getText() == null)
-								|| "".equals(jtfLoc.getText().trim())) {
-							JOptionPane.showMessageDialog(new JFrame(),
-									"Bitte Location und Name angeben.", "Achtung",
-									JOptionPane.WARNING_MESSAGE);
-							doLayout();
-						} else {
-							comp.setName(jtfCName.getText());
-							comp.setLocation(jtfLoc.getText());
+		btnAdd = new JButton("Add");
+		add(btnAdd, "10, 6, fill, center");
+		btnAdd.addMouseListener(new MouseAdapter() {
+			@SuppressWarnings({ "deprecation" })
+			@Override
+			public void mousePressed(MouseEvent arg0) {
+				Address ad = new Address();
 
-							jtfLoc.disable();
-							jtfCName.disable();
+				if ((jtfCName.getText() == null)
+						|| "".equals(jtfCName.getText().trim())
+						|| (jtfLoc.getText() == null)
+						|| "".equals(jtfLoc.getText().trim())) {
+					JOptionPane.showMessageDialog(new JFrame(),
+							"Bitte Location und Name angeben.", "Achtung",
+							JOptionPane.WARNING_MESSAGE);
+					doLayout();
+				} else {
+					comp.setName(jtfCName.getText());
+					comp.setLocation(jtfLoc.getText());
 
-							//TODO Methode zur Addressen validierung
-							ad.setType((AddressType) jcbAddress.getSelectedItem());
-							ad.setAddressText(jtfAdd.getText());
-							comp.add(ad);
-							JOptionPane.showMessageDialog(new JFrame(), ad.getType()
-									.toString()
-									+ " wurde erfolgreich zum Kontakt "
-									+ comp.getName() + " hinzugefügt.");
-							jtfAdd.setText("");
-						}
+					jtfLoc.disable();
+					jtfCName.disable();
 
-					}
-				});
-		
-				btnSave = new JButton("Save");
-				add(btnSave, "10, 8, fill, fill");
+					// TODO Methode zur Addressen validierung
+					ad.setType((AddressType) jcbAddress.getSelectedItem());
+					ad.setAddressText(jtfAdd.getText());
+					comp.add(ad);
+					JOptionPane.showMessageDialog(new JFrame(), ad.getType()
+							.toString()
+							+ " wurde erfolgreich zum Kontakt "
+							+ comp.getName() + " hinzugefügt.");
+					jtfAdd.setText("");
+				}
+
+			}
+		});
+
+		btnSave = new JButton("Save");
+		add(btnSave, "10, 8, fill, fill");
 		btnSave.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mousePressed(MouseEvent arg0) {
-
+				app.setVisible(false);
 				if ((jtfCName.getText() == null)
 						|| "".equals(jtfCName.getText().trim())
 						|| (jtfLoc.getText() == null)
@@ -187,8 +188,7 @@ public class PanelAddComponent extends JPanel implements ActionListener {
 					frame.setVisible(false);
 					App app = new App();
 					app.loadContactPanel();
-					
-					
+
 				}
 
 			}

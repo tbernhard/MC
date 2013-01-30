@@ -56,7 +56,6 @@ public class App {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-
 		// Create and set up the window.
 		frame = new JFrame("MultiChannel");
 		frame.setSize(390, 240);
@@ -76,6 +75,7 @@ public class App {
 		hmNach.setLayout(new BoxLayout(hmNach, BoxLayout.LINE_AXIS));
 		hmNach.setMinimumSize(hmNach.getPreferredSize());
 		hmNach.setMaximumSize(hmNach.getPreferredSize());
+		
 		// SMS
 		JMenuItem jmiSMS = new JMenuItem("SMS");
 		jmiSMS.setAlignmentX(Component.LEFT_ALIGNMENT);
@@ -89,6 +89,7 @@ public class App {
 			}
 		});
 		hmNach.add(jmiSMS);
+		
 		// MMS
 		JMenuItem jmiMMS = new JMenuItem("MMS");
 		jmiMMS.addMouseListener(new MouseAdapter() {
@@ -101,11 +102,12 @@ public class App {
 			}
 		});
 		hmNach.add(jmiMMS);
+		
 		// EMail
 		JMenuItem jmiEmail = new JMenuItem("E-Mail");
 		jmiEmail.addMouseListener(new MouseAdapter() {
 			@Override
-			public void mouseClicked(MouseEvent arg0) {
+			public void mousePressed(MouseEvent arg0) {
 				frame.getContentPane().remove(panel);
 				panel = new PanelEmail();
 				frame.getContentPane().add(panel, BorderLayout.CENTER);
@@ -113,11 +115,12 @@ public class App {
 			}
 		});
 		hmNach.add(jmiEmail);
+		
 		// Print
 		JMenuItem jmiPrint = new JMenuItem("Print");
 		jmiPrint.addMouseListener(new MouseAdapter() {
 			@Override
-			public void mouseClicked(MouseEvent arg0) {
+			public void mousePressed(MouseEvent arg0) {
 				frame.getContentPane().remove(panel);
 				panel = new PanelPrint();
 				frame.getContentPane().add(panel, BorderLayout.CENTER);
@@ -151,5 +154,4 @@ public class App {
 		frame.getContentPane().add(panel, BorderLayout.CENTER);
 		frame.setVisible(true);
 	}
-	
 }

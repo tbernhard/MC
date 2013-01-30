@@ -8,13 +8,10 @@ import ch.hwz.nhtb.contacts.AddressType;
 public class Email extends Message {
 	private String subject;
 
-	public void validate() {
-
-//		String email = "nhe@c-ch.ch";
+	public boolean validate() {
 		Pattern p = Pattern.compile(".+@.+\\.[a-z]+");
 		Matcher m = p.matcher((CharSequence) this.getRecipient(AddressType.EMail));
-//		Matcher m = p.matcher((CharSequence) email);
-		
+
 		boolean validemail = m.matches();
 
 		// if (this.getRecipient())
@@ -33,6 +30,8 @@ public class Email extends Message {
 		} catch (Throwable t) {
 			System.out.println("Email Null Pointer Exception. Keine Nachricht übergeben");
 		}
+		
+		return true;
 
 	}
 

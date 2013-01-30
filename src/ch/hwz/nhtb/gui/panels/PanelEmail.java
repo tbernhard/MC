@@ -38,7 +38,6 @@ public class PanelEmail extends JPanel{
 	 * Create the panel.
 	 */
 	public PanelEmail() {
-
 		serializer = new FileHandler();
 		c = serializer.getContactsFromXML();
 		contactsFile = serializer.getFile();
@@ -57,7 +56,7 @@ public class PanelEmail extends JPanel{
 						FormFactory.RELATED_GAP_ROWSPEC,
 						FormFactory.DEFAULT_ROWSPEC, }));
 
-		lblCKind = new JLabel("Empfänger");
+		lblCKind = new JLabel("Empf\u00E4nger");
 		add(lblCKind, "3, 2, left, default");
 
 		jcbEntry = new JComboBox(c.getContact(AddressType.getEmailMMSAddT()));
@@ -71,13 +70,13 @@ public class PanelEmail extends JPanel{
 				doLayout();
 				jcbAddress.doLayout();
 
-				System.out.println();
-				for (int i = 0; i < c.getAddressOnIndex(jcbEntry
-						.getSelectedIndex()).length; i++) {
-					System.out.println(c.getAddressOnIndex(jcbEntry
-							.getSelectedIndex())[i]);
-				}
-				System.out.println();
+//				System.out.println();
+//				for (int i = 0; i < c.getAddressOnIndex(jcbEntry
+//						.getSelectedIndex()).length; i++) {
+//					System.out.println(c.getAddressOnIndex(jcbEntry
+//							.getSelectedIndex())[i]);
+//				}
+//				System.out.println();
 			}
 		});
 		
@@ -107,6 +106,5 @@ public class PanelEmail extends JPanel{
 				System.out.println(email.getMessage());
 			}
 		});
-
 	}
 }

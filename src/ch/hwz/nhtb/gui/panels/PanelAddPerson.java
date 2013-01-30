@@ -33,6 +33,7 @@ import com.jgoodies.forms.layout.RowSpec;
 public class PanelAddPerson extends JPanel implements ActionListener {
 	private static final long serialVersionUID = 1L;
 	private JFrame frame;
+	private JFrame app;
 	private JTextField jtfPPn;
 	private JTextField jtfPName;
 	private JLabel lblName;
@@ -54,12 +55,13 @@ public class PanelAddPerson extends JPanel implements ActionListener {
 	/**
 	 * Create the panel.
 	 */
-	public PanelAddPerson(final JFrame frame) {
+	public PanelAddPerson(final JFrame frame, final JFrame app) {
 		serializer = new FileHandler();
 		Contacts c = serializer.getContactsFromXML();
 		contactsFile = serializer.getFile();
-
+		
 		this.setFrame(frame);
+		this.app = app;
 		cPAP = c;
 
 		setLayout(new FormLayout(new ColumnSpec[] {
@@ -148,7 +150,7 @@ public class PanelAddPerson extends JPanel implements ActionListener {
 					}else{
 						JOptionPane.showMessageDialog(
 								new JFrame(),
-								"Ungültige EMail Adresse");
+								"Ungültige "+(AddressType) jcbAddress.getSelectedItem()+" Adresse");
 						jtfAdd.setBackground(Color.RED);
 					}
 				}
@@ -161,7 +163,7 @@ public class PanelAddPerson extends JPanel implements ActionListener {
 		btnSave.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mousePressed(MouseEvent arg0) {
-
+				app.setVisible(false);
 				if ((jtfPPn.getText() == null)
 						|| "".equals(jtfPPn.getText().trim())
 						|| (jtfPName.getText() == null)

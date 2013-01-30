@@ -73,8 +73,8 @@ public class PanelContact extends JPanel {
 		btnAdd = new JButton("Add");
 		btnAdd.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				frame.setVisible(false);
-				new AddContacts();
+				frame.setVisible(true);
+				new AddContacts(frame);
 			}
 		});
 
