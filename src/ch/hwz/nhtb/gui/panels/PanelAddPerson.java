@@ -173,6 +173,7 @@ public class PanelAddPerson extends JPanel implements ActionListener {
 			@Override
 			public void mousePressed(MouseEvent arg0) {
 				app.setVisible(false);
+				Address ad = new Address();
 				if ((jtfPPn.getText() == null)
 						|| "".equals(jtfPPn.getText().trim())
 						|| (jtfPName.getText() == null)
@@ -209,35 +210,47 @@ public class PanelAddPerson extends JPanel implements ActionListener {
 					App app = new App();
 					app.loadContactPanel();
 				} else {
-					p.setPrename(jtfPPn.getText());
-					p.setName(jtfPName.getText());
-					p.setSalutation(jcbSal.getSelectedItem().toString());
-					a.setType((AddressType) jcbAddress.getSelectedItem());
-					a.setAddressText(jtfAdd.getText());
-					p.add(a);
+					if (ad.validate((AddressType) jcbAddress.getSelectedItem(),
+							jtfAdd.getText())) {
+						p.setPrename(jtfPPn.getText());
+						p.setName(jtfPName.getText());
+						p.setSalutation(jcbSal.getSelectedItem().toString());
+						a.setType((AddressType) jcbAddress.getSelectedItem());
+						a.setAddressText(jtfAdd.getText());
+						p.add(a);
 
-					cPAP.add(p);
-					try {
-						serializer.writeContacts(cPAP, contactsFile);
-					} catch (JAXBException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
+						cPAP.add(p);
+						try {
+							serializer.writeContacts(cPAP, contactsFile);
+						} catch (JAXBException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
 
-					JOptionPane.showMessageDialog(
-							new JFrame(),
-							p.getSalutation()
-									+ " "
-									+ p.getName()
-									+ " wurde erfolgreich zu den Kontakten hinzugefügt");
+						JOptionPane.showMessageDialog(
+								new JFrame(),
+								p.getSalutation()
+										+ " "
+										+ p.getName()
+										+ " wurde erfolgreich zu den Kontakten hinzugefügt");
 
-					p = new Person();
-					a = new Address();
-					cPAP = new Contacts();
-					frame.setVisible(false);
-					App app = new App();
-					app.loadContactPanel();
+						p = new Person();
+						a = new Address();
+						cPAP = new Contacts();
+						frame.setVisible(false);
+						App app = new App();
+						app.loadContactPanel();
 
+					}else {
+						JOptionPane
+						.showMessageDialog(
+								new JFrame(),
+								"Ungültige "
+										+ (AddressType) jcbAddress
+												.getSelectedItem()
+										+ " Adresse");
+				jtfAdd.setBackground(Color.RED);
+			}
 				}
 
 			}

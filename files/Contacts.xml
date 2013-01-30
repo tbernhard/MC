@@ -77,4 +77,22 @@
         <prename>test3333</prename>
         <salutation>Herr</salutation>
     </entries>
+    <entries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="person">
+        <addresses>
+            <addressText>test</addressText>
+            <type>Mobile</type>
+        </addresses>
+        <name>tset</name>
+        <prename>stset</prename>
+        <salutation>Herr</salutation>
+    </entries>
+    <entries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="person">
+        <addresses>
+            <addressText>sdfgsdf</addressText>
+            <type>Mobile</type>
+        </addresses>
+        <name>gfsdfg</name>
+        <prename>sdfgsdf</prename>
+        <salutation>Herr</salutation>
+    </entries>
 </Contacts>
