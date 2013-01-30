@@ -111,7 +111,6 @@ public class PanelAddComponent extends JPanel implements ActionListener {
 		btnSave.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mousePressed(MouseEvent arg0) {
-				app.setVisible(false);
 				Address ad = new Address();
 				if ((jtfCName.getText() == null)
 						|| "".equals(jtfCName.getText().trim())
@@ -152,6 +151,7 @@ public class PanelAddComponent extends JPanel implements ActionListener {
 						comp = new Component();
 						a = new Address();
 						cPAC = new Contacts();
+						app.setVisible(false);
 						frame.setVisible(false);
 						App app = new App();
 						app.loadContactPanel();

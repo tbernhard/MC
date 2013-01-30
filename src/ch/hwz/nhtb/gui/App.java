@@ -1,7 +1,6 @@
 package ch.hwz.nhtb.gui;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.Component;
 import java.awt.Container;
 import java.awt.Dimension;
@@ -27,9 +26,10 @@ public class App {
 
 	private JFrame frame;
 	private JPanel panel = new JPanel();
-
+	private JMenuBar menuBar;
+	
 	/**
-	 * Launch the application.
+	 * Starten der Applikation
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -46,38 +46,38 @@ public class App {
 	}
 
 	/**
-	 * Create the application.
+	 * Erstellen der Applikation.
 	 */
 	public App() {
 		initialize();
 	}
 
 	/**
-	 * Initialize the contents of the frame.
+	 * Inhalt des Frames initialisieren 
 	 */
 	private void initialize() {
-		// Create and set up the window.
+		// Erstellen und definieren des Frames
 		frame = new JFrame("MultiChannel");
 		frame.setSize(390, 280);
 		frame.setResizable(false);
-		// Set the frame in the center of the monitor
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		// Frame in der Mitte des Monitors setzen
 		Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
 		frame.setLocation(dim.width / 2 - frame.getSize().width / 2, dim.height
 				/ 2 - frame.getSize().height / 2);
-
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		panel.setBackground(Color.WHITE);
-
-		JMenuBar menuBar = new JMenuBar();
+		
+		// JMenuBar erstellen
+		menuBar = new JMenuBar();
 		menuBar.setLayout(new BoxLayout(menuBar, BoxLayout.PAGE_AXIS));
 
-		// Create menu Nachrichten
+		// Menu Nachrichten erstellen  
 		JMenu hmNach = new JMenu("Nachrichten");
 		hmNach.setLayout(new BoxLayout(hmNach, BoxLayout.LINE_AXIS));
 		hmNach.setMinimumSize(hmNach.getPreferredSize());
 		hmNach.setMaximumSize(hmNach.getPreferredSize());
 		
-		// SMS
+		// Untermenu SMS
 		JMenuItem jmiSMS = new JMenuItem("SMS");
 		jmiSMS.setAlignmentX(Component.LEFT_ALIGNMENT);
 		jmiSMS.addMouseListener(new MouseAdapter() {
@@ -91,7 +91,7 @@ public class App {
 		});
 		hmNach.add(jmiSMS);
 		
-		// MMS
+		// Untermenu MMS
 		JMenuItem jmiMMS = new JMenuItem("MMS");
 		jmiMMS.addMouseListener(new MouseAdapter() {
 			@Override
@@ -104,7 +104,7 @@ public class App {
 		});
 		hmNach.add(jmiMMS);
 		
-		// EMail
+		// Untermenu EMail
 		JMenuItem jmiEmail = new JMenuItem("E-Mail");
 		jmiEmail.addMouseListener(new MouseAdapter() {
 			@Override
@@ -117,7 +117,7 @@ public class App {
 		});
 		hmNach.add(jmiEmail);
 		
-		// Print
+		// Untermenu Print
 		JMenuItem jmiPrint = new JMenuItem("Print");
 		jmiPrint.addMouseListener(new MouseAdapter() {
 			@Override
@@ -131,7 +131,7 @@ public class App {
 		hmNach.add(jmiPrint);
 		menuBar.add(hmNach);
 
-		// Create menu Kontakte
+		// Menu Kontakte erstellen
 		JMenu jmKVer = new JMenu("  Kontakte  ");
 		jmKVer.setLayout(new BoxLayout(jmKVer, BoxLayout.LINE_AXIS));
 		jmKVer.setMinimumSize(jmKVer.getPreferredSize());
@@ -144,7 +144,7 @@ public class App {
 		});
 		menuBar.add(jmKVer);
 
-		// Create and set up the content pane.
+		// ContentPane aufsetzen und erstellen
 		Container contentPane = frame.getContentPane();
 		contentPane.add(menuBar, BorderLayout.LINE_START);
 	}

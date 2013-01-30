@@ -1,6 +1,5 @@
 package ch.hwz.nhtb;
 
-
 public class Email extends Message {
 	private String subject;
 
@@ -12,29 +11,38 @@ public class Email extends Message {
 		this.subject = subject;
 	}
 
+	
+	/**
+	 * Email Inhalt validieren
+	 */
 	public boolean validate() {
-//		Zum testen wie gross der Nachrichtentext und der Anhang ist.
-//		System.out.println("Grösse der MMS Nachricht ist: " + this.getMessage().length() + " Byte.");
 		boolean b = false;
 		System.out.println("Validiere Email: ");
 		try {
 			long size = this.getMessage().length();
 			if (size > 5242880) {
-				System.out.println("Validierung NOK: Grösse von 5MB Anhang überschritten.");
+				System.out
+						.println("Validierung NOK: Grösse von 5MB Anhang überschritten.");
 			} else {
-				b=!b;
+				b = !b;
 				System.out.println("Validierung OK");
 			}
 		} catch (Throwable t) {
-			System.out.println("Email Null Pointer Exception. Keine Nachricht übergeben");
+			System.out
+					.println("Email Null Pointer Exception. Keine Nachricht übergeben");
 		}
 		return b;
 
 	}
 
+	/**
+	 * Email Inhalt validieren
+	 */
 	@Override
 	public void print() {
-		System.out.println("MMS wurde gesendet. \nAn Empfänger: " + this.getRecipient() + "\nBetreff:" + this.getSubject() + "\nNachrichtentext:" + this.getMessage());
+		System.out.println("Email wurde gesendet. \nAn Empfänger: "
+				+ this.getRecipient() + "\nBetreff:" + this.getSubject()
+				+ "\nNachrichtentext:" + this.getMessage());
 
 	}
 

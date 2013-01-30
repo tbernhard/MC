@@ -172,7 +172,6 @@ public class PanelAddPerson extends JPanel implements ActionListener {
 		btnSave.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mousePressed(MouseEvent arg0) {
-				app.setVisible(false);
 				Address ad = new Address();
 				if ((jtfPPn.getText() == null)
 						|| "".equals(jtfPPn.getText().trim())
@@ -184,6 +183,7 @@ public class PanelAddPerson extends JPanel implements ActionListener {
 					doLayout();
 				} else if (((jtfAdd.getText() == null) || "".equals(jtfAdd
 						.getText().trim())) && b) {
+					app.setVisible(false);
 					p.setPrename(jtfPPn.getText());
 					p.setName(jtfPName.getText());
 					p.setSalutation(jcbSal.getSelectedItem().toString());
@@ -212,6 +212,7 @@ public class PanelAddPerson extends JPanel implements ActionListener {
 				} else {
 					if (ad.validate((AddressType) jcbAddress.getSelectedItem(),
 							jtfAdd.getText())) {
+						app.setVisible(false);
 						p.setPrename(jtfPPn.getText());
 						p.setName(jtfPName.getText());
 						p.setSalutation(jcbSal.getSelectedItem().toString());
