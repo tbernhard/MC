@@ -40,8 +40,6 @@ public class PanelAddComponent extends JPanel implements ActionListener {
 	private JTextField jtfAdd;
 	private JButton btnSave;
 
-	private boolean b = false;
-
 	private Contacts cPAC = new Contacts();
 	private Component comp = new Component();
 	private Address a = new Address();
@@ -61,34 +59,33 @@ public class PanelAddComponent extends JPanel implements ActionListener {
 		this.app = app;
 		cPAC = c;
 
-		setLayout(new FormLayout(new ColumnSpec[] {
-				FormFactory.DEFAULT_COLSPEC,
-				FormFactory.RELATED_GAP_COLSPEC,
-				ColumnSpec.decode("50dlu"),
-				FormFactory.RELATED_GAP_COLSPEC,
-				ColumnSpec.decode("max(32dlu;default)"),
-				ColumnSpec.decode("20dlu"),
-				ColumnSpec.decode("max(13dlu;default)"),
-				ColumnSpec.decode("max(14dlu;default)"),
-				FormFactory.RELATED_GAP_COLSPEC,
-				FormFactory.DEFAULT_COLSPEC,},
-			new RowSpec[] {
-				RowSpec.decode("max(24dlu;default)"),
-				FormFactory.DEFAULT_ROWSPEC,
-				FormFactory.RELATED_GAP_ROWSPEC,
-				FormFactory.DEFAULT_ROWSPEC,
-				FormFactory.RELATED_GAP_ROWSPEC,
-				RowSpec.decode("16dlu"),
-				FormFactory.RELATED_GAP_ROWSPEC,
-				FormFactory.DEFAULT_ROWSPEC,
-				FormFactory.RELATED_GAP_ROWSPEC,
-				FormFactory.DEFAULT_ROWSPEC,
-				FormFactory.RELATED_GAP_ROWSPEC,
-				FormFactory.DEFAULT_ROWSPEC,
-				FormFactory.RELATED_GAP_ROWSPEC,
-				FormFactory.DEFAULT_ROWSPEC,
-				FormFactory.RELATED_GAP_ROWSPEC,
-				FormFactory.DEFAULT_ROWSPEC,}));
+		setLayout(new FormLayout(
+				new ColumnSpec[] { FormFactory.DEFAULT_COLSPEC,
+						FormFactory.RELATED_GAP_COLSPEC,
+						ColumnSpec.decode("50dlu"),
+						FormFactory.RELATED_GAP_COLSPEC,
+						ColumnSpec.decode("max(32dlu;default)"),
+						ColumnSpec.decode("20dlu"),
+						ColumnSpec.decode("max(13dlu;default)"),
+						ColumnSpec.decode("max(14dlu;default)"),
+						FormFactory.RELATED_GAP_COLSPEC,
+						FormFactory.DEFAULT_COLSPEC, }, new RowSpec[] {
+						RowSpec.decode("max(24dlu;default)"),
+						FormFactory.DEFAULT_ROWSPEC,
+						FormFactory.RELATED_GAP_ROWSPEC,
+						FormFactory.DEFAULT_ROWSPEC,
+						FormFactory.RELATED_GAP_ROWSPEC,
+						RowSpec.decode("16dlu"),
+						FormFactory.RELATED_GAP_ROWSPEC,
+						FormFactory.DEFAULT_ROWSPEC,
+						FormFactory.RELATED_GAP_ROWSPEC,
+						FormFactory.DEFAULT_ROWSPEC,
+						FormFactory.RELATED_GAP_ROWSPEC,
+						FormFactory.DEFAULT_ROWSPEC,
+						FormFactory.RELATED_GAP_ROWSPEC,
+						FormFactory.DEFAULT_ROWSPEC,
+						FormFactory.RELATED_GAP_ROWSPEC,
+						FormFactory.DEFAULT_ROWSPEC, }));
 
 		lblLoc = new JLabel("Standort");
 		add(lblLoc, "3, 2, left, default");
@@ -115,6 +112,7 @@ public class PanelAddComponent extends JPanel implements ActionListener {
 			@Override
 			public void mousePressed(MouseEvent arg0) {
 				app.setVisible(false);
+				Address ad = new Address();
 				if ((jtfCName.getText() == null)
 						|| "".equals(jtfCName.getText().trim())
 						|| (jtfLoc.getText() == null)
@@ -124,56 +122,46 @@ public class PanelAddComponent extends JPanel implements ActionListener {
 							JOptionPane.WARNING_MESSAGE);
 					doLayout();
 				} else if (((jtfAdd.getText() == null) || "".equals(jtfAdd
-						.getText().trim())) || b) {
-					comp.setName(jtfCName.getText());
-					comp.setLocation(jtfLoc.getText());
-				
-					cPAC.add(comp);
-
-					try {
-						serializer.writeContacts(cPAC, contactsFile);
-					} catch (JAXBException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-
-					JOptionPane.showMessageDialog(new JFrame(), comp.getName()
-							+ " wurde erfolgreich zu den Kontakten hinzugefügt");
-
-					comp = new Component();
-					a = new Address();
-					cPAC = new Contacts();
-					frame.setVisible(false);
-					App app = new App();
-					app.loadContactPanel();
+						.getText().trim()))) {
+					JOptionPane.showMessageDialog(new JFrame(),
+							"Bitte IP Adresse eingeben.", "Achtung",
+							JOptionPane.WARNING_MESSAGE);
+					doLayout();
 				} else {
-					comp.setName(jtfCName.getText());
-					comp.setLocation(jtfLoc.getText());
-					a.setType(AddressType.IP);
-					a.setAddressText(jtfAdd.getText());
-					comp.add(a);
+					if (ad.validate(AddressType.IP, jtfAdd.getText())) {
+						comp.setName(jtfCName.getText());
+						comp.setLocation(jtfLoc.getText());
+						a.setType(AddressType.IP);
+						a.setAddressText(jtfAdd.getText());
+						comp.add(a);
 
-					cPAC.add(comp);
+						cPAC.add(comp);
 
-					try {
-						serializer.writeContacts(cPAC, contactsFile);
-					} catch (JAXBException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
+						try {
+							serializer.writeContacts(cPAC, contactsFile);
+						} catch (JAXBException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+
+						JOptionPane.showMessageDialog(
+								new JFrame(),
+								comp.getName()
+										+ " wurde erfolgreich zu den Kontakten hinzugefügt");
+
+						comp = new Component();
+						a = new Address();
+						cPAC = new Contacts();
+						frame.setVisible(false);
+						App app = new App();
+						app.loadContactPanel();
+
+					} else {
+						JOptionPane.showMessageDialog(new JFrame(),
+								"Ungültige " + AddressType.IP + " Adresse");
+						jtfAdd.setBackground(Color.RED);
 					}
-
-					JOptionPane.showMessageDialog(new JFrame(), comp.getName()
-							+ " wurde erfolgreich zu den Kontakten hinzugefügt");
-
-					comp = new Component();
-					a = new Address();
-					cPAC = new Contacts();
-					frame.setVisible(false);
-					App app = new App();
-					app.loadContactPanel();
-
 				}
-
 			}
 		});
 

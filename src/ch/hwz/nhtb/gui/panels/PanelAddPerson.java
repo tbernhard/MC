@@ -183,7 +183,7 @@ public class PanelAddPerson extends JPanel implements ActionListener {
 							JOptionPane.WARNING_MESSAGE);
 					doLayout();
 				} else if (((jtfAdd.getText() == null) || "".equals(jtfAdd
-						.getText().trim())) || b) {
+						.getText().trim())) && b) {
 					p.setPrename(jtfPPn.getText());
 					p.setName(jtfPName.getText());
 					p.setSalutation(jcbSal.getSelectedItem().toString());

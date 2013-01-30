@@ -60,12 +60,17 @@
         <name>Nur IP</name>
         <location>Testcomponente 1</location>
     </entries>
-    <entries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="component">
+    <entries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="person">
         <addresses>
-            <addressText>componente@drucker.ch</addressText>
+            <addressText>test@test.ch</addressText>
             <type>EMail</type>
         </addresses>
-        <name>Nur Email TC2</name>
-        <location>Testcomponente 2</location>
+        <addresses>
+            <addressText>0794433223</addressText>
+            <type>Mobile</type>
+        </addresses>
+        <name>dsa</name>
+        <prename>asdf</prename>
+        <salutation>Herr</salutation>
     </entries>
 </Contacts>
