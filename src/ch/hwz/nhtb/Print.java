@@ -3,13 +3,9 @@ package ch.hwz.nhtb;
 public class Print extends Message {
 
 	public boolean validate() {
+		boolean b = false;
+		
 		return true;
-	}
-
-	public void log() {
-	}
-
-	public void archive() {
 	}
 
 	@Override

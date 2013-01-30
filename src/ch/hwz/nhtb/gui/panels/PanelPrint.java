@@ -6,7 +6,9 @@ import java.io.File;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
@@ -27,19 +29,20 @@ import com.jgoodies.forms.layout.ColumnSpec;
 import com.jgoodies.forms.layout.FormLayout;
 import com.jgoodies.forms.layout.RowSpec;
 
-public class PanelPrint extends JPanel{
+public class PanelPrint extends JPanel {
 	private JButton btnSend;
 	private JComboBox jcbEntry;
 	private JComboBox jcbAddress = new JComboBox();
 	private JTextPane textPane;
+	private JScrollPane jsp;
 	private JLabel lblText;
 	private JLabel lblCKind;
+	private JLabel lblPanel;
 
 	private JTextField textField;
 	private FileHandler serializer;
 	private File contactsFile;
 	private final Contacts c;
-	private JScrollPane jsp;
 
 	/**
 	 * Create the panel.
@@ -56,6 +59,8 @@ public class PanelPrint extends JPanel{
 				FormFactory.RELATED_GAP_COLSPEC, ColumnSpec.decode("90dlu"),
 				FormFactory.DEFAULT_COLSPEC, FormFactory.DEFAULT_COLSPEC, },
 				new RowSpec[] { FormFactory.RELATED_GAP_ROWSPEC,
+						FormFactory.DEFAULT_ROWSPEC,
+						FormFactory.RELATED_GAP_ROWSPEC,
 						RowSpec.decode("14dlu"), RowSpec.decode("14dlu"),
 						FormFactory.RELATED_GAP_ROWSPEC,
 						RowSpec.decode("60dlu"),
@@ -64,11 +69,14 @@ public class PanelPrint extends JPanel{
 						FormFactory.RELATED_GAP_ROWSPEC,
 						FormFactory.DEFAULT_ROWSPEC, }));
 
+		lblPanel = new JLabel("Print");
+		add(lblPanel, "3, 2, 4, 1");
+
 		lblCKind = new JLabel("Empf\u00E4nger");
-		add(lblCKind, "3, 2, left, default");
+		add(lblCKind, "3, 4, left, default");
 
 		jcbEntry = new JComboBox(c.getContact(AddressType.IP));
-		add(jcbEntry, "5, 2, fill, default");
+		add(jcbEntry, "5, 4, fill, default");
 		jcbEntry.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				remove(jcbAddress);
@@ -78,29 +86,29 @@ public class PanelPrint extends JPanel{
 				doLayout();
 				jcbAddress.doLayout();
 
-//				System.out.println();
-//				for (int i = 0; i < c.getAddressOnIndex(jcbEntry
-//						.getSelectedIndex()).length; i++) {
-//					System.out.println(c.getAddressOnIndex(jcbEntry
-//							.getSelectedIndex())[i]);
-//				}
-//				System.out.println();
+				// System.out.println();
+				// for (int i = 0; i < c.getAddressOnIndex(jcbEntry
+				// .getSelectedIndex()).length; i++) {
+				// System.out.println(c.getAddressOnIndex(jcbEntry
+				// .getSelectedIndex())[i]);
+				// }
+				// System.out.println();
 			}
 		});
 
 		jcbAddress = new JComboBox(c.getAddressOnIndex(jcbEntry
 				.getSelectedItem().toString(), AddressType.IP));
-		add(jcbAddress, "5, 3, fill, default");
+		add(jcbAddress, "5, 5, fill, default");
 
 		lblText = new JLabel("Text");
-		add(lblText, "3, 5");
+		add(lblText, "3, 7");
 
 		textPane = new JTextPane();
 		jsp = new JScrollPane(textPane);
-		add(jsp, "5, 5, fill, fill");
+		add(jsp, "5, 7, fill, fill");
 
 		btnSend = new JButton("Send");
-		add(btnSend, "5, 7, right, default");
+		add(btnSend, "5, 9, right, default");
 		btnSend.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				jcbEntry.getSelectedItem().toString();
@@ -109,14 +117,14 @@ public class PanelPrint extends JPanel{
 						c.search(jcbEntry.getSelectedItem().toString()));
 				if (e.isPerson()) {
 					e = new Person();
-					e = e.createEntry(jcbEntry.getSelectedItem().toString(), jcbAddress
-						.getSelectedItem().toString());
-				}else{
+					e = e.createEntry(jcbEntry.getSelectedItem().toString(),
+							jcbAddress.getSelectedItem().toString());
+				} else {
 					e = new Component();
-					e = e.createEntry(jcbEntry.getSelectedItem().toString(), jcbAddress
-						.getSelectedItem().toString());
+					e = e.createEntry(jcbEntry.getSelectedItem().toString(),
+							jcbAddress.getSelectedItem().toString());
 				}
-				
+
 				Print p = new Print();
 				p.setMessage(textPane.getText());
 
@@ -124,6 +132,10 @@ public class PanelPrint extends JPanel{
 				if (p.validate()) {
 					Message m = new Print();
 					m.send(p);
+					JOptionPane.showMessageDialog(new JFrame(),
+							"Print wurde erfolgreich versendet", "Info",
+							JOptionPane.INFORMATION_MESSAGE);
+					textPane.setText("");
 				}
 			}
 		});

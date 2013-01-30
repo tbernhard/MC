@@ -1,6 +1,5 @@
 package ch.hwz.nhtb;
 
-import ch.hwz.nhtb.contacts.AddressType;
 
 public class SMS extends Message {
 
