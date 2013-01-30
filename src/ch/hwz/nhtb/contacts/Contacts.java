@@ -20,6 +20,7 @@ public class Contacts {
 	private static File contactsFile;
 	private String XMLLocation;
 	private static FileHandler serializer;
+	private Contacts c;
 
 	public LinkedList<Entry> getEntries() {
 		return entries;
@@ -118,7 +119,7 @@ public class Contacts {
 		}
 		return -1;
 	}
-
+	
 	public String[] getAddressOnIndex(int index) {
 		String[] add = new String[this.entries.get(index).getAddresses().size()];
 		for (int i = 0; i < this.entries.get(index).getAddresses().size(); i++) {
@@ -293,16 +294,16 @@ public class Contacts {
 		for (int i = 0; i < this.entries.size(); i++) {
 			this.entries.get(i).print();
 		}
-	}
+	}	
 
 	public Contacts() {
 
 	}
-
+	
 	public static void main(String[] args) {
-		serializer = new FileHandler();
-		Contacts c = serializer.getContactsFromXML();
-		contactsFile = serializer.getFile();
+//		serializer = new FileHandler();
+//		Contacts c = serializer.getContactsFromXML();
+//		contactsFile = serializer.getFile();
 
 //		for (int i = 0; i < c.getAddressOnIndex("Testname 3", AddressType.Mobile).length; i++) {
 //			System.out.println(c.getAddressOnIndex("Testname 3", AddressType.Mobile)[i]);

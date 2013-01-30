@@ -17,8 +17,13 @@ import javax.swing.JTextField;
 import javax.swing.JTextPane;
 
 import ch.hwz.nhtb.MMS;
+import ch.hwz.nhtb.Message;
+import ch.hwz.nhtb.SMS;
 import ch.hwz.nhtb.contacts.AddressType;
+import ch.hwz.nhtb.contacts.Component;
 import ch.hwz.nhtb.contacts.Contacts;
+import ch.hwz.nhtb.contacts.Entry;
+import ch.hwz.nhtb.contacts.Person;
 import ch.hwz.nhtb.filehendler.FileHandler;
 
 import com.jgoodies.forms.factories.FormFactory;
@@ -26,7 +31,7 @@ import com.jgoodies.forms.layout.ColumnSpec;
 import com.jgoodies.forms.layout.FormLayout;
 import com.jgoodies.forms.layout.RowSpec;
 
-public class PanelMMS extends JPanel{
+public class PanelMMS extends JPanel {
 	private JButton btnSend;
 	private JComboBox jcbEntry;
 	private JComboBox jcbAddress = new JComboBox();
@@ -71,20 +76,21 @@ public class PanelMMS extends JPanel{
 			public void actionPerformed(ActionEvent arg0) {
 				remove(jcbAddress);
 				jcbAddress = new JComboBox(c.getAddressOnIndex(jcbEntry
-						.getSelectedItem().toString(), AddressType.getEmailMMSAddT()));
-				System.out.println("GetSelectedIndex JCB: "+ jcbEntry
-						.getSelectedIndex());
+						.getSelectedItem().toString(), AddressType
+						.getEmailMMSAddT()));
+				System.out.println("GetSelectedIndex JCB: "
+						+ jcbEntry.getSelectedIndex());
 				add(jcbAddress, "5, 3, fill, default");
 				doLayout();
 				jcbAddress.doLayout();
 
-//				System.out.println();
-//				for (int i = 0; i < c.getAddressOnIndex(jcbEntry
-//						.getSelectedIndex()).length; i++) {
-//					System.out.println(c.getAddressOnIndex(jcbEntry
-//							.getSelectedIndex())[i]);
-//				}
-//				System.out.println();
+				// System.out.println();
+				// for (int i = 0; i < c.getAddressOnIndex(jcbEntry
+				// .getSelectedIndex()).length; i++) {
+				// System.out.println(c.getAddressOnIndex(jcbEntry
+				// .getSelectedIndex())[i]);
+				// }
+				// System.out.println();
 			}
 		});
 
@@ -103,15 +109,29 @@ public class PanelMMS extends JPanel{
 		add(btnSend, "5, 7, right, default");
 		btnSend.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				System.out.println("MMS mit dem Inhalt: ");
-				System.out.println(textPane.getText());
-				System.out.println(" an : ");
-				System.out.println(jcbEntry.getSelectedItem().toString());
-				System.out.println(" verschickt...");
+				jcbEntry.getSelectedItem().toString();
+				jcbAddress.getSelectedItem().toString();
+				Entry e = c.getEntries().get(
+						c.search(jcbEntry.getSelectedItem().toString()));
+				if (e.isPerson()) {
+					e = new Person();
+					e = e.createEntry(jcbEntry.getSelectedItem().toString(),
+							jcbAddress.getSelectedItem().toString());
+				} else {
+					e = new Component();
+					e = e.createEntry(jcbEntry.getSelectedItem().toString(),
+							jcbAddress.getSelectedItem().toString());
+				}
 
 				MMS mms = new MMS();
 				mms.setMessage(textPane.getText());
-				System.out.println(mms.getMessage());
+				mms.setRecipient(e);
+				if (mms.validate()) {
+					Message m = new MMS();
+					m.send(mms);
+				}
+
+
 			}
 		});
 

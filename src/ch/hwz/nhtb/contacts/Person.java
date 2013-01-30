@@ -13,10 +13,9 @@ public class Person extends Entry {
 		this.salutation = "Salutation";
 	}	
 	
-	public Person(String name, String prename, String salutation) {
+	public Person(String name, String prename) {
 		super.name = name;
 		this.prename = prename;
-		this.salutation = salutation;
 	}	
 	
 	public String getPrename() {

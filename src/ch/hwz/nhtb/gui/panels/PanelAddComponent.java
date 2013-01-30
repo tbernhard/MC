@@ -34,6 +34,7 @@ public class PanelAddComponent extends JPanel implements ActionListener {
 	private JFrame app;
 	private JLabel lblLoc;
 	private JLabel lblName;
+	private JLabel lblIP;
 	private JTextField jtfLoc;
 	private JTextField jtfCName;
 	private JTextField jtfAdd;
@@ -103,14 +104,16 @@ public class PanelAddComponent extends JPanel implements ActionListener {
 		jtfCName = new JTextField();
 		add(jtfCName, "5, 4, 3, 1, fill, default");
 
-		jcbAddress = new JComboBox(AddressType.getCompAddT());
-		add(jcbAddress, "3, 6, left, default");
+//		jcbAddress = new JComboBox(AddressType.IP);
+		lblIP = new JLabel(AddressType.IP.toString());
+		add(lblIP, "3, 6, left, default");
 
 		jtfAdd = new JTextField();
 		add(jtfAdd, "5, 6, 3, 1, fill, default");
 
 		btnAdd = new JButton("Add");
 		add(btnAdd, "10, 6, fill, center");
+		btnAdd.setVisible(false);
 		btnAdd.addMouseListener(new MouseAdapter() {
 			@SuppressWarnings({ "deprecation" })
 			@Override
