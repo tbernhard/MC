@@ -71,7 +71,7 @@ public class PanelSMS extends JPanel implements ActionListener {
 		lblPanel = new JLabel("SMS");
 		add(lblPanel, "3, 2, 4, 1");
 
-		lblCKind = new JLabel("Empf\u00E4nger");
+		lblCKind = new JLabel("Empfänger");
 		add(lblCKind, "3, 4, left, default");
 
 		jcbEntry = new JComboBox(c.getContact(AddressType.Mobile));
@@ -145,7 +145,7 @@ public class PanelSMS extends JPanel implements ActionListener {
 		jsp = new JScrollPane(textPane);
 		add(jsp, "5, 7, fill, fill");
 
-		btnSend = new JButton("Send");
+		btnSend = new JButton("Senden");
 		add(btnSend, "5, 9, right, default");
 
 		btnSend.addActionListener(new ActionListener() {

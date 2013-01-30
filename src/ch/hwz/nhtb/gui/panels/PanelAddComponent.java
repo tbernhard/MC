@@ -40,7 +40,6 @@ public class PanelAddComponent extends JPanel implements ActionListener {
 	private JTextField jtfAdd;
 	private JComboBox jcbAddress;
 	private JButton btnSave;
-	private JButton btnAdd;
 
 	private boolean b = false;
 
@@ -63,35 +62,36 @@ public class PanelAddComponent extends JPanel implements ActionListener {
 		this.app = app;
 		cPAC = c;
 
-		setLayout(new FormLayout(
-				new ColumnSpec[] { FormFactory.DEFAULT_COLSPEC,
-						FormFactory.RELATED_GAP_COLSPEC,
-						ColumnSpec.decode("50dlu"),
-						FormFactory.RELATED_GAP_COLSPEC,
-						ColumnSpec.decode("max(32dlu;default)"),
-						ColumnSpec.decode("20dlu"),
-						ColumnSpec.decode("max(13dlu;default)"),
-						ColumnSpec.decode("max(14dlu;default)"),
-						FormFactory.RELATED_GAP_COLSPEC,
-						FormFactory.DEFAULT_COLSPEC, }, new RowSpec[] {
-						RowSpec.decode("max(24dlu;default)"),
-						FormFactory.DEFAULT_ROWSPEC,
-						FormFactory.RELATED_GAP_ROWSPEC,
-						FormFactory.DEFAULT_ROWSPEC,
-						FormFactory.RELATED_GAP_ROWSPEC,
-						RowSpec.decode("default:grow"),
-						FormFactory.RELATED_GAP_ROWSPEC,
-						FormFactory.DEFAULT_ROWSPEC,
-						FormFactory.RELATED_GAP_ROWSPEC,
-						FormFactory.DEFAULT_ROWSPEC,
-						FormFactory.RELATED_GAP_ROWSPEC,
-						FormFactory.DEFAULT_ROWSPEC,
-						FormFactory.RELATED_GAP_ROWSPEC,
-						FormFactory.DEFAULT_ROWSPEC,
-						FormFactory.RELATED_GAP_ROWSPEC,
-						FormFactory.DEFAULT_ROWSPEC, }));
+		setLayout(new FormLayout(new ColumnSpec[] {
+				FormFactory.DEFAULT_COLSPEC,
+				FormFactory.RELATED_GAP_COLSPEC,
+				ColumnSpec.decode("50dlu"),
+				FormFactory.RELATED_GAP_COLSPEC,
+				ColumnSpec.decode("max(32dlu;default)"),
+				ColumnSpec.decode("20dlu"),
+				ColumnSpec.decode("max(13dlu;default)"),
+				ColumnSpec.decode("max(14dlu;default)"),
+				FormFactory.RELATED_GAP_COLSPEC,
+				FormFactory.DEFAULT_COLSPEC,},
+			new RowSpec[] {
+				RowSpec.decode("max(24dlu;default)"),
+				FormFactory.DEFAULT_ROWSPEC,
+				FormFactory.RELATED_GAP_ROWSPEC,
+				FormFactory.DEFAULT_ROWSPEC,
+				FormFactory.RELATED_GAP_ROWSPEC,
+				RowSpec.decode("16dlu"),
+				FormFactory.RELATED_GAP_ROWSPEC,
+				FormFactory.DEFAULT_ROWSPEC,
+				FormFactory.RELATED_GAP_ROWSPEC,
+				FormFactory.DEFAULT_ROWSPEC,
+				FormFactory.RELATED_GAP_ROWSPEC,
+				FormFactory.DEFAULT_ROWSPEC,
+				FormFactory.RELATED_GAP_ROWSPEC,
+				FormFactory.DEFAULT_ROWSPEC,
+				FormFactory.RELATED_GAP_ROWSPEC,
+				FormFactory.DEFAULT_ROWSPEC,}));
 
-		lblLoc = new JLabel("Location");
+		lblLoc = new JLabel("Standort");
 		add(lblLoc, "3, 2, left, default");
 
 		jtfLoc = new JTextField();
@@ -104,64 +104,13 @@ public class PanelAddComponent extends JPanel implements ActionListener {
 		jtfCName = new JTextField();
 		add(jtfCName, "5, 4, 3, 1, fill, default");
 
-//		jcbAddress = new JComboBox(AddressType.IP);
 		lblIP = new JLabel(AddressType.IP.toString());
 		add(lblIP, "3, 6, left, default");
 
 		jtfAdd = new JTextField();
 		add(jtfAdd, "5, 6, 3, 1, fill, default");
 
-		btnAdd = new JButton("Add");
-		add(btnAdd, "10, 6, fill, center");
-		btnAdd.setVisible(false);
-		btnAdd.addMouseListener(new MouseAdapter() {
-			@SuppressWarnings({ "deprecation" })
-			@Override
-			public void mousePressed(MouseEvent arg0) {
-				Address ad = new Address();
-
-				if ((jtfCName.getText() == null)
-						|| "".equals(jtfCName.getText().trim())
-						|| (jtfLoc.getText() == null)
-						|| "".equals(jtfLoc.getText().trim())) {
-					JOptionPane.showMessageDialog(new JFrame(),
-							"Bitte Location und Name angeben.", "Achtung",
-							JOptionPane.WARNING_MESSAGE);
-					doLayout();
-				} else {
-					comp.setName(jtfCName.getText());
-					comp.setLocation(jtfLoc.getText());
-
-					jtfLoc.disable();
-					jtfCName.disable();
-
-					if (ad.validate((AddressType) jcbAddress.getSelectedItem(),
-							jtfAdd.getText())) {
-						ad.setType((AddressType) jcbAddress.getSelectedItem());
-						ad.setAddressText(jtfAdd.getText());
-						comp.add(ad);
-						JOptionPane.showMessageDialog(new JFrame(),
-								ad.getType().toString()
-										+ " wurde erfolgreich zum Kontakt "
-										+ comp.getName() + " hinzugefügt.");
-						jtfAdd.setText("");
-						b = !b;
-					} else {
-						JOptionPane
-								.showMessageDialog(
-										new JFrame(),
-										"Ungültige "
-												+ (AddressType) jcbAddress
-														.getSelectedItem()
-												+ " Adresse");
-						jtfAdd.setBackground(Color.RED);
-					}
-				}
-
-			}
-		});
-
-		btnSave = new JButton("Save");
+		btnSave = new JButton("Speichern");
 		add(btnSave, "10, 8, fill, fill");
 		btnSave.addMouseListener(new MouseAdapter() {
 			@Override

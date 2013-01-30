@@ -91,7 +91,7 @@ public class PanelMMS extends JPanel {
 		lblPanel = new JLabel("MMS");
 		add(lblPanel, "3, 2, 4, 1");
 		
-		lblCKind = new JLabel("Empf\u00E4nger");
+		lblCKind = new JLabel("Empfänger");
 		add(lblCKind, "3, 4, left, default");
 
 		jcbEntry = new JComboBox(c.getContact(AddressType.getEmailMMSAddT()));
@@ -135,7 +135,7 @@ public class PanelMMS extends JPanel {
 		jsp = new JScrollPane(textPane);
 		add(jsp, "5, 9, fill, fill");
 
-		btnSend = new JButton("Send");
+		btnSend = new JButton("Senden");
 		add(btnSend, "5, 11, right, default");
 		btnSend.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {

@@ -94,13 +94,13 @@ public class PanelAddPerson extends JPanel implements ActionListener {
 		jcbSal = new JComboBox(Salutation.values());
 		add(jcbSal, "6, 2, 2, 1, left, default");
 
-		lblPPn = new JLabel("Vorname*");
+		lblPPn = new JLabel("Vorname");
 		add(lblPPn, "4, 6, 2, 1, left, default");
 
 		jtfPPn = new JTextField();
 		add(jtfPPn, "6, 6, 3, 1, fill, default");
 
-		lblName = new JLabel("Name*");
+		lblName = new JLabel("Name");
 		add(lblName, "4, 4, 2, 1, default, center");
 
 		jtfPName = new JTextField();
@@ -113,7 +113,7 @@ public class PanelAddPerson extends JPanel implements ActionListener {
 		jtfAdd = new JTextField();
 		add(jtfAdd, "6, 8, 3, 1, fill, default");
 
-		btnAdd = new JButton("Add");
+		btnAdd = new JButton("Erstellen");
 		add(btnAdd, "11, 8, fill, center");
 		btnAdd.addMouseListener(new MouseAdapter() {
 			@SuppressWarnings("deprecation")
@@ -167,7 +167,7 @@ public class PanelAddPerson extends JPanel implements ActionListener {
 			}
 		});
 
-		btnSave = new JButton("Save");
+		btnSave = new JButton("Speichern");
 		add(btnSave, "11, 10, fill, fill");
 		btnSave.addMouseListener(new MouseAdapter() {
 			@Override

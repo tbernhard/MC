@@ -62,7 +62,7 @@ public class PanelAddAddress extends JPanel implements ActionListener {
 		jtfAdd = new JTextField();
 		add(jtfAdd, "4, 2, 4, 1, fill, default");
 
-		btnAdd = new JButton("Add");
+		btnAdd = new JButton("Erstellen");
 		add(btnAdd, "10, 2, 2, 1, fill, center");
 		btnAdd.addMouseListener(new MouseAdapter() {
 			@Override

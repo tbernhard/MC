@@ -68,13 +68,4 @@
         <name>Nur Email TC2</name>
         <location>Testcomponente 2</location>
     </entries>
-    <entries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="person">
-        <addresses>
-            <addressText>0795554433</addressText>
-            <type>Mobile</type>
-        </addresses>
-        <name>test333</name>
-        <prename>test3333</prename>
-        <salutation>Herr</salutation>
-    </entries>
 </Contacts>
