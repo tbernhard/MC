@@ -132,9 +132,10 @@ public class PanelPrint extends JPanel {
 				if (p.validate()) {
 					Message m = new Print();
 					m.send(p);
-					JOptionPane.showMessageDialog(new JFrame(),
-							"Print wurde erfolgreich versendet", "Info",
-							JOptionPane.INFORMATION_MESSAGE);
+					JOptionPane
+							.showMessageDialog(new JFrame(),
+									"Print wurde erfolgreich versendet", "Info",
+									JOptionPane.INFORMATION_MESSAGE);
 					textPane.setText("");
 				}
 			}

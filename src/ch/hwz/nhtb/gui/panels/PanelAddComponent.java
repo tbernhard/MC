@@ -38,7 +38,6 @@ public class PanelAddComponent extends JPanel implements ActionListener {
 	private JTextField jtfLoc;
 	private JTextField jtfCName;
 	private JTextField jtfAdd;
-	private JComboBox jcbAddress;
 	private JButton btnSave;
 
 	private boolean b = false;
@@ -150,7 +149,7 @@ public class PanelAddComponent extends JPanel implements ActionListener {
 				} else {
 					comp.setName(jtfCName.getText());
 					comp.setLocation(jtfLoc.getText());
-					a.setType((AddressType) jcbAddress.getSelectedItem());
+					a.setType(AddressType.IP);
 					a.setAddressText(jtfAdd.getText());
 					comp.add(a);
 

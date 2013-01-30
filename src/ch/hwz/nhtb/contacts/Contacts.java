@@ -10,17 +10,16 @@ import javax.xml.bind.annotation.XmlSeeAlso;
 
 import ch.hwz.nhtb.filehendler.FileHandler;
 
-//TODO	Methode erstellen welche nur Kontakte zurückgibt welche zu den Sendearten (SMS,MMS,Email,PrintJob) passen.
 
 @XmlRootElement(name = "Contacts")
 @XmlSeeAlso({ Entry.class, Person.class, Component.class })
 public class Contacts {
 	private LinkedList<Entry> entries = new LinkedList<Entry>();
 
-	private static File contactsFile;
-	private String XMLLocation;
-	private static FileHandler serializer;
-	private Contacts c;
+//	private static File contactsFile;
+//	private String XMLLocation;
+//	private static FileHandler serializer;
+//	private Contacts c;
 
 	public LinkedList<Entry> getEntries() {
 		return entries;

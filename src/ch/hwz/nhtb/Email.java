@@ -16,7 +16,7 @@ public class Email extends Message {
 //		Zum testen wie gross der Nachrichtentext und der Anhang ist.
 //		System.out.println("Grösse der MMS Nachricht ist: " + this.getMessage().length() + " Byte.");
 		boolean b = false;
-		System.out.println("Validiere MMS: ");
+		System.out.println("Validiere Email: ");
 		try {
 			long size = this.getMessage().length();
 			if (size > 5242880) {
@@ -26,7 +26,7 @@ public class Email extends Message {
 				System.out.println("Validierung OK");
 			}
 		} catch (Throwable t) {
-			System.out.println("MMS Null Pointer Exception. Keine Nachricht übergeben");
+			System.out.println("Email Null Pointer Exception. Keine Nachricht übergeben");
 		}
 		return b;
 
