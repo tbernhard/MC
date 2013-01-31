@@ -10,7 +10,6 @@ import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
 
 import ch.hwz.nhtb.gui.panels.PanelAddComponent;
 import ch.hwz.nhtb.gui.panels.PanelAddPerson;
@@ -21,28 +20,30 @@ import com.jgoodies.forms.layout.FormLayout;
 import com.jgoodies.forms.layout.RowSpec;
 
 public class AddContacts extends JFrame implements ActionListener {
-	private JTextField textField;
+	private static final long serialVersionUID = 1L;
 	private JFrame frame = new JFrame();
 	private JFrame app = new JFrame();
 	private JPanel panel = new JPanel();
 	private JPanel subPanel = new JPanel();
 
 	/**
-	 * Create the panel.
+	 * Pannel erstellen
 	 */
 	public AddContacts(JFrame app) {
 		this.app = app;
-		// Create and set up the window.
+		// Erstellen und definieren des Frames
 		frame = new JFrame("MultiChannel - Kontakte hinzufügen");
 		frame.setSize(390, 220);
 		frame.setResizable(false);
-		// Set the frame in the center of the monitor
+		//Aktuelles Panel entfernen
+		frame.getContentPane().remove(panel);
+		
+		// Frame in der Mitte des Monitors setzen
 		Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
 		frame.setLocation(dim.width / 2 - frame.getSize().width / 2, dim.height
 				/ 2 - frame.getSize().height / 2);
 
-		frame.getContentPane().remove(panel);
-
+		//Panel Layout definieren ->forms-1.3.0.jar WindowBuilder (jgoodies)
 		panel.setLayout(new FormLayout(new ColumnSpec[] {
 				FormFactory.DEFAULT_COLSPEC,
 				FormFactory.RELATED_GAP_COLSPEC,
@@ -74,14 +75,13 @@ public class AddContacts extends JFrame implements ActionListener {
 				FormFactory.DEFAULT_ROWSPEC,
 				FormFactory.RELATED_GAP_ROWSPEC,
 				FormFactory.DEFAULT_ROWSPEC,}));
+		// Kontaktarten
 		String[] entryTypes = { "Person", "Komponente" };
-
-		// Kind of contact
 		JLabel lblCKind = new JLabel("Kontakt Art");
-
 		panel.add(lblCKind, "3, 2, left, default");
 		JComboBox jcbEntry = new JComboBox(entryTypes);
 		panel.add(jcbEntry, "5, 2, right, default");
+		// Aktion an das Dropdown Feld anhängen
 		jcbEntry.addActionListener(this);
 
 		subPanel = new PanelAddPerson(frame, app);
@@ -92,6 +92,10 @@ public class AddContacts extends JFrame implements ActionListener {
 		frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 	}
 
+	/**
+	 * Je nach auswhal im Dropdown feld wird ein neues Panel geladen.
+	 * PanelAddPerson oder PanelAddComponent
+	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		JComboBox jcbEntry = (JComboBox) e.getSource();

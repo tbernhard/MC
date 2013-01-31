@@ -2,8 +2,6 @@ package ch.hwz.nhtb.gui.panels;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.File;
@@ -30,7 +28,7 @@ import com.jgoodies.forms.layout.ColumnSpec;
 import com.jgoodies.forms.layout.FormLayout;
 import com.jgoodies.forms.layout.RowSpec;
 
-public class PanelAddPerson extends JPanel implements ActionListener {
+public class PanelAddPerson extends JPanel {
 	private static final long serialVersionUID = 1L;
 	private JFrame frame;
 	private JFrame app;
@@ -55,7 +53,7 @@ public class PanelAddPerson extends JPanel implements ActionListener {
 	private FileHandler serializer;
 
 	/**
-	 * Create the panel.
+	 * Pannel erstellen
 	 */
 	public PanelAddPerson(final JFrame frame, final JFrame app) {
 		serializer = new FileHandler();
@@ -63,9 +61,10 @@ public class PanelAddPerson extends JPanel implements ActionListener {
 		contactsFile = serializer.getFile();
 
 		this.setFrame(frame);
-		this.app = app;
+		this.setApp(app);
 		cPAP = c;
 
+		// Panel Layout definieren ->forms-1.3.0.jar WindowBuilder (jgoodies)
 		setLayout(new FormLayout(new ColumnSpec[] {
 				FormFactory.DEFAULT_COLSPEC, FormFactory.RELATED_GAP_COLSPEC,
 				ColumnSpec.decode("default:grow"),
@@ -115,12 +114,17 @@ public class PanelAddPerson extends JPanel implements ActionListener {
 
 		btnAdd = new JButton("Erstellen");
 		add(btnAdd, "11, 8, fill, center");
+		// Aktion an den Erstellen Button anhängen
 		btnAdd.addMouseListener(new MouseAdapter() {
+			/**
+			 * Adressen werden der Kontaktart Person per Mausklick hinzugefügt
+			 * Dazu muss aber eine Person angegeben werden
+			 */
 			@SuppressWarnings("deprecation")
 			@Override
 			public void mousePressed(MouseEvent arg0) {
 				Address ad = new Address();
-
+				// Leertexte vermeinden bei Vorname und Name
 				if ((jtfPPn.getText() == null)
 						|| "".equals(jtfPPn.getText().trim())
 						|| (jtfPName.getText() == null)
@@ -131,16 +135,19 @@ public class PanelAddPerson extends JPanel implements ActionListener {
 					lblName.setBackground(Color.red);
 					doLayout();
 				} else {
+					// Keine Leertexte - Adresse validieren
 					p.setPrename(jtfPPn.getText());
 					p.setName(jtfPName.getText());
 					p.setSalutation(jcbSal.getSelectedItem().toString());
 
+					// Deaktivieren der bereits eingetragenen Angaben zur Person
 					jtfPPn.disable();
 					jtfPName.disable();
 					jcbSal.disable();
 
 					if (ad.validate((AddressType) jcbAddress.getSelectedItem(),
 							jtfAdd.getText())) {
+						// Validierung erfolgreich - Kontakt speichern
 						ad.setType((AddressType) jcbAddress.getSelectedItem());
 						ad.setAddressText(jtfAdd.getText());
 						p.add(ad);
@@ -151,6 +158,7 @@ public class PanelAddPerson extends JPanel implements ActionListener {
 										+ p.getSalutation() + " " + p.getName()
 										+ " hinzugefügt.");
 						jtfAdd.setText("");
+						// Min. eine Adresse wurde gespeichert
 						b = !b;
 					} else {
 						JOptionPane
@@ -169,10 +177,16 @@ public class PanelAddPerson extends JPanel implements ActionListener {
 
 		btnSave = new JButton("Speichern");
 		add(btnSave, "11, 10, fill, fill");
+		// Aktion an den Speichern Button anhängen
 		btnSave.addMouseListener(new MouseAdapter() {
+			/**
+			 * Kontaktart Person wird per Mausklick gespeichert -> in die XML
+			 * geschrieben
+			 */
 			@Override
 			public void mousePressed(MouseEvent arg0) {
 				Address ad = new Address();
+				// Leertexte vermeinden bei Vorname und Name
 				if ((jtfPPn.getText() == null)
 						|| "".equals(jtfPPn.getText().trim())
 						|| (jtfPName.getText() == null)
@@ -181,21 +195,23 @@ public class PanelAddPerson extends JPanel implements ActionListener {
 							"Bitte Name und Vorname angeben.", "Achtung",
 							JOptionPane.WARNING_MESSAGE);
 					doLayout();
+					// Sollte bereits eine Adresse gespeichert sein ist b = true
+					// - Die Person kann ohne weitere Adresse gespeichert werden
 				} else if (((jtfAdd.getText() == null) || "".equals(jtfAdd
 						.getText().trim())) && b) {
+					//Vorheriges Fenster schliessen
 					app.setVisible(false);
 					p.setPrename(jtfPPn.getText());
 					p.setName(jtfPName.getText());
 					p.setSalutation(jcbSal.getSelectedItem().toString());
 
 					cPAP.add(p);
+					// Person in XML schreiben
 					try {
 						serializer.writeContacts(cPAP, contactsFile);
 					} catch (JAXBException e) {
-						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
-
 					JOptionPane.showMessageDialog(
 							new JFrame(),
 							p.getSalutation()
@@ -206,12 +222,16 @@ public class PanelAddPerson extends JPanel implements ActionListener {
 					p = new Person();
 					a = new Address();
 					cPAP = new Contacts();
+					
+					//Aktualisieren der Anzeige
 					frame.setVisible(false);
 					App app = new App();
 					app.loadContactPanel();
 				} else {
+					// Keine Leertexte - Adresse validieren
 					if (ad.validate((AddressType) jcbAddress.getSelectedItem(),
 							jtfAdd.getText())) {
+						//Vorheriges Fenster schliessen
 						app.setVisible(false);
 						p.setPrename(jtfPPn.getText());
 						p.setName(jtfPName.getText());
@@ -221,10 +241,10 @@ public class PanelAddPerson extends JPanel implements ActionListener {
 						p.add(a);
 
 						cPAP.add(p);
+						// Person in XML schreiben
 						try {
 							serializer.writeContacts(cPAP, contactsFile);
 						} catch (JAXBException e) {
-							// TODO Auto-generated catch block
 							e.printStackTrace();
 						}
 
@@ -238,29 +258,28 @@ public class PanelAddPerson extends JPanel implements ActionListener {
 						p = new Person();
 						a = new Address();
 						cPAP = new Contacts();
+						
+						//Aktualisieren der Anzeige
 						frame.setVisible(false);
 						App app = new App();
 						app.loadContactPanel();
 
-					}else {
+					} else {
+						// Validierung nicht erfolgreich
 						JOptionPane
-						.showMessageDialog(
-								new JFrame(),
-								"Ungültige "
-										+ (AddressType) jcbAddress
-												.getSelectedItem()
-										+ " Adresse");
-				jtfAdd.setBackground(Color.RED);
-			}
+								.showMessageDialog(
+										new JFrame(),
+										"Ungültige "
+												+ (AddressType) jcbAddress
+														.getSelectedItem()
+												+ " Adresse");
+						jtfAdd.setBackground(Color.RED);
+					}
 				}
 
 			}
 		});
 
-	}
-
-	@Override
-	public void actionPerformed(ActionEvent e) {
 	}
 
 	public JFrame getFrame() {
@@ -269,5 +288,13 @@ public class PanelAddPerson extends JPanel implements ActionListener {
 
 	public void setFrame(JFrame frame) {
 		this.frame = frame;
+	}
+
+	public JFrame getApp() {
+		return app;
+	}
+
+	public void setApp(JFrame app) {
+		this.app = app;
 	}
 }

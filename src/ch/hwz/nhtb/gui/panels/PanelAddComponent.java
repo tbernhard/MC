@@ -1,14 +1,11 @@
 package ch.hwz.nhtb.gui.panels;
 
 import java.awt.Color;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.File;
 
 import javax.swing.JButton;
-import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -28,7 +25,7 @@ import com.jgoodies.forms.layout.ColumnSpec;
 import com.jgoodies.forms.layout.FormLayout;
 import com.jgoodies.forms.layout.RowSpec;
 
-public class PanelAddComponent extends JPanel implements ActionListener {
+public class PanelAddComponent extends JPanel {
 	private static final long serialVersionUID = 1L;
 	private JFrame frame;
 	private JFrame app;
@@ -48,7 +45,7 @@ public class PanelAddComponent extends JPanel implements ActionListener {
 	private FileHandler serializer;
 
 	/**
-	 * Create the panel.
+	 * Pannel erstellen
 	 */
 	public PanelAddComponent(final JFrame frame, final JFrame app) {
 		serializer = new FileHandler();
@@ -56,9 +53,10 @@ public class PanelAddComponent extends JPanel implements ActionListener {
 		contactsFile = serializer.getFile();
 
 		this.setFrame(frame);
-		this.app = app;
+		this.setApp(app);
 		cPAC = c;
 
+		// Panel Layout definieren ->forms-1.3.0.jar WindowBuilder (jgoodies)
 		setLayout(new FormLayout(
 				new ColumnSpec[] { FormFactory.DEFAULT_COLSPEC,
 						FormFactory.RELATED_GAP_COLSPEC,
@@ -108,10 +106,16 @@ public class PanelAddComponent extends JPanel implements ActionListener {
 
 		btnSave = new JButton("Speichern");
 		add(btnSave, "10, 8, fill, fill");
+		// Aktion an den Speichern Button anhängen
 		btnSave.addMouseListener(new MouseAdapter() {
+			/**
+			 * Kontaktart Komponente wird per Mausklick gespeichert -> in die
+			 * XML geschrieben
+			 */
 			@Override
 			public void mousePressed(MouseEvent arg0) {
 				Address ad = new Address();
+				// Leertexte vermeinden bei Name und Standort
 				if ((jtfCName.getText() == null)
 						|| "".equals(jtfCName.getText().trim())
 						|| (jtfLoc.getText() == null)
@@ -120,6 +124,7 @@ public class PanelAddComponent extends JPanel implements ActionListener {
 							"Bitte Location und Name angeben.", "Achtung",
 							JOptionPane.WARNING_MESSAGE);
 					doLayout();
+					// Leertexte vermeinden bei Addresse
 				} else if (((jtfAdd.getText() == null) || "".equals(jtfAdd
 						.getText().trim()))) {
 					JOptionPane.showMessageDialog(new JFrame(),
@@ -127,7 +132,9 @@ public class PanelAddComponent extends JPanel implements ActionListener {
 							JOptionPane.WARNING_MESSAGE);
 					doLayout();
 				} else {
+					// Keine Leertexte - Adresse validieren
 					if (ad.validate(AddressType.IP, jtfAdd.getText())) {
+						// Validierung erfolgreich - Kontakt speichern
 						comp.setName(jtfCName.getText());
 						comp.setLocation(jtfLoc.getText());
 						a.setType(AddressType.IP);
@@ -135,11 +142,10 @@ public class PanelAddComponent extends JPanel implements ActionListener {
 						comp.add(a);
 
 						cPAC.add(comp);
-
+						// Komponente in XML schreiben
 						try {
 							serializer.writeContacts(cPAC, contactsFile);
 						} catch (JAXBException e) {
-							// TODO Auto-generated catch block
 							e.printStackTrace();
 						}
 
@@ -151,12 +157,15 @@ public class PanelAddComponent extends JPanel implements ActionListener {
 						comp = new Component();
 						a = new Address();
 						cPAC = new Contacts();
+						
+						//Aktualisieren der Anzeige
 						app.setVisible(false);
 						frame.setVisible(false);
 						App app = new App();
 						app.loadContactPanel();
 
 					} else {
+						// Validierung nicht erfolgreich
 						JOptionPane.showMessageDialog(new JFrame(),
 								"Ungültige " + AddressType.IP + " Adresse");
 						jtfAdd.setBackground(Color.RED);
@@ -164,13 +173,6 @@ public class PanelAddComponent extends JPanel implements ActionListener {
 				}
 			}
 		});
-
-	}
-
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
-
 	}
 
 	public JFrame getFrame() {
@@ -179,6 +181,14 @@ public class PanelAddComponent extends JPanel implements ActionListener {
 
 	public void setFrame(JFrame frame) {
 		this.frame = frame;
+	}
+
+	public JFrame getApp() {
+		return app;
+	}
+
+	public void setApp(JFrame app) {
+		this.app = app;
 	}
 
 }

@@ -1,17 +1,10 @@
 package ch.hwz.nhtb.gui.panels;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 import java.io.File;
 
-import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
@@ -19,13 +12,10 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import javax.swing.JTextField;
 import javax.swing.JTextPane;
-import javax.swing.border.Border;
 
 import ch.hwz.nhtb.MMS;
 import ch.hwz.nhtb.Message;
-import ch.hwz.nhtb.SMS;
 import ch.hwz.nhtb.contacts.AddressType;
 import ch.hwz.nhtb.contacts.Component;
 import ch.hwz.nhtb.contacts.Contacts;
@@ -39,6 +29,7 @@ import com.jgoodies.forms.layout.FormLayout;
 import com.jgoodies.forms.layout.RowSpec;
 
 public class PanelMMS extends JPanel {
+	private static final long serialVersionUID = 1L;
 	private JButton btnSend;
 	private JComboBox jcbEntry;
 	private JComboBox jcbAddress = new JComboBox();
@@ -51,52 +42,52 @@ public class PanelMMS extends JPanel {
 	private JLabel lblSub;
 	private JLabel lblPanel;
 
-	private JTextField textField;
 	private FileHandler serializer;
 	private File contactsFile;
 	private final Contacts c;
 
 	/**
-	 * Create the panel.
+	 * Pannel erstellen
 	 */
 	public PanelMMS() {
-
+		// Kontakte aus XML lesen
 		serializer = new FileHandler();
 		c = serializer.getContactsFromXML();
-		contactsFile = serializer.getFile();
+		setContactsFile(serializer.getFile());
 
+		// Panel Layout definieren ->forms-1.3.0.jar WindowBuilder (jgoodies)
 		setLayout(new FormLayout(new ColumnSpec[] {
 				ColumnSpec.decode("max(2dlu;default)"),
-				FormFactory.RELATED_GAP_COLSPEC,
-				FormFactory.DEFAULT_COLSPEC,
-				FormFactory.RELATED_GAP_COLSPEC,
-				ColumnSpec.decode("90dlu"),
-				FormFactory.DEFAULT_COLSPEC,
-				FormFactory.DEFAULT_COLSPEC,},
-			new RowSpec[] {
-				FormFactory.RELATED_GAP_ROWSPEC,
-				FormFactory.DEFAULT_ROWSPEC,
-				FormFactory.RELATED_GAP_ROWSPEC,
-				RowSpec.decode("14dlu"),
-				RowSpec.decode("14dlu"),
-				FormFactory.RELATED_GAP_ROWSPEC,
-				RowSpec.decode("fill:12dlu"),
-				FormFactory.RELATED_GAP_ROWSPEC,
-				RowSpec.decode("60dlu"),
-				FormFactory.RELATED_GAP_ROWSPEC,
-				RowSpec.decode("max(10dlu;default)"),
-				FormFactory.RELATED_GAP_ROWSPEC,
-				FormFactory.DEFAULT_ROWSPEC,}));
+				FormFactory.RELATED_GAP_COLSPEC, FormFactory.DEFAULT_COLSPEC,
+				FormFactory.RELATED_GAP_COLSPEC, ColumnSpec.decode("90dlu"),
+				FormFactory.DEFAULT_COLSPEC, FormFactory.DEFAULT_COLSPEC, },
+				new RowSpec[] { FormFactory.RELATED_GAP_ROWSPEC,
+						FormFactory.DEFAULT_ROWSPEC,
+						FormFactory.RELATED_GAP_ROWSPEC,
+						RowSpec.decode("14dlu"), RowSpec.decode("14dlu"),
+						FormFactory.RELATED_GAP_ROWSPEC,
+						RowSpec.decode("fill:12dlu"),
+						FormFactory.RELATED_GAP_ROWSPEC,
+						RowSpec.decode("60dlu"),
+						FormFactory.RELATED_GAP_ROWSPEC,
+						RowSpec.decode("max(10dlu;default)"),
+						FormFactory.RELATED_GAP_ROWSPEC,
+						FormFactory.DEFAULT_ROWSPEC, }));
 
 		lblPanel = new JLabel("MMS");
 		add(lblPanel, "3, 2, 4, 1");
-		
+
 		lblCKind = new JLabel("Empfänger");
 		add(lblCKind, "3, 4, left, default");
 
 		jcbEntry = new JComboBox(c.getContact(AddressType.getMMSAddTyp()));
 		add(jcbEntry, "5, 4, fill, default");
+		// Aktion an das Dropdown Feld anhängen
 		jcbEntry.addActionListener(new ActionListener() {
+			/**
+			 * Alle Kontake welche eine Email Adresse oder eine Mobile Adresse haben werden im Dropdown
+			 * Feld ausgegeben
+			 */
 			public void actionPerformed(ActionEvent arg0) {
 				remove(jcbAddress);
 				jcbAddress = new JComboBox(c.getAddressOnIndex(jcbEntry
@@ -105,29 +96,24 @@ public class PanelMMS extends JPanel {
 				add(jcbAddress, "5, 5, fill, default");
 				doLayout();
 				jcbAddress.doLayout();
-
-				// System.out.println();
-				// for (int i = 0; i < c.getAddressOnIndex(jcbEntry
-				// .getSelectedIndex()).length; i++) {
-				// System.out.println(c.getAddressOnIndex(jcbEntry
-				// .getSelectedIndex())[i]);
-				// }
-				// System.out.println();
 			}
 		});
 
+		/**
+		 * Alle Zugehörigen Adressen werden zu den Kontakten ausgegeben
+		 */
 		jcbAddress = new JComboBox(c.getAddressOnIndex(jcbEntry
 				.getSelectedItem().toString(), AddressType.getMMSAddTyp()));
 		add(jcbAddress, "5, 5, fill, default");
-		
+
 		lblSub = new JLabel("Betreff");
 		add(lblSub, "3, 7");
-		
+
 		subPane = new JTextPane();
 		jspSP = new JScrollPane(subPane);
-		jspSP.getVerticalScrollBar().setPreferredSize (new Dimension(0,0));
+		jspSP.getVerticalScrollBar().setPreferredSize(new Dimension(0, 0));
 		add(jspSP, "5, 7, fill, fill");
-		
+
 		lblText = new JLabel("Text");
 		add(lblText, "3, 9");
 
@@ -137,7 +123,11 @@ public class PanelMMS extends JPanel {
 
 		btnSend = new JButton("Senden");
 		add(btnSend, "5, 11, right, default");
+		// Aktion an den Senden Button anhängen
 		btnSend.addActionListener(new ActionListener() {
+			/**
+			 * MMS versenden
+			 */
 			public void actionPerformed(ActionEvent arg0) {
 				jcbEntry.getSelectedItem().toString();
 				jcbAddress.getSelectedItem().toString();
@@ -167,9 +157,16 @@ public class PanelMMS extends JPanel {
 					textPane.setText("");
 				}
 
-
 			}
 		});
 
+	}
+
+	public File getContactsFile() {
+		return contactsFile;
+	}
+
+	public void setContactsFile(File contactsFile) {
+		this.contactsFile = contactsFile;
 	}
 }

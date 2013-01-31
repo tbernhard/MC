@@ -24,9 +24,8 @@ import com.jgoodies.forms.layout.ColumnSpec;
 import com.jgoodies.forms.layout.FormLayout;
 import com.jgoodies.forms.layout.RowSpec;
 
-//TODO Refresh after add contacts
-
 public class PanelContact extends JPanel {
+	private static final long serialVersionUID = 1L;
 	private JList jlContacts;
 	private JScrollPane jsp;
 	private JButton btnAdd;
@@ -37,38 +36,34 @@ public class PanelContact extends JPanel {
 	private JFrame frame;
 
 	/**
-	 * Create the panel.
+	 * Pannel erstellen
 	 */
 	public PanelContact(final JFrame frame) {
 
-		this.frame = frame;
-		
+		this.setFrame(frame);
+
 		serializer = new FileHandler();
 		Contacts c = serializer.getContactsFromXML();
 		contactsFile = serializer.getFile();
 
 		cPC = c;
+
+		// Panel Layout definieren ->forms-1.3.0.jar WindowBuilder (jgoodies)
 		setLayout(new FormLayout(new ColumnSpec[] {
-				FormFactory.DEFAULT_COLSPEC,
-				FormFactory.RELATED_GAP_COLSPEC,
-				FormFactory.DEFAULT_COLSPEC,
-				FormFactory.RELATED_GAP_COLSPEC,
-				ColumnSpec.decode("50dlu"),
-				FormFactory.RELATED_GAP_COLSPEC,
+				FormFactory.DEFAULT_COLSPEC, FormFactory.RELATED_GAP_COLSPEC,
+				FormFactory.DEFAULT_COLSPEC, FormFactory.RELATED_GAP_COLSPEC,
+				ColumnSpec.decode("50dlu"), FormFactory.RELATED_GAP_COLSPEC,
 				ColumnSpec.decode("max(30dlu;default)"),
 				FormFactory.RELATED_GAP_COLSPEC,
 				ColumnSpec.decode("max(30dlu;default)"),
 				FormFactory.DEFAULT_COLSPEC,
-				ColumnSpec.decode("max(9dlu;default)"),},
-			new RowSpec[] {
+				ColumnSpec.decode("max(9dlu;default)"), }, new RowSpec[] {
 				FormFactory.RELATED_GAP_ROWSPEC,
 				RowSpec.decode("default:grow"),
 				FormFactory.RELATED_GAP_ROWSPEC,
 				RowSpec.decode("default:grow"),
-				FormFactory.RELATED_GAP_ROWSPEC,
-				FormFactory.DEFAULT_ROWSPEC,
-				FormFactory.RELATED_GAP_ROWSPEC,
-				FormFactory.DEFAULT_ROWSPEC,}));
+				FormFactory.RELATED_GAP_ROWSPEC, FormFactory.DEFAULT_ROWSPEC,
+				FormFactory.RELATED_GAP_ROWSPEC, FormFactory.DEFAULT_ROWSPEC, }));
 
 		jlContacts = new JList(c.getContact());
 		jlContacts.ensureIndexIsVisible(14);
@@ -84,7 +79,12 @@ public class PanelContact extends JPanel {
 		});
 
 		btnDel = new JButton("Löschen");
+		// Aktion an den Speichern Button anhängen
 		btnDel.addMouseListener(new MouseAdapter() {
+			/**
+			 * Alle ausgewählten Kontake werden per Mausklick gelöscht -> XML
+			 * gelöscht
+			 */
 			@Override
 			public void mousePressed(MouseEvent arg0) {
 				if (!jlContacts.isSelectionEmpty()) {
@@ -98,12 +98,10 @@ public class PanelContact extends JPanel {
 							if (index >= 0) {
 								cPC.getEntries().remove(index);
 							}
-						}
-
+						}// Aus der XML Löschen
 						try {
 							serializer.writeContacts(cPC, contactsFile);
 						} catch (JAXBException e) {
-							// TODO Auto-generated catch block
 							e.printStackTrace();
 						}
 					}
@@ -112,7 +110,7 @@ public class PanelContact extends JPanel {
 							"Es wurde kein Kontakt ausgewählt.", "Achtung",
 							JOptionPane.WARNING_MESSAGE);
 				}
-
+				//Aktualisieren der Anzeige
 				frame.setVisible(false);
 				App app = new App();
 				app.loadContactPanel();
@@ -123,6 +121,14 @@ public class PanelContact extends JPanel {
 		add(btnDel, "7, 6");
 		add(btnAdd, "9, 6");
 
+	}
+
+	public JFrame getFrame() {
+		return frame;
+	}
+
+	public void setFrame(JFrame frame) {
+		this.frame = frame;
 	}
 
 }

@@ -11,7 +11,6 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import javax.swing.JTextField;
 import javax.swing.JTextPane;
 
 import ch.hwz.nhtb.Message;
@@ -29,6 +28,7 @@ import com.jgoodies.forms.layout.FormLayout;
 import com.jgoodies.forms.layout.RowSpec;
 
 public class PanelSMS extends JPanel {
+	private static final long serialVersionUID = 1L;
 	private JButton btnSend;
 	private JComboBox jcbEntry;
 	private JComboBox jcbAddress = new JComboBox();
@@ -38,19 +38,20 @@ public class PanelSMS extends JPanel {
 	private JLabel lblCKind;
 	private JLabel lblPanel;
 
-	private JTextField textField;
 	private FileHandler serializer;
 	private File contactsFile;
 	private final Contacts c;
 
 	/**
-	 * Create the panel.
+	 * Pannel erstellen
 	 */
 	public PanelSMS() {
+		// Kontakte aus XML lesen
 		serializer = new FileHandler();
 		c = serializer.getContactsFromXML();
-		contactsFile = serializer.getFile();
+		setContactsFile(serializer.getFile());
 
+		// Panel Layout definieren ->forms-1.3.0.jar WindowBuilder (jgoodies)
 		setLayout(new FormLayout(new ColumnSpec[] {
 				ColumnSpec.decode("max(2dlu;default)"),
 				FormFactory.RELATED_GAP_COLSPEC, FormFactory.DEFAULT_COLSPEC,
@@ -75,64 +76,25 @@ public class PanelSMS extends JPanel {
 
 		jcbEntry = new JComboBox(c.getContact(AddressType.Mobile));
 		add(jcbEntry, "5, 4, fill, default");
+		// Aktion an das Dropdown Feld anhängen
 		jcbEntry.addActionListener(new ActionListener() {
+			/**
+			 * Alle Kontake welche eine Mobile Adresse haben werden im Dropdown
+			 * Feld ausgegeben
+			 */
 			public void actionPerformed(ActionEvent arg0) {
 				remove(jcbAddress);
 				jcbAddress = new JComboBox(c.getAddressOnIndex(jcbEntry
 						.getSelectedItem().toString(), AddressType.Mobile));
-				add(jcbAddress, "5, 3, fill, default");
+				add(jcbAddress, "5, 5, fill, default");
 				doLayout();
 				jcbAddress.doLayout();
-
-				// System.out.println();
-				// for (int i = 0; i < c.getAddressOnIndex(jcbEntry
-				// .getSelectedIndex()).length; i++) {
-				// System.out.println(c.getAddressOnIndex(jcbEntry
-				// .getSelectedIndex())[i]);
-				// }
-				// System.out.println();
 			}
 		});
-
-		// jcbEntry.addActionListener(this);
-
-		// jcbEntry.addMouseListener(new MouseAdapter() {
-		// @Override
-		// public void mousePressed(MouseEvent arg0) {
-		// System.out.println("Test"+arg0);
-		// c.getAdressOnIndex(jcbEntry.getSelectedIndex());
-		// jcbAddress = new
-		// JComboBox(c.getAdressOnIndex(jcbEntry.getSelectedIndex()));
-		// jcbAddress.doLayout();
-		// System.out.println();
-		// for (int i = 0; i <
-		// c.getAdressOnIndex(jcbEntry.getSelectedIndex()).length; i++) {
-		// System.out.println(c.getAdressOnIndex(jcbEntry.getSelectedIndex())[i]);
-		// }
-		// System.out.println();
-		//
-		// }
-		// });
-
-		// KeyListener Example ENTER
-		// jcbEntry.addKeyListener(new KeyAdapter() {
-		// @Override
-		// public void keyPressed(KeyEvent arg0) {
-		// if(arg0.getKeyCode() == KeyEvent.VK_ENTER){
-		// System.out.println("Test"+arg0);
-		// }
-		// }
-		// });
-
-		// TODO
-		// String[] test = new String[2];
-		// test[0] = c.getEntries()
-		// .get(c.search(jcbEntry.getSelectedItem().toString()))
-		// .getAddressTextOf(0).getAddressText();
-		// test[1] = c.getEntries()
-		// .get(c.search(jcbEntry.getSelectedItem().toString()))
-		// .getAddressTextOf(1).getAddressText();
-
+		
+		/**
+		 * Alle Zugehörigen Adressen werden zu den Kontakten ausgegeben
+		 */
 		jcbAddress = new JComboBox(c.getAddressOnIndex(jcbEntry
 				.getSelectedItem().toString(), AddressType.Mobile));
 		add(jcbAddress, "5, 5, fill, default");
@@ -146,8 +108,11 @@ public class PanelSMS extends JPanel {
 
 		btnSend = new JButton("Senden");
 		add(btnSend, "5, 9, right, default");
-
+		// Aktion an den Senden Button anhängen
 		btnSend.addActionListener(new ActionListener() {
+			/**
+			 * SMS versenden
+			 */
 			public void actionPerformed(ActionEvent arg0) {
 
 				jcbEntry.getSelectedItem().toString();
@@ -163,7 +128,7 @@ public class PanelSMS extends JPanel {
 					e = e.createEntry(jcbEntry.getSelectedItem().toString(),
 							jcbAddress.getSelectedItem().toString());
 				}
-
+				// SMS erstellen
 				SMS sms = new SMS();
 				sms.setMessage(textPane.getText());
 				sms.setRecipient(e);
@@ -177,5 +142,13 @@ public class PanelSMS extends JPanel {
 				}
 			}
 		});
+	}
+
+	public File getContactsFile() {
+		return contactsFile;
+	}
+
+	public void setContactsFile(File contactsFile) {
+		this.contactsFile = contactsFile;
 	}
 }

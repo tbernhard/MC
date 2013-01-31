@@ -1,2 +1,85 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<Contacts/>
+<Contacts>
+    <entries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="person">
+        <addresses>
+            <addressText>0793990100</addressText>
+            <type>Mobile</type>
+        </addresses>
+        <addresses>
+            <addressText>0784513322</addressText>
+            <type>Mobile</type>
+        </addresses>
+        <addresses>
+            <addressText>tbernhard87@gmail.com</addressText>
+            <type>EMail</type>
+        </addresses>
+        <addresses>
+            <addressText>thomas.bernhard@student.fh-hwz.ch</addressText>
+            <type>EMail</type>
+        </addresses>
+        <name>Bernhard</name>
+        <prename>Thomas</prename>
+        <salutation>Herr</salutation>
+    </entries>
+    <entries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="person">
+        <addresses>
+            <addressText>0793990101</addressText>
+            <type>Mobile</type>
+        </addresses>
+        <name>Testname 1</name>
+        <prename>Nur Mobile T1</prename>
+        <salutation>Herr</salutation>
+    </entries>
+    <entries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="person">
+        <addresses>
+            <addressText>test@test.ch</addressText>
+            <type>EMail</type>
+        </addresses>
+        <name>Testname 2</name>
+        <prename>Nur Email T2</prename>
+        <salutation>Herr</salutation>
+    </entries>
+    <entries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="person">
+        <addresses>
+            <addressText>0793990102</addressText>
+            <type>Mobile</type>
+        </addresses>
+        <addresses>
+            <addressText>beides@beides.ch</addressText>
+            <type>EMail</type>
+        </addresses>
+        <name>Testname 3</name>
+        <prename>Beides T3</prename>
+        <salutation>Herr</salutation>
+    </entries>
+    <entries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="component">
+        <addresses>
+            <addressText>192.168.1.1</addressText>
+            <type>IP</type>
+        </addresses>
+        <name>Nur IP</name>
+        <location>Testcomponente 1</location>
+    </entries>
+    <entries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="person">
+        <addresses>
+            <addressText>test@test.ch</addressText>
+            <type>EMail</type>
+        </addresses>
+        <addresses>
+            <addressText>0794433223</addressText>
+            <type>Mobile</type>
+        </addresses>
+        <name>dsa</name>
+        <prename>asdf</prename>
+        <salutation>Herr</salutation>
+    </entries>
+    <entries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="person">
+        <addresses>
+            <addressText>0794443322</addressText>
+            <type>Mobile</type>
+        </addresses>
+        <name>test</name>
+        <prename>test</prename>
+        <salutation>Herr</salutation>
+    </entries>
+</Contacts>

@@ -11,12 +11,10 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import javax.swing.JTextField;
 import javax.swing.JTextPane;
 
 import ch.hwz.nhtb.Message;
 import ch.hwz.nhtb.Print;
-import ch.hwz.nhtb.SMS;
 import ch.hwz.nhtb.contacts.AddressType;
 import ch.hwz.nhtb.contacts.Component;
 import ch.hwz.nhtb.contacts.Contacts;
@@ -30,6 +28,7 @@ import com.jgoodies.forms.layout.FormLayout;
 import com.jgoodies.forms.layout.RowSpec;
 
 public class PanelPrint extends JPanel {
+	private static final long serialVersionUID = 1L;
 	private JButton btnSend;
 	private JComboBox jcbEntry;
 	private JComboBox jcbAddress = new JComboBox();
@@ -39,20 +38,20 @@ public class PanelPrint extends JPanel {
 	private JLabel lblCKind;
 	private JLabel lblPanel;
 
-	private JTextField textField;
 	private FileHandler serializer;
 	private File contactsFile;
 	private final Contacts c;
 
 	/**
-	 * Create the panel.
+	 * Pannel erstellen
 	 */
 	public PanelPrint() {
-
+		// Kontakte aus XML lesen
 		serializer = new FileHandler();
 		c = serializer.getContactsFromXML();
-		contactsFile = serializer.getFile();
+		setContactsFile(serializer.getFile());
 
+		// Panel Layout definieren ->forms-1.3.0.jar WindowBuilder (jgoodies)
 		setLayout(new FormLayout(new ColumnSpec[] {
 				ColumnSpec.decode("max(2dlu;default)"),
 				FormFactory.RELATED_GAP_COLSPEC, FormFactory.DEFAULT_COLSPEC,
@@ -77,7 +76,12 @@ public class PanelPrint extends JPanel {
 
 		jcbEntry = new JComboBox(c.getContact(AddressType.IP));
 		add(jcbEntry, "5, 4, fill, default");
+		// Aktion an das Dropdown Feld anhängen
 		jcbEntry.addActionListener(new ActionListener() {
+			/**
+			 * Alle Kontake welche eine IP Adresse haben werden im Dropdown
+			 * Feld ausgegeben
+			 */
 			public void actionPerformed(ActionEvent arg0) {
 				remove(jcbAddress);
 				jcbAddress = new JComboBox(c.getAddressOnIndex(jcbEntry
@@ -85,17 +89,12 @@ public class PanelPrint extends JPanel {
 				add(jcbAddress, "5, 3, fill, default");
 				doLayout();
 				jcbAddress.doLayout();
-
-				// System.out.println();
-				// for (int i = 0; i < c.getAddressOnIndex(jcbEntry
-				// .getSelectedIndex()).length; i++) {
-				// System.out.println(c.getAddressOnIndex(jcbEntry
-				// .getSelectedIndex())[i]);
-				// }
-				// System.out.println();
 			}
 		});
 
+		/**
+		 * Alle Zugehörigen Adressen werden zu den Kontakten ausgegeben
+		 */
 		jcbAddress = new JComboBox(c.getAddressOnIndex(jcbEntry
 				.getSelectedItem().toString(), AddressType.IP));
 		add(jcbAddress, "5, 5, fill, default");
@@ -109,7 +108,11 @@ public class PanelPrint extends JPanel {
 
 		btnSend = new JButton("Senden");
 		add(btnSend, "5, 9, right, default");
+		// Aktion an den Senden Button anhängen
 		btnSend.addActionListener(new ActionListener() {
+			/**
+			 * Print versenden
+			 */
 			public void actionPerformed(ActionEvent arg0) {
 				jcbEntry.getSelectedItem().toString();
 				jcbAddress.getSelectedItem().toString();
@@ -124,7 +127,7 @@ public class PanelPrint extends JPanel {
 					e = e.createEntry(jcbEntry.getSelectedItem().toString(),
 							jcbAddress.getSelectedItem().toString());
 				}
-
+				// Print erstellen
 				Print p = new Print();
 				p.setMessage(textPane.getText());
 
@@ -141,5 +144,13 @@ public class PanelPrint extends JPanel {
 			}
 		});
 
+	}
+
+	public File getContactsFile() {
+		return contactsFile;
+	}
+
+	public void setContactsFile(File contactsFile) {
+		this.contactsFile = contactsFile;
 	}
 }
