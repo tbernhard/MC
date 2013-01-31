@@ -1,123 +1,411 @@
 <class-diagram version="1.0.11" icons="true" always-add-relationships="false" generalizations="true" realizations="true" 
   associations="true" dependencies="false" nesting-relationships="true">  
-  <class id="1" corner="BOTTOM_RIGHT" language="java" name="ch.hwz.nhtb.gui.panels.PanelAddAddress" project="MC" 
-    file="/MC/src/ch/hwz/nhtb/gui/panels/PanelAddAddress.java" binary="false">    
-    <position height="-1" width="-1" x="1741" y="212"/>    
+  <class id="1" corner="BOTTOM_RIGHT" language="java" name="ch.hwz.nhtb.Email" project="MC" 
+    file="/MC/src/ch/hwz/nhtb/Email.java" binary="false">    
+    <position height="-1" width="-1" x="558" y="216"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      
       <operations public="true" package="true" protected="true" private="true"/>    
     </display>  
   </class>  
-  <class id="2" corner="BOTTOM_RIGHT" language="java" name="ch.hwz.nhtb.gui.panels.PanelAddPerson" project="MC" 
-    file="/MC/src/ch/hwz/nhtb/gui/panels/PanelAddPerson.java" binary="false">    
-    <position height="-1" width="-1" x="1028" y="569"/>    
+  <class id="2" corner="BOTTOM_RIGHT" language="java" name="ch.hwz.nhtb.SMS" project="MC" 
+    file="/MC/src/ch/hwz/nhtb/SMS.java" binary="false">    
+    <position height="-1" width="-1" x="944" y="149"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      
       <operations public="true" package="true" protected="true" private="true"/>    
     </display>  
   </class>  
-  <class id="3" corner="BOTTOM_RIGHT" language="java" name="ch.hwz.nhtb.gui.panels.PanelMMS" project="MC" 
-    file="/MC/src/ch/hwz/nhtb/gui/panels/PanelMMS.java" binary="false">    
-    <position height="-1" width="-1" x="817" y="632"/>    
+  <class id="3" corner="BOTTOM_RIGHT" language="java" name="ch.hwz.nhtb.Print" project="MC" 
+    file="/MC/src/ch/hwz/nhtb/Print.java" binary="false">    
+    <position height="-1" width="-1" x="777" y="167"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      
       <operations public="true" package="true" protected="true" private="true"/>    
     </display>  
   </class>  
-  <class id="4" corner="BOTTOM_RIGHT" language="java" name="ch.hwz.nhtb.gui.panels.PanelEmail" project="MC" 
-    file="/MC/src/ch/hwz/nhtb/gui/panels/PanelEmail.java" binary="false">    
-    <position height="-1" width="-1" x="647" y="715"/>    
+  <class id="4" corner="BOTTOM_RIGHT" language="java" name="ch.hwz.nhtb.MMS" project="MC" 
+    file="/MC/src/ch/hwz/nhtb/MMS.java" binary="false">    
+    <position height="-1" width="-1" x="1255" y="244"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      
       <operations public="true" package="true" protected="true" private="true"/>    
     </display>  
   </class>  
-  <class id="5" corner="BOTTOM_RIGHT" language="java" name="ch.hwz.nhtb.gui.panels.PanelSMS" project="MC" 
-    file="/MC/src/ch/hwz/nhtb/gui/panels/PanelSMS.java" binary="false">    
-    <position height="-1" width="-1" x="1248" y="547"/>    
+  <class id="5" corner="BOTTOM_RIGHT" language="java" name="ch.hwz.nhtb.Message" project="MC" 
+    file="/MC/src/ch/hwz/nhtb/Message.java" binary="false">    
+    <position height="-1" width="-1" x="926" y="473"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      
       <operations public="true" package="true" protected="true" private="true"/>    
     </display>  
   </class>  
-  <class id="6" corner="BOTTOM_RIGHT" language="java" name="ch.hwz.nhtb.gui.panels.PanelContact" project="MC" 
-    file="/MC/src/ch/hwz/nhtb/gui/panels/PanelContact.java" binary="false">    
-    <position height="-1" width="-1" x="1425" y="538"/>    
+  <class id="6" corner="BOTTOM_RIGHT" language="java" name="ch.hwz.nhtb.contacts.Address" project="MC" 
+    file="/MC/src/ch/hwz/nhtb/contacts/Address.java" binary="false">    
+    <position height="-1" width="-1" x="219" y="651"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      
       <operations public="true" package="true" protected="true" private="true"/>    
     </display>  
   </class>  
-  <class id="7" corner="BOTTOM_RIGHT" language="java" name="ch.hwz.nhtb.gui.App" project="MC" 
-    file="/MC/src/ch/hwz/nhtb/gui/App.java" binary="false">    
-    <position height="-1" width="-1" x="559" y="340"/>    
+  <enumeration id="7" corner="BOTTOM_RIGHT" language="java" name="ch.hwz.nhtb.contacts.AddressType" project="MC" 
+    file="/MC/src/ch/hwz/nhtb/contacts/AddressType.java" binary="false">    
+    <position height="-1" width="-1" x="527" y="500"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </enumeration>  
+  <enumeration id="8" corner="BOTTOM_RIGHT" language="java" name="ch.hwz.nhtb.contacts.Salutation" project="MC" 
+    file="/MC/src/ch/hwz/nhtb/contacts/Salutation.java" binary="false">    
+    <position height="-1" width="-1" x="-80" y="267"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </enumeration>  
+  <class id="9" corner="BOTTOM_RIGHT" language="java" name="ch.hwz.nhtb.contacts.Component" project="MC" 
+    file="/MC/src/ch/hwz/nhtb/contacts/Component.java" binary="false">    
+    <position height="-1" width="-1" x="-8" y="1008"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      
       <operations public="true" package="true" protected="true" private="true"/>    
     </display>  
   </class>  
-  <class id="8" corner="BOTTOM_RIGHT" language="java" name="ch.hwz.nhtb.gui.frames.AddContacts" project="MC" 
-    file="/MC/src/ch/hwz/nhtb/gui/frames/AddContacts.java" binary="false">    
-    <position height="-1" width="-1" x="1496" y="205"/>    
+  <class id="10" corner="BOTTOM_RIGHT" language="java" name="ch.hwz.nhtb.contacts.Entry" project="MC" 
+    file="/MC/src/ch/hwz/nhtb/contacts/Entry.java" binary="false">    
+    <position height="-1" width="-1" x="1034" y="819"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      
       <operations public="true" package="true" protected="true" private="true"/>    
     </display>  
   </class>  
-  <class id="9" corner="BOTTOM_RIGHT" language="java" name="ch.hwz.nhtb.gui.panels.PanelAddComponent" project="MC" 
-    file="/MC/src/ch/hwz/nhtb/gui/panels/PanelAddComponent.java" binary="false">    
-    <position height="-1" width="-1" x="1626" y="606"/>    
+  <class id="11" corner="BOTTOM_RIGHT" language="java" name="ch.hwz.nhtb.contacts.Contacts" project="MC" 
+    file="/MC/src/ch/hwz/nhtb/contacts/Contacts.java" binary="false">    
+    <position height="-1" width="-1" x="697" y="1087"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      
       <operations public="true" package="true" protected="true" private="true"/>    
     </display>  
   </class>  
-  <class id="10" corner="BOTTOM_RIGHT" language="java" name="ch.hwz.nhtb.gui.panels.PanelPrint" project="MC" 
-    file="/MC/src/ch/hwz/nhtb/gui/panels/PanelPrint.java" binary="false">    
-    <position height="-1" width="-1" x="464" y="767"/>    
+  <class id="12" corner="BOTTOM_RIGHT" language="java" name="ch.hwz.nhtb.contacts.Person" project="MC" 
+    file="/MC/src/ch/hwz/nhtb/contacts/Person.java" binary="false">    
+    <position height="-1" width="-1" x="-278" y="906"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      
       <operations public="true" package="true" protected="true" private="true"/>    
     </display>  
   </class>  
-  <class id="11" corner="BOTTOM_RIGHT" language="java" name="ch.hwz.nhtb.filehendler.FileHandler" project="MC" 
+  <class id="13" corner="BOTTOM_RIGHT" language="java" name="ch.hwz.nhtb.filehendler.FileHandler" project="MC" 
     file="/MC/src/ch/hwz/nhtb/filehendler/FileHandler.java" binary="false">    
-    <position height="-1" width="-1" x="1008" y="1069"/>    
+    <position height="-1" width="-1" x="1639" y="1840"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      
       <operations public="true" package="true" protected="true" private="true"/>    
     </display>  
   </class>  
-  <association id="12">    
-    <end type="SOURCE" refId="6" navigable="false">      
-      <attribute id="13" name="serializer"/>      
-      <multiplicity id="14" minimum="0" maximum="1"/>    
+  <class id="14" corner="BOTTOM_RIGHT" language="java" name="ch.hwz.nhtb.gui.App" project="MC" 
+    file="/MC/src/ch/hwz/nhtb/gui/App.java" binary="false">    
+    <position height="-1" width="-1" x="-272" y="352"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="15" corner="BOTTOM_RIGHT" language="java" name="ch.hwz.nhtb.gui.frames.AddContacts" project="MC" 
+    file="/MC/src/ch/hwz/nhtb/gui/frames/AddContacts.java" binary="false">    
+    <position height="-1" width="-1" x="-39" y="432"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="16" corner="BOTTOM_RIGHT" language="java" name="ch.hwz.nhtb.gui.panels.PanelSMS" project="MC" 
+    file="/MC/src/ch/hwz/nhtb/gui/panels/PanelSMS.java" binary="false">    
+    <position height="-1" width="-1" x="50" y="1542"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="17" corner="BOTTOM_RIGHT" language="java" name="ch.hwz.nhtb.gui.panels.PanelAddAddress" project="MC" 
+    file="/MC/src/ch/hwz/nhtb/gui/panels/PanelAddAddress.java" binary="false">    
+    <position height="-1" width="-1" x="-140" y="1525"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="18" corner="BOTTOM_RIGHT" language="java" name="ch.hwz.nhtb.gui.panels.PanelContact" project="MC" 
+    file="/MC/src/ch/hwz/nhtb/gui/panels/PanelContact.java" binary="false">    
+    <position height="-1" width="-1" x="230" y="1516"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="19" corner="BOTTOM_RIGHT" language="java" name="ch.hwz.nhtb.gui.panels.PanelAddPerson" project="MC" 
+    file="/MC/src/ch/hwz/nhtb/gui/panels/PanelAddPerson.java" binary="false">    
+    <position height="-1" width="-1" x="430" y="1601"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="20" corner="BOTTOM_RIGHT" language="java" name="ch.hwz.nhtb.gui.panels.PanelMMS" project="MC" 
+    file="/MC/src/ch/hwz/nhtb/gui/panels/PanelMMS.java" binary="false">    
+    <position height="-1" width="-1" x="635" y="1567"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="21" corner="BOTTOM_RIGHT" language="java" name="ch.hwz.nhtb.gui.panels.PanelAddComponent" project="MC" 
+    file="/MC/src/ch/hwz/nhtb/gui/panels/PanelAddComponent.java" binary="false">    
+    <position height="-1" width="-1" x="850" y="1567"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="22" corner="BOTTOM_RIGHT" language="java" name="ch.hwz.nhtb.gui.panels.PanelEmail" project="MC" 
+    file="/MC/src/ch/hwz/nhtb/gui/panels/PanelEmail.java" binary="false">    
+    <position height="-1" width="-1" x="1065" y="1567"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="23" corner="BOTTOM_RIGHT" language="java" name="ch.hwz.nhtb.gui.panels.PanelPrint" project="MC" 
+    file="/MC/src/ch/hwz/nhtb/gui/panels/PanelPrint.java" binary="false">    
+    <position height="-1" width="-1" x="1250" y="1542"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <association id="24">    
+    <end type="SOURCE" refId="21" navigable="false">      
+      <attribute id="25" name="a"/>      
+      <multiplicity id="26" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="6" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="27">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="5"/>  
+  </generalization>  
+  <association id="28">    
+    <end type="SOURCE" refId="16" navigable="false">      
+      <attribute id="29" name="c"/>      
+      <multiplicity id="30" minimum="0" maximum="1"/>    
     </end>    
     <end type="TARGET" refId="11" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="15">    
-    <end type="SOURCE" refId="2" navigable="false">      
-      <attribute id="16" name="serializer"/>      
-      <multiplicity id="17" minimum="0" maximum="1"/>    
+  <association id="31">    
+    <end type="SOURCE" refId="18" navigable="false">      
+      <attribute id="32" name="cPC"/>      
+      <multiplicity id="33" minimum="0" maximum="1"/>    
     </end>    
     <end type="TARGET" refId="11" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="18">    
+  <association id="34">    
+    <end type="SOURCE" refId="16" navigable="false">      
+      <attribute id="35" name="serializer"/>      
+      <multiplicity id="36" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="13" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="37">    
+    <end type="SOURCE" refId="10" navigable="false">      
+      <attribute id="38" name="c"/>      
+      <multiplicity id="39" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="11" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="40">    
+    <end type="SOURCE" refId="22" navigable="false">      
+      <attribute id="41" name="serializer"/>      
+      <multiplicity id="42" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="13" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="43">    
+    <end type="SOURCE" refId="19" navigable="false">      
+      <attribute id="44" name="a"/>      
+      <multiplicity id="45" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="6" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="46">    
+    <end type="SOURCE" refId="10" navigable="false">      
+      <attribute id="47" name="serializer"/>      
+      <multiplicity id="48" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="13" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="49">    
+    <end type="SOURCE" refId="21" navigable="false">      
+      <attribute id="50" name="cPAC"/>      
+      <multiplicity id="51" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="11" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="52">    
+    <end type="SOURCE" refId="19" navigable="false">      
+      <attribute id="53" name="p"/>      
+      <multiplicity id="54" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="12" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="55">    
+    <end type="SOURCE" refId="11" navigable="false">      
+      <attribute id="56" name="entries"/>      
+      <multiplicity id="57" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="10" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="58">    
     <end type="SOURCE" refId="5" navigable="false">      
-      <attribute id="19" name="serializer"/>      
-      <multiplicity id="20" minimum="0" maximum="1"/>    
+      <attribute id="59" name="recipient"/>      
+      <multiplicity id="60" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="10" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="61">    
+    <end type="SOURCE" refId="20" navigable="false">      
+      <attribute id="62" name="c"/>      
+      <multiplicity id="63" minimum="0" maximum="1"/>    
     </end>    
     <end type="TARGET" refId="11" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="21">    
-    <end type="SOURCE" refId="9" navigable="false">      
-      <attribute id="22" name="serializer"/>      
-      <multiplicity id="23" minimum="0" maximum="1"/>    
+  <association id="64">    
+    <end type="SOURCE" refId="22" navigable="false">      
+      <attribute id="65" name="c"/>      
+      <multiplicity id="66" minimum="0" maximum="1"/>    
     </end>    
     <end type="TARGET" refId="11" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="67">    
+    <end type="SOURCE" refId="23" navigable="false">      
+      <attribute id="68" name="serializer"/>      
+      <multiplicity id="69" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="13" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="70">    
+    <end type="SOURCE" refId="12"/>    
+    <end type="TARGET" refId="10"/>  
+  </generalization>  
+  <association id="71">    
+    <end type="SOURCE" refId="17" navigable="false">      
+      <attribute id="72" name="c"/>      
+      <multiplicity id="73" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="11" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="74">    
+    <end type="SOURCE" refId="6" navigable="false">      
+      <attribute id="75" name="type"/>      
+      <multiplicity id="76" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="7" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="77">    
+    <end type="SOURCE" refId="18" navigable="false">      
+      <attribute id="78" name="serializer"/>      
+      <multiplicity id="79" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="13" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="80">    
+    <end type="SOURCE" refId="21" navigable="false">      
+      <attribute id="81" name="comp"/>      
+      <multiplicity id="82" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="9" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="83">    
+    <end type="SOURCE" refId="23" navigable="false">      
+      <attribute id="84" name="c"/>      
+      <multiplicity id="85" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="11" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="86">    
+    <end type="SOURCE" refId="3"/>    
+    <end type="TARGET" refId="5"/>  
+  </generalization>  
+  <generalization id="87">    
+    <end type="SOURCE" refId="9"/>    
+    <end type="TARGET" refId="10"/>  
+  </generalization>  
+  <association id="88">    
+    <end type="SOURCE" refId="21" navigable="false">      
+      <attribute id="89" name="serializer"/>      
+      <multiplicity id="90" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="13" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="91">    
+    <end type="SOURCE" refId="10" navigable="false">      
+      <attribute id="92" name="addresses"/>      
+      <multiplicity id="93" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="6" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="94">    
+    <end type="SOURCE" refId="19" navigable="false">      
+      <attribute id="95" name="serializer"/>      
+      <multiplicity id="96" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="13" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="97">    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="5"/>  
+  </generalization>  
+  <generalization id="98">    
+    <end type="SOURCE" refId="1"/>    
+    <end type="TARGET" refId="5"/>  
+  </generalization>  
+  <association id="99">    
+    <end type="SOURCE" refId="19" navigable="false">      
+      <attribute id="100" name="cPAP"/>      
+      <multiplicity id="101" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="11" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="102">    
+    <end type="SOURCE" refId="20" navigable="false">      
+      <attribute id="103" name="serializer"/>      
+      <multiplicity id="104" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="13" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
