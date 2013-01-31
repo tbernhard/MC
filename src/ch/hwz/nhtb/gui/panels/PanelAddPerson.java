@@ -1,7 +1,6 @@
 package ch.hwz.nhtb.gui.panels;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.File;
@@ -20,7 +19,7 @@ import ch.hwz.nhtb.contacts.AddressType;
 import ch.hwz.nhtb.contacts.Contacts;
 import ch.hwz.nhtb.contacts.Person;
 import ch.hwz.nhtb.contacts.Salutation;
-import ch.hwz.nhtb.filehendler.FileHandler;
+import ch.hwz.nhtb.filehandler.FileHandler;
 import ch.hwz.nhtb.gui.App;
 
 import com.jgoodies.forms.factories.FormFactory;
@@ -132,7 +131,6 @@ public class PanelAddPerson extends JPanel {
 					JOptionPane.showMessageDialog(new JFrame(),
 							"Bitte Name und Vorname angeben.", "Achtung",
 							JOptionPane.WARNING_MESSAGE);
-					lblName.setBackground(Color.red);
 					doLayout();
 				} else {
 					// Keine Leertexte - Adresse validieren
@@ -168,7 +166,6 @@ public class PanelAddPerson extends JPanel {
 												+ (AddressType) jcbAddress
 														.getSelectedItem()
 												+ " Adresse");
-						jtfAdd.setBackground(Color.RED);
 					}
 				}
 
@@ -199,7 +196,7 @@ public class PanelAddPerson extends JPanel {
 					// - Die Person kann ohne weitere Adresse gespeichert werden
 				} else if (((jtfAdd.getText() == null) || "".equals(jtfAdd
 						.getText().trim())) && b) {
-					//Vorheriges Fenster schliessen
+					// Vorheriges Fenster schliessen
 					app.setVisible(false);
 					p.setPrename(jtfPPn.getText());
 					p.setName(jtfPName.getText());
@@ -222,8 +219,8 @@ public class PanelAddPerson extends JPanel {
 					p = new Person();
 					a = new Address();
 					cPAP = new Contacts();
-					
-					//Aktualisieren der Anzeige
+
+					// Aktualisieren der Anzeige
 					frame.setVisible(false);
 					App app = new App();
 					app.loadContactPanel();
@@ -231,7 +228,7 @@ public class PanelAddPerson extends JPanel {
 					// Keine Leertexte - Adresse validieren
 					if (ad.validate((AddressType) jcbAddress.getSelectedItem(),
 							jtfAdd.getText())) {
-						//Vorheriges Fenster schliessen
+						// Vorheriges Fenster schliessen
 						app.setVisible(false);
 						p.setPrename(jtfPPn.getText());
 						p.setName(jtfPName.getText());
@@ -258,8 +255,8 @@ public class PanelAddPerson extends JPanel {
 						p = new Person();
 						a = new Address();
 						cPAP = new Contacts();
-						
-						//Aktualisieren der Anzeige
+
+						// Aktualisieren der Anzeige
 						frame.setVisible(false);
 						App app = new App();
 						app.loadContactPanel();
@@ -273,7 +270,6 @@ public class PanelAddPerson extends JPanel {
 												+ (AddressType) jcbAddress
 														.getSelectedItem()
 												+ " Adresse");
-						jtfAdd.setBackground(Color.RED);
 					}
 				}
 

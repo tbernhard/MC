@@ -1,4 +1,4 @@
-package ch.hwz.nhtb.filehendler;
+package ch.hwz.nhtb.filehandler;
 
 import java.io.File;
 import java.io.IOException;

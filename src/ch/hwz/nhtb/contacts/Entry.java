@@ -2,7 +2,7 @@ package ch.hwz.nhtb.contacts;
 
 import java.util.LinkedList;
 
-import ch.hwz.nhtb.filehendler.FileHandler;
+import ch.hwz.nhtb.filehandler.FileHandler;
 
 public abstract class Entry {
 	private LinkedList<Address> addresses = new LinkedList<Address>();

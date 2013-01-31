@@ -20,7 +20,7 @@ import ch.hwz.nhtb.contacts.Component;
 import ch.hwz.nhtb.contacts.Contacts;
 import ch.hwz.nhtb.contacts.Entry;
 import ch.hwz.nhtb.contacts.Person;
-import ch.hwz.nhtb.filehendler.FileHandler;
+import ch.hwz.nhtb.filehandler.FileHandler;
 
 import com.jgoodies.forms.factories.FormFactory;
 import com.jgoodies.forms.layout.ColumnSpec;

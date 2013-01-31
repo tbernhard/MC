@@ -46,14 +46,15 @@ public class Contacts {
 
 	/**
 	 * Gibt alle Kontakte welche Adressen vom AddressTyp add beinhalten
-	 * zurückgeben 
-	 * Gibt ein String[] der Kontakte zurück. ("Vorname Name" oder
+	 * zurückgeben Gibt ein String[] der Kontakte zurück. ("Vorname Name" oder
 	 * "Standort Name")
 	 */
 	public String[] getContact(AddressType add) {
 		String[] s = new String[this.entries.size()];
 		List<String> list = new ArrayList<String>();
-
+		if (this.entries.equals(null)) {
+			System.out.println("Keine Einträge");
+		}
 		for (int i = 0; i < this.entries.size(); i++) {
 			if (this.entries.get(i).getClass().isInstance(new Person())) {
 				Person e = (Person) this.entries.get(i);
@@ -82,8 +83,7 @@ public class Contacts {
 
 	/**
 	 * Gibt alle Kontakte welche Adressen vom AddressTyp[] add beinhalten
-	 * zurückgeben
-	 * Gibt ein String[] der Kontakte zurück. ("Vorname Name" oder
+	 * zurückgeben Gibt ein String[] der Kontakte zurück. ("Vorname Name" oder
 	 * "Standort Name")
 	 */
 	public String[] getContact(AddressType[] add) {
@@ -161,8 +161,7 @@ public class Contacts {
 
 	/**
 	 * Gibt alle Adressen welche zu dem Kontakt contact gehören und AddressTyp
-	 * add beinhalten zurück.
-	 * Gibt ein String[] aller Adressen zurück.
+	 * add beinhalten zurück. Gibt ein String[] aller Adressen zurück.
 	 * ("AdressText")
 	 */
 	public String[] getAddressOnIndex(String contact, AddressType add) {
@@ -186,13 +185,11 @@ public class Contacts {
 			}
 		}
 		return list.toArray(new String[list.size()]);
-
 	}
 
 	/**
 	 * Gibt alle Adressen welche zu dem Kontakt contact gehören und AddressTyp[]
-	 * add beinhalten zurück.
-	 * Gibt ein String[] aller Adressen zurück.
+	 * add beinhalten zurück. Gibt ein String[] aller Adressen zurück.
 	 * ("AdressText")
 	 */
 	public String[] getAddressOnIndex(String contact, AddressType[] add) {

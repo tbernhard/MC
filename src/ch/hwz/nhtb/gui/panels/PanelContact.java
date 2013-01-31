@@ -15,7 +15,7 @@ import javax.swing.JScrollPane;
 import javax.xml.bind.JAXBException;
 
 import ch.hwz.nhtb.contacts.Contacts;
-import ch.hwz.nhtb.filehendler.FileHandler;
+import ch.hwz.nhtb.filehandler.FileHandler;
 import ch.hwz.nhtb.gui.App;
 import ch.hwz.nhtb.gui.frames.AddContacts;
 

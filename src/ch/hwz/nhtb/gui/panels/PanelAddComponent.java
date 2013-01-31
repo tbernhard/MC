@@ -1,6 +1,5 @@
 package ch.hwz.nhtb.gui.panels;
 
-import java.awt.Color;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.File;
@@ -17,7 +16,7 @@ import ch.hwz.nhtb.contacts.Address;
 import ch.hwz.nhtb.contacts.AddressType;
 import ch.hwz.nhtb.contacts.Component;
 import ch.hwz.nhtb.contacts.Contacts;
-import ch.hwz.nhtb.filehendler.FileHandler;
+import ch.hwz.nhtb.filehandler.FileHandler;
 import ch.hwz.nhtb.gui.App;
 
 import com.jgoodies.forms.factories.FormFactory;
@@ -168,7 +167,6 @@ public class PanelAddComponent extends JPanel {
 						// Validierung nicht erfolgreich
 						JOptionPane.showMessageDialog(new JFrame(),
 								"Ungültige " + AddressType.IP + " Adresse");
-						jtfAdd.setBackground(Color.RED);
 					}
 				}
 			}
